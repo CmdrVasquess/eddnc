@@ -1,0 +1,3 @@
+[submodule "doc/EDDN"]
+	path = doc/EDDN
+	url = https://github.com/EDSM-NET/EDDN.git
