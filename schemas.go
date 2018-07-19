@@ -1,14 +1,14 @@
 package eddn
 
 const (
-	S_blackmarket ScmId = iota
-	S_commodity
-	S_journal
-	S_outfitting
-	S_shipyard
+	Sblackmarket ScmId = iota
+	Scommodity
+	Sjournal
+	Soutfitting
+	Sshipyard
 )
 
-var ScmURIs = []string{
+var ScmURLs = []string{
 	"https://eddn.edcd.io/schemas/blackmarket/1",
 	"https://eddn.edcd.io/schemas/commodity/3",
 	"https://eddn.edcd.io/schemas/journal/1",

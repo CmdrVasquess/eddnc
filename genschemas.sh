@@ -13,11 +13,11 @@ echo "package eddn" > $GO
 echo "const (" >> $GO
 sep=" ScmId = iota"
 for scm in $scnm; do
-	echo "	S_"$scm$sep >> $GO
+	echo "	S"$scm$sep >> $GO
 	sep=""
 done
 echo ")" >> $GO
-echo "var ScmURIs = []string{" >> $GO
+echo "var ScmURLs = []string{" >> $GO
 for fs in $SCMSRCS; do
 	echo -n "	\"" >> $GO
 	egrep '^[ \t]*"id"[ \t]*:' $SCMDIR$fs \
