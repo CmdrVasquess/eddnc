@@ -15,21 +15,18 @@ NEXT_KEY:
 		if attDrop(k) {
 			continue
 		}
-		if !overwrite {
-			if _, ok := msg[k]; ok {
-				continue
-			}
-		}
 		for _, d := range drop {
 			if d == k {
 				continue NEXT_KEY
 			}
 		}
-		msg[k] = v
+		jsonObjSet(msg, k, v, overwrite)
 	}
 }
 
-func SetJournal(msg, journal map[string]interface{}, overwrite bool) error {
+func SetJournal(msg, journal map[string]interface{}, sys string, x, y, z float64, overwrite bool) error {
+	msg["StarSystem"] = sys
+	msg["StarPos"] = []float64{x, y, z}
 	evtNm := journal["event"].(string)
 	switch evtNm {
 	case "FSDJump":

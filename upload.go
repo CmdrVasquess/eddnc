@@ -14,11 +14,9 @@ const ConentType = "application/json; charset=utf-8"
 
 func Ts(ts time.Time) string { return ts.Format(time.RFC3339) }
 
-func NewMessage(ts string, sys string, x, y, z float64) map[string]interface{} {
+func NewMessage(ts string) map[string]interface{} {
 	res := make(map[string]interface{})
 	res["timestamp"] = ts
-	res["StarSystem"] = sys
-	res["StarPos"] = []float64{x, y, z}
 	return res
 }
 

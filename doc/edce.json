@@ -1,0 +1,4620 @@
+{
+    "market": {
+        "commodities": [
+            {
+                "buyPrice": 108,
+                "categoryname": "Chemicals",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049202,
+                "legality": "",
+                "locName": "Hydrogen Fuel",
+                "meanPrice": 122,
+                "name": "HydrogenFuel",
+                "sellPrice": 104,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 544,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 194,
+                "categoryname": "Chemicals",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049205,
+                "legality": "",
+                "locName": "Pesticides",
+                "meanPrice": 248,
+                "name": "Pesticides",
+                "sellPrice": 172,
+                "statusFlags": [],
+                "stock": 240,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Chemicals",
+                "demand": 262,
+                "demandBracket": 3,
+                "id": 128672303,
+                "legality": "",
+                "locName": "Synthetic Reagents",
+                "meanPrice": 6669,
+                "name": "SyntheticReagents",
+                "sellPrice": 7355,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Chemicals",
+                "demand": 144,
+                "demandBracket": 3,
+                "id": 128049166,
+                "legality": "",
+                "locName": "Water",
+                "meanPrice": 155,
+                "name": "Water",
+                "sellPrice": 332,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Consumer Items",
+                "demand": 739,
+                "demandBracket": 3,
+                "id": 128049241,
+                "legality": "",
+                "locName": "Clothing",
+                "meanPrice": 324,
+                "name": "Clothing",
+                "sellPrice": 692,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 6719,
+                "categoryname": "Consumer Items",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049240,
+                "legality": "",
+                "locName": "Consumer Technology",
+                "meanPrice": 6700,
+                "name": "ConsumerTechnology",
+                "sellPrice": 6640,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 17,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Consumer Items",
+                "demand": 152,
+                "demandBracket": 3,
+                "id": 128049238,
+                "legality": "",
+                "locName": "Domestic Appliances",
+                "meanPrice": 530,
+                "name": "DomesticAppliances",
+                "sellPrice": 886,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 237,
+                "categoryname": "Consumer Items",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128672314,
+                "legality": "",
+                "locName": "Evacuation Shelter",
+                "meanPrice": 346,
+                "name": "EvacuationShelter",
+                "sellPrice": 215,
+                "statusFlags": [],
+                "stock": 54,
+                "stockBracket": 3
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 103,
+                "demandBracket": 3,
+                "id": 128049182,
+                "legality": "",
+                "locName": "Animal Meat",
+                "meanPrice": 1336,
+                "name": "Animalmeat",
+                "sellPrice": 1840,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 161,
+                "demandBracket": 3,
+                "id": 128049189,
+                "legality": "",
+                "locName": "Coffee",
+                "meanPrice": 1327,
+                "name": "Coffee",
+                "sellPrice": 1840,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 371,
+                "demandBracket": 3,
+                "id": 128049183,
+                "legality": "",
+                "locName": "Fish",
+                "meanPrice": 437,
+                "name": "Fish",
+                "sellPrice": 723,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 387,
+                "demandBracket": 3,
+                "id": 128049184,
+                "legality": "",
+                "locName": "Food Cartridges",
+                "meanPrice": 154,
+                "name": "FoodCartridges",
+                "sellPrice": 530,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 414,
+                "demandBracket": 3,
+                "id": 128049178,
+                "legality": "",
+                "locName": "Fruit and Vegetables",
+                "meanPrice": 348,
+                "name": "FruitAndVegetables",
+                "sellPrice": 581,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 130,
+                "demandBracket": 3,
+                "id": 128049180,
+                "legality": "",
+                "locName": "Grain",
+                "meanPrice": 244,
+                "name": "Grain",
+                "sellPrice": 430,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 274,
+                "categoryname": "Foods",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049185,
+                "legality": "",
+                "locName": "Synthetic Meat",
+                "meanPrice": 285,
+                "name": "SyntheticMeat",
+                "sellPrice": 245,
+                "statusFlags": [],
+                "stock": 433,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Foods",
+                "demand": 115,
+                "demandBracket": 3,
+                "id": 128049188,
+                "legality": "",
+                "locName": "Tea",
+                "meanPrice": 1515,
+                "name": "Tea",
+                "sellPrice": 2038,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Industrial Materials",
+                "demand": 584,
+                "demandBracket": 3,
+                "id": 128673856,
+                "legality": "",
+                "locName": "CMM Composite",
+                "meanPrice": 5976,
+                "name": "CMMComposite",
+                "sellPrice": 6763,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Industrial Materials",
+                "demand": 2700,
+                "demandBracket": 3,
+                "id": 128672302,
+                "legality": "",
+                "locName": "Ceramic Composites",
+                "meanPrice": 227,
+                "name": "CeramicComposites",
+                "sellPrice": 1363,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Industrial Materials",
+                "demand": 177,
+                "demandBracket": 3,
+                "id": 128673855,
+                "legality": "",
+                "locName": "Insulating Membrane",
+                "meanPrice": 10861,
+                "name": "InsulatingMembrane",
+                "sellPrice": 11443,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Industrial Materials",
+                "demand": 297,
+                "demandBracket": 3,
+                "id": 128672701,
+                "legality": "",
+                "locName": "Meta-Alloys",
+                "meanPrice": 88152,
+                "name": "MetaAlloys",
+                "sellPrice": 93295,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Industrial Materials",
+                "demand": 642,
+                "demandBracket": 3,
+                "id": 128673858,
+                "legality": "",
+                "locName": "Neofabric Insulation",
+                "meanPrice": 5939,
+                "name": "NeofabricInsulation",
+                "sellPrice": 5994,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Industrial Materials",
+                "demand": 1158,
+                "demandBracket": 3,
+                "id": 128049200,
+                "legality": "",
+                "locName": "Superconductors",
+                "meanPrice": 6662,
+                "name": "Superconductors",
+                "sellPrice": 7632,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 95,
+                "demandBracket": 3,
+                "id": 128673859,
+                "legality": "",
+                "locName": "Articulation Motors",
+                "meanPrice": 7552,
+                "name": "ArticulationMotors",
+                "sellPrice": 7355,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 253,
+                "demandBracket": 3,
+                "id": 128673860,
+                "legality": "",
+                "locName": "HN Shock Mount",
+                "meanPrice": 1745,
+                "name": "HNShockMount",
+                "sellPrice": 2276,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 130,
+                "demandBracket": 3,
+                "id": 128673868,
+                "legality": "",
+                "locName": "Heatsink Interlink",
+                "meanPrice": 1940,
+                "name": "HeatsinkInterlink",
+                "sellPrice": 2399,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 232,
+                "categoryname": "Machinery",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049220,
+                "legality": "",
+                "locName": "Microbial Furnaces",
+                "meanPrice": 242,
+                "name": "HeliostaticFurnaces",
+                "sellPrice": 198,
+                "statusFlags": [],
+                "stock": 43,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 194,
+                "demandBracket": 3,
+                "id": 128673869,
+                "legality": "",
+                "locName": "Magnetic Emitter Coil",
+                "meanPrice": 1174,
+                "name": "MagneticEmitterCoil",
+                "sellPrice": 1638,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 277,
+                "demandBracket": 3,
+                "id": 128673870,
+                "legality": "",
+                "locName": "Modular Terminals",
+                "meanPrice": 2282,
+                "name": "ModularTerminals",
+                "sellPrice": 2276,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 366,
+                "demandBracket": 3,
+                "id": 128673862,
+                "legality": "",
+                "locName": "Power Converter",
+                "meanPrice": 1254,
+                "name": "PowerConverter",
+                "sellPrice": 1665,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 171,
+                "demandBracket": 3,
+                "id": 128049217,
+                "legality": "",
+                "locName": "Power Generators",
+                "meanPrice": 536,
+                "name": "PowerGenerators",
+                "sellPrice": 886,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 209,
+                "demandBracket": 3,
+                "id": 128673863,
+                "legality": "",
+                "locName": "Energy Grid Assembly",
+                "meanPrice": 2518,
+                "name": "PowerGridAssembly",
+                "sellPrice": 2997,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Machinery",
+                "demand": 280,
+                "demandBracket": 3,
+                "id": 128049218,
+                "legality": "",
+                "locName": "Water Purifiers",
+                "meanPrice": 310,
+                "name": "WaterPurifiers",
+                "sellPrice": 552,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Medicines",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128682046,
+                "legality": "",
+                "locName": "Advanced Medicines",
+                "meanPrice": 1233,
+                "name": "AdvancedMedicines",
+                "sellPrice": 1457,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 1259,
+                "categoryname": "Medicines",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049208,
+                "legality": "",
+                "locName": "Agri-Medicines",
+                "meanPrice": 1034,
+                "name": "AgriculturalMedicines",
+                "sellPrice": 1206,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 155,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Medicines",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049210,
+                "legality": "",
+                "locName": "Basic Medicines",
+                "meanPrice": 323,
+                "name": "BasicMedicines",
+                "sellPrice": 850,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Medicines",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049670,
+                "legality": "",
+                "locName": "Combat Stabilisers",
+                "meanPrice": 3482,
+                "name": "CombatStabilisers",
+                "sellPrice": 3098,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Medicines",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049209,
+                "legality": "",
+                "locName": "Performance Enhancers",
+                "meanPrice": 6745,
+                "name": "PerformanceEnhancers",
+                "sellPrice": 6720,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 6719,
+                "categoryname": "Medicines",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049669,
+                "legality": "",
+                "locName": "Progenitor Cells",
+                "meanPrice": 6711,
+                "name": "ProgenitorCells",
+                "sellPrice": 6640,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 7,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 955,
+                "demandBracket": 3,
+                "id": 128049168,
+                "legality": "",
+                "locName": "Beryllium",
+                "meanPrice": 8229,
+                "name": "Beryllium",
+                "sellPrice": 9171,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1599,
+                "demandBracket": 3,
+                "id": 128672300,
+                "legality": "",
+                "locName": "Bismuth",
+                "meanPrice": 2280,
+                "name": "Bismuth",
+                "sellPrice": 3033,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 10606,
+                "demandBracket": 3,
+                "id": 128049162,
+                "legality": "",
+                "locName": "Cobalt",
+                "meanPrice": 695,
+                "name": "Cobalt",
+                "sellPrice": 1242,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1400,
+                "demandBracket": 3,
+                "id": 128049170,
+                "legality": "",
+                "locName": "Gallium",
+                "meanPrice": 5107,
+                "name": "Gallium",
+                "sellPrice": 5994,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1633,
+                "demandBracket": 3,
+                "id": 128049154,
+                "legality": "",
+                "locName": "Gold",
+                "meanPrice": 9373,
+                "name": "Gold",
+                "sellPrice": 10984,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 2537,
+                "demandBracket": 3,
+                "id": 128049169,
+                "legality": "",
+                "locName": "Indium",
+                "meanPrice": 5774,
+                "name": "Indium",
+                "sellPrice": 6763,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 2055,
+                "demandBracket": 3,
+                "id": 128672298,
+                "legality": "",
+                "locName": "Lanthanum",
+                "meanPrice": 8758,
+                "name": "Lanthanum",
+                "sellPrice": 9763,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 6427,
+                "demandBracket": 3,
+                "id": 128049173,
+                "legality": "",
+                "locName": "Lithium",
+                "meanPrice": 1582,
+                "name": "Lithium",
+                "sellPrice": 2223,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 2024,
+                "demandBracket": 3,
+                "id": 128671118,
+                "legality": "",
+                "locName": "Osmium",
+                "meanPrice": 9136,
+                "name": "Osmium",
+                "sellPrice": 10375,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1546,
+                "demandBracket": 3,
+                "id": 128049153,
+                "legality": "",
+                "locName": "Palladium",
+                "meanPrice": 13244,
+                "name": "Palladium",
+                "sellPrice": 14115,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 106,
+                "demandBracket": 3,
+                "id": 128049152,
+                "legality": "",
+                "locName": "Platinum",
+                "meanPrice": 19756,
+                "name": "Platinum",
+                "sellPrice": 41659,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1177,
+                "demandBracket": 3,
+                "id": 128673845,
+                "legality": "",
+                "locName": "Praseodymium",
+                "meanPrice": 8604,
+                "name": "Praseodymium",
+                "sellPrice": 8628,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1246,
+                "demandBracket": 3,
+                "id": 128673847,
+                "legality": "",
+                "locName": "Samarium",
+                "meanPrice": 8090,
+                "name": "Samarium",
+                "sellPrice": 8109,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 3034,
+                "demandBracket": 3,
+                "id": 128049155,
+                "legality": "",
+                "locName": "Silver",
+                "meanPrice": 4759,
+                "name": "Silver",
+                "sellPrice": 5646,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 3390,
+                "demandBracket": 3,
+                "id": 128049171,
+                "legality": "",
+                "locName": "Tantalum",
+                "meanPrice": 3929,
+                "name": "Tantalum",
+                "sellPrice": 4739,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1923,
+                "demandBracket": 3,
+                "id": 128672299,
+                "legality": "",
+                "locName": "Thallium",
+                "meanPrice": 3613,
+                "name": "Thallium",
+                "sellPrice": 4472,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 1681,
+                "demandBracket": 3,
+                "id": 128672301,
+                "legality": "",
+                "locName": "Thorium",
+                "meanPrice": 11499,
+                "name": "Thorium",
+                "sellPrice": 12545,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Metals",
+                "demand": 4490,
+                "demandBracket": 3,
+                "id": 128049172,
+                "legality": "",
+                "locName": "Uranium",
+                "meanPrice": 2660,
+                "name": "Uranium",
+                "sellPrice": 3378,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 1177,
+                "demandBracket": 3,
+                "id": 128673846,
+                "legality": "",
+                "locName": "Bromellite",
+                "meanPrice": 8531,
+                "name": "Bromellite",
+                "sellPrice": 8628,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 4581,
+                "demandBracket": 3,
+                "id": 128672294,
+                "legality": "",
+                "locName": "Cryolite",
+                "meanPrice": 2252,
+                "name": "Cryolite",
+                "sellPrice": 2873,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 5793,
+                "demandBracket": 3,
+                "id": 128049158,
+                "legality": "",
+                "locName": "Gallite",
+                "meanPrice": 1914,
+                "name": "Gallite",
+                "sellPrice": 2586,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 1693,
+                "demandBracket": 3,
+                "id": 128673853,
+                "legality": "",
+                "locName": "Lithium Hydroxide",
+                "meanPrice": 5644,
+                "name": "LithiumHydroxide",
+                "sellPrice": 5646,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 117,
+                "demandBracket": 3,
+                "id": 128673848,
+                "legality": "",
+                "locName": "Low Temperature Diamonds",
+                "meanPrice": 57443,
+                "name": "LowTemperatureDiamond",
+                "sellPrice": 93295,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 3648,
+                "demandBracket": 3,
+                "id": 128673852,
+                "legality": "",
+                "locName": "Methanol Monohydrate Crystals",
+                "meanPrice": 2284,
+                "name": "MethanolMonohydrateCrystals",
+                "sellPrice": 2460,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 8,
+                "demandBracket": 1,
+                "id": 128668550,
+                "legality": "",
+                "locName": "Painite",
+                "meanPrice": 40504,
+                "name": "Painite",
+                "sellPrice": 32758,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 8901,
+                "demandBracket": 3,
+                "id": 128672297,
+                "legality": "",
+                "locName": "Pyrophyllite",
+                "meanPrice": 1555,
+                "name": "Pyrophyllite",
+                "sellPrice": 2116,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Minerals",
+                "demand": 17259,
+                "demandBracket": 3,
+                "id": 128049163,
+                "legality": "",
+                "locName": "Rutile",
+                "meanPrice": 343,
+                "name": "Rutile",
+                "sellPrice": 723,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Narcotics",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049212,
+                "legality": "",
+                "locName": "Narcotics",
+                "meanPrice": 10016,
+                "name": "BasicNarcotics",
+                "sellPrice": 9240,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Narcotics",
+                "demand": 4410,
+                "demandBracket": 3,
+                "id": 128049214,
+                "legality": "",
+                "locName": "Beer",
+                "meanPrice": 215,
+                "name": "Beer",
+                "sellPrice": 843,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Narcotics",
+                "demand": 326,
+                "demandBracket": 3,
+                "id": 128049216,
+                "legality": "",
+                "locName": "Liquor",
+                "meanPrice": 632,
+                "name": "Liquor",
+                "sellPrice": 1179,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Narcotics",
+                "demand": 856,
+                "demandBracket": 3,
+                "id": 128049213,
+                "legality": "",
+                "locName": "Tobacco",
+                "meanPrice": 5056,
+                "name": "Tobacco",
+                "sellPrice": 6048,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Narcotics",
+                "demand": 219,
+                "demandBracket": 3,
+                "id": 128049215,
+                "legality": "",
+                "locName": "Wine",
+                "meanPrice": 286,
+                "name": "Wine",
+                "sellPrice": 434,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 101,
+                "categoryname": "NonMarketable",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128066403,
+                "legality": "",
+                "meanPrice": 101,
+                "name": "Drones",
+                "sellPrice": 100,
+                "statusFlags": [],
+                "stock": 1038,
+                "stockBracket": 3
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Slaves",
+                "demand": 78,
+                "demandBracket": 3,
+                "id": 128667728,
+                "legality": "",
+                "locName": "Imperial Slaves",
+                "meanPrice": 16142,
+                "name": "ImperialSlaves",
+                "sellPrice": 17997,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Slaves",
+                "demand": 97,
+                "demandBracket": 1,
+                "id": 128049243,
+                "legality": "",
+                "locName": "Slaves",
+                "meanPrice": 9940,
+                "name": "Slaves",
+                "sellPrice": 14161,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 3102,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049231,
+                "legality": "",
+                "locName": "Advanced Catalysers",
+                "meanPrice": 2911,
+                "name": "AdvancedCatalysers",
+                "sellPrice": 3025,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 245,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 257,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049229,
+                "legality": "",
+                "locName": "Animal Monitors",
+                "meanPrice": 324,
+                "name": "AnimalMonitors",
+                "sellPrice": 233,
+                "statusFlags": [],
+                "stock": 156,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 330,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049230,
+                "legality": "",
+                "locName": "Aquaponic Systems",
+                "meanPrice": 306,
+                "name": "AquaponicSystems",
+                "sellPrice": 298,
+                "statusFlags": [],
+                "stock": 237,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 3774,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049228,
+                "legality": "",
+                "locName": "Auto-Fabricators",
+                "meanPrice": 3719,
+                "name": "AutoFabricators",
+                "sellPrice": 3682,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 32,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 1191,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049672,
+                "legality": "",
+                "locName": "Bioreducing Lichen",
+                "meanPrice": 1009,
+                "name": "BioReducingLichen",
+                "sellPrice": 1139,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 235,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Technology",
+                "demand": 1113,
+                "demandBracket": 3,
+                "id": 128049225,
+                "legality": "",
+                "locName": "Computer Components",
+                "meanPrice": 540,
+                "name": "ComputerComponents",
+                "sellPrice": 1022,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Technology",
+                "demand": 63,
+                "demandBracket": 3,
+                "id": 128673875,
+                "legality": "",
+                "locName": "Hardware Diagnostic Sensor",
+                "meanPrice": 6761,
+                "name": "DiagnosticSensor",
+                "sellPrice": 7355,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 467,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049226,
+                "legality": "",
+                "locName": "H.E. Suits",
+                "meanPrice": 324,
+                "name": "HazardousEnvironmentSuits",
+                "sellPrice": 421,
+                "statusFlags": [],
+                "stock": 122,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 2832,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128682047,
+                "legality": "",
+                "locName": "Medical Diagnostic Equipment",
+                "meanPrice": 2890,
+                "name": "MedicalDiagnosticEquipment",
+                "sellPrice": 2761,
+                "statusFlags": [],
+                "stock": 20,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 5264,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128673873,
+                "legality": "",
+                "locName": "Micro Controllers",
+                "meanPrice": 5539,
+                "name": "MicroControllers",
+                "sellPrice": 5139,
+                "statusFlags": [],
+                "stock": 8,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Technology",
+                "demand": 379,
+                "demandBracket": 3,
+                "id": 128673871,
+                "legality": "",
+                "locName": "Nanobreakers",
+                "meanPrice": 2172,
+                "name": "Nanobreakers",
+                "sellPrice": 2156,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 5945,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049671,
+                "legality": "",
+                "locName": "Resonating Separators",
+                "meanPrice": 5914,
+                "name": "ResonatingSeparators",
+                "sellPrice": 5875,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 2,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 1901,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049227,
+                "legality": "",
+                "locName": "Robotics",
+                "meanPrice": 1830,
+                "name": "Robotics",
+                "sellPrice": 1851,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 8,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 1810,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128672311,
+                "legality": "",
+                "locName": "Structural Regulators",
+                "meanPrice": 1796,
+                "name": "StructuralRegulators",
+                "sellPrice": 1762,
+                "statusFlags": [],
+                "stock": 3,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Technology",
+                "demand": 141,
+                "demandBracket": 3,
+                "id": 128673872,
+                "legality": "",
+                "locName": "Telemetry Suite",
+                "meanPrice": 3071,
+                "name": "TelemetrySuite",
+                "sellPrice": 2997,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 5114,
+                "categoryname": "Technology",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049232,
+                "legality": "",
+                "locName": "Land Enrichment Systems",
+                "meanPrice": 4840,
+                "name": "TerrainEnrichmentSystems",
+                "sellPrice": 4992,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 166,
+                "stockBracket": 1
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Textiles",
+                "demand": 2002,
+                "demandBracket": 3,
+                "id": 128682044,
+                "legality": "",
+                "locName": "Conductive Fabrics",
+                "meanPrice": 496,
+                "name": "ConductiveFabrics",
+                "sellPrice": 1042,
+                "statusFlags": [],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 35,
+                "categoryname": "Waste ",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049244,
+                "legality": "",
+                "locName": "Biowaste",
+                "meanPrice": 63,
+                "name": "Biowaste",
+                "sellPrice": 21,
+                "statusFlags": [],
+                "stock": 152,
+                "stockBracket": 3
+            },
+            {
+                "buyPrice": 61,
+                "categoryname": "Waste ",
+                "demand": 1,
+                "demandBracket": 0,
+                "id": 128049248,
+                "legality": "",
+                "locName": "Scrap",
+                "meanPrice": 78,
+                "name": "Scrap",
+                "sellPrice": 51,
+                "statusFlags": [],
+                "stock": 1162,
+                "stockBracket": 3
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Weapons",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049234,
+                "legality": "",
+                "locName": "Battle Weapons",
+                "meanPrice": 7257,
+                "name": "BattleWeapons",
+                "sellPrice": 6720,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Weapons",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049236,
+                "legality": "",
+                "locName": "Non-Lethal Weapons",
+                "meanPrice": 1826,
+                "name": "NonLethalWeapons",
+                "sellPrice": 2074,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Weapons",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049233,
+                "legality": "",
+                "locName": "Personal Weapons",
+                "meanPrice": 4684,
+                "name": "PersonalWeapons",
+                "sellPrice": 4287,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            },
+            {
+                "buyPrice": 0,
+                "categoryname": "Weapons",
+                "demand": 0,
+                "demandBracket": "",
+                "id": 128049235,
+                "legality": "",
+                "locName": "Reactive Armour",
+                "meanPrice": 2090,
+                "name": "ReactiveArmour",
+                "sellPrice": 2239,
+                "statusFlags": [
+                    "powerplay"
+                ],
+                "stock": 0,
+                "stockBracket": 0
+            }
+        ],
+        "economies": {
+            "30": {
+                "name": "HighTech",
+                "proportion": 1
+            }
+        },
+        "exported": {
+            "128049185": "SyntheticMeat",
+            "128049202": "HydrogenFuel",
+            "128049205": "Pesticides",
+            "128049208": "AgriculturalMedicines",
+            "128049209": "PerformanceEnhancers",
+            "128049210": "BasicMedicines",
+            "128049212": "BasicNarcotics",
+            "128049220": "HeliostaticFurnaces",
+            "128049226": "HazardousEnvironmentSuits",
+            "128049227": "Robotics",
+            "128049228": "AutoFabricators",
+            "128049229": "AnimalMonitors",
+            "128049230": "AquaponicSystems",
+            "128049231": "AdvancedCatalysers",
+            "128049232": "TerrainEnrichmentSystems",
+            "128049233": "PersonalWeapons",
+            "128049234": "BattleWeapons",
+            "128049235": "ReactiveArmour",
+            "128049236": "NonLethalWeapons",
+            "128049240": "ConsumerTechnology",
+            "128049244": "Biowaste",
+            "128049248": "Scrap",
+            "128049669": "ProgenitorCells",
+            "128049670": "CombatStabilisers",
+            "128049671": "ResonatingSeparators",
+            "128049672": "BioReducingLichen",
+            "128066403": "Drones",
+            "128672311": "StructuralRegulators",
+            "128672314": "EvacuationShelter",
+            "128673873": "MicroControllers",
+            "128682046": "AdvancedMedicines",
+            "128682047": "MedicalDiagnosticEquipment"
+        },
+        "id": 128339960,
+        "imported": {
+            "128049152": "Platinum",
+            "128049153": "Palladium",
+            "128049154": "Gold",
+            "128049155": "Silver",
+            "128049158": "Gallite",
+            "128049162": "Cobalt",
+            "128049163": "Rutile",
+            "128049166": "Water",
+            "128049168": "Beryllium",
+            "128049169": "Indium",
+            "128049170": "Gallium",
+            "128049171": "Tantalum",
+            "128049172": "Uranium",
+            "128049173": "Lithium",
+            "128049178": "FruitAndVegetables",
+            "128049180": "Grain",
+            "128049182": "Animalmeat",
+            "128049183": "Fish",
+            "128049184": "FoodCartridges",
+            "128049188": "Tea",
+            "128049189": "Coffee",
+            "128049200": "Superconductors",
+            "128049213": "Tobacco",
+            "128049214": "Beer",
+            "128049215": "Wine",
+            "128049216": "Liquor",
+            "128049217": "PowerGenerators",
+            "128049218": "WaterPurifiers",
+            "128049225": "ComputerComponents",
+            "128049238": "DomesticAppliances",
+            "128049241": "Clothing",
+            "128049243": "Slaves",
+            "128049245": "ToxicWaste",
+            "128667728": "ImperialSlaves",
+            "128668550": "Painite",
+            "128671118": "Osmium",
+            "128672294": "Cryolite",
+            "128672297": "Pyrophyllite",
+            "128672298": "Lanthanum",
+            "128672299": "Thallium",
+            "128672300": "Bismuth",
+            "128672301": "Thorium",
+            "128672302": "CeramicComposites",
+            "128672303": "SyntheticReagents",
+            "128672701": "MetaAlloys",
+            "128673845": "Praseodymium",
+            "128673846": "Bromellite",
+            "128673847": "Samarium",
+            "128673848": "LowTemperatureDiamond",
+            "128673852": "MethanolMonohydrateCrystals",
+            "128673853": "LithiumHydroxide",
+            "128673855": "InsulatingMembrane",
+            "128673856": "CMMComposite",
+            "128673858": "NeofabricInsulation",
+            "128673859": "ArticulationMotors",
+            "128673860": "HNShockMount",
+            "128673862": "PowerConverter",
+            "128673863": "PowerGridAssembly",
+            "128673868": "HeatsinkInterlink",
+            "128673869": "MagneticEmitterCoil",
+            "128673870": "ModularTerminals",
+            "128673871": "Nanobreakers",
+            "128673872": "TelemetrySuite",
+            "128673875": "DiagnosticSensor",
+            "128682044": "ConductiveFabrics",
+            "128824468": "ThargoidScoutTissueSample"
+        },
+        "name": "Chris & Silvia's Paradise Hideout",
+        "outpostType": "starport",
+        "prohibited": {
+            "128049245": "ToxicWaste",
+            "128824468": "ThargoidScoutTissueSample"
+        },
+        "services": {
+            "blackmarket": "ok",
+            "commodities": "ok",
+            "contacts": "ok",
+            "crewlounge": "ok",
+            "dock": "ok",
+            "engineer": "ok",
+            "exploration": "ok",
+            "facilitator": "ok",
+            "outfitting": "ok",
+            "powerplay": "ok",
+            "rearm": "ok",
+            "refuel": "ok",
+            "repair": "ok",
+            "searchrescue": "unavailable",
+            "shipyard": "ok"
+        }
+    },
+    "profile": {
+        "commander": {
+            "alive": true,
+            "credits": 39393078,
+            "currentShipId": 14,
+            "debt": 0,
+            "docked": true,
+            "id": 3393674,
+            "name": "Feyd Rautah",
+            "rank": {
+                "combat": 3,
+                "cqc": 0,
+                "crime": 0,
+                "empire": 7,
+                "explore": 6,
+                "federation": 0,
+                "power": 0,
+                "service": 0,
+                "trade": 4
+            }
+        },
+        "lastStarport": {
+            "faction": "independent",
+            "id": 128339960,
+            "minorfaction": "Eurybia Blue Mafia",
+            "name": "Chris & Silvia's Paradise Hideout",
+            "services": {
+                "blackmarket": "ok",
+                "commodities": "ok",
+                "contacts": "ok",
+                "crewlounge": "ok",
+                "dock": "ok",
+                "engineer": "ok",
+                "exploration": "ok",
+                "facilitator": "ok",
+                "outfitting": "ok",
+                "powerplay": "ok",
+                "rearm": "ok",
+                "refuel": "ok",
+                "repair": "ok",
+                "searchrescue": "unavailable",
+                "shipyard": "ok"
+            }
+        },
+        "lastSystem": {
+            "faction": "independent",
+            "id": 12000,
+            "name": "Eurybia"
+        },
+        "ship": {
+            "alive": true,
+            "cockpitBreached": false,
+            "free": false,
+            "health": {
+                "hull": 1000000,
+                "integrity": 3,
+                "paintwork": 3,
+                "shield": 1000000,
+                "shieldup": true
+            },
+            "id": 14,
+            "modules": {
+                "Armour": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128049317,
+                        "locDescription": "Advanced structure and compounds offer improved resistance against all types of attack.",
+                        "locName": "Reinforced Alloy",
+                        "name": "Empire_Trader_Armour_Grade2",
+                        "on": true,
+                        "priority": 1,
+                        "value": 7580593
+                    }
+                },
+                "Bobble02": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128732512,
+                        "locDescription": null,
+                        "locName": null,
+                        "name": "Bobble_Station_Coriolis_Wire",
+                        "on": true,
+                        "priority": 1,
+                        "value": 0
+                    }
+                },
+                "EngineColour": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128740725,
+                        "locDescription": null,
+                        "locName": null,
+                        "name": "EngineCustomisation_Orange",
+                        "on": true,
+                        "priority": 1,
+                        "value": 0
+                    }
+                },
+                "FrameShiftDrive": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_FSDOptimalMass": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "48.57%",
+                            "locName": "Optimised mass",
+                            "value": 1.4857
+                        },
+                        "OutfittingFieldType_Integrity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-15.00%",
+                            "locName": "Integrity",
+                            "value": 0.85
+                        },
+                        "OutfittingFieldType_Mass": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-30.00%",
+                            "locName": "Mass",
+                            "value": 1.3
+                        },
+                        "OutfittingFieldType_PowerDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-15.00%",
+                            "locName": "Power draw",
+                            "value": 1.15
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300100,
+                        "engineerName": "Felicity Farseer",
+                        "recipeLevel": 5,
+                        "recipeLocDescription": "Longer range jumps are allowed with this modification, but at the cost of module integrity, power draw and higher mass.",
+                        "recipeLocName": "Increased FSD Range",
+                        "recipeName": "FSD_LongRange"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064122,
+                        "locDescription": "Device that allows supercruise travel and hyperspace jumps between star systems.",
+                        "locName": "FSD",
+                        "name": "Int_Hyperdrive_Size5_Class5",
+                        "on": true,
+                        "priority": 0,
+                        "value": 4338361
+                    },
+                    "specialModifications": []
+                },
+                "FuelTank": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064349,
+                        "locDescription": "Storage container for fuel used by ship's power plant.",
+                        "locName": "Fuel Tank",
+                        "name": "Int_FuelTank_Size4_Class3",
+                        "on": true,
+                        "priority": 1,
+                        "value": 21023
+                    }
+                },
+                "LargeHardpoint1": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_Damage": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "11.68%",
+                            "locName": "Damage",
+                            "value": 1.1168
+                        },
+                        "OutfittingFieldType_DamagePerSecond": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "11.68%",
+                            "locName": "Damage per second",
+                            "value": 1.1168
+                        },
+                        "OutfittingFieldType_DistributorDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "14.71%",
+                            "locName": "Distributor draw",
+                            "value": 0.8529
+                        },
+                        "OutfittingFieldType_PowerDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "11.26%",
+                            "locName": "Power draw",
+                            "value": 0.8874
+                        },
+                        "OutfittingFieldType_ThermalLoad": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "42.32%",
+                            "locName": "Thermal load",
+                            "value": 0.5768
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300180,
+                        "engineerName": "The Dweller",
+                        "recipeLevel": 2,
+                        "recipeLocDescription": "Installing this weapon blueprint reduces thermal load and power draw.",
+                        "recipeLocName": "Efficient Weapon",
+                        "recipeName": "Weapon_Efficient"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128049387,
+                        "locDescription": "Single-pulse laser weapon on gimballed mount, with signature tracking assist.",
+                        "locName": "Pulse Laser",
+                        "name": "Hpt_PulseLaser_Gimbal_Large",
+                        "on": true,
+                        "priority": 0,
+                        "value": 119510
+                    },
+                    "specialModifications": []
+                },
+                "LargeHardpoint2": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_Damage": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "11.50%",
+                            "locName": "Damage",
+                            "value": 1.115
+                        },
+                        "OutfittingFieldType_DamagePerSecond": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "11.50%",
+                            "locName": "Damage per second",
+                            "value": 1.115
+                        },
+                        "OutfittingFieldType_DistributorDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "14.32%",
+                            "locName": "Distributor draw",
+                            "value": 0.8568
+                        },
+                        "OutfittingFieldType_PowerDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "10.99%",
+                            "locName": "Power draw",
+                            "value": 0.8901
+                        },
+                        "OutfittingFieldType_ThermalLoad": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "41.52%",
+                            "locName": "Thermal load",
+                            "value": 0.5848
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300180,
+                        "engineerName": "The Dweller",
+                        "recipeLevel": 2,
+                        "recipeLocDescription": "Installing this weapon blueprint reduces thermal load and power draw.",
+                        "recipeLocName": "Efficient Weapon",
+                        "recipeName": "Weapon_Efficient"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128049387,
+                        "locDescription": "Single-pulse laser weapon on gimballed mount, with signature tracking assist.",
+                        "locName": "Pulse Laser",
+                        "name": "Hpt_PulseLaser_Gimbal_Large",
+                        "on": true,
+                        "priority": 0,
+                        "value": 119510
+                    },
+                    "specialModifications": []
+                },
+                "LifeSupport": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064159,
+                        "locDescription": "Regulates habitable ship atmosphere and provides emergency reservoir for pilot's Remlock system.",
+                        "locName": "Life Support",
+                        "name": "Int_LifeSupport_Size5_Class2",
+                        "on": true,
+                        "priority": 0,
+                        "value": 67528
+                    }
+                },
+                "MainEngines": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_EngineHeatRate": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-40.00%",
+                            "locName": "Thermal load",
+                            "value": 1.4
+                        },
+                        "OutfittingFieldType_EngineOptPerformance": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "22.99%",
+                            "locName": "Optimal multiplier",
+                            "value": 1.2299
+                        },
+                        "OutfittingFieldType_EngineOptimalMass": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-7.50%",
+                            "locName": "Optimal mass",
+                            "value": 0.925
+                        },
+                        "OutfittingFieldType_Integrity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-9.00%",
+                            "locName": "Integrity",
+                            "value": 0.91
+                        },
+                        "OutfittingFieldType_PowerDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-8.00%",
+                            "locName": "Power draw",
+                            "value": 1.08
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300100,
+                        "engineerName": "Felicity Farseer",
+                        "recipeLevel": 3,
+                        "recipeLocDescription": "With this blueprint, a drive's integrity, thermal load and power draw are sacrificed for increased performance.",
+                        "recipeLocName": "Dirty Drive Tuning",
+                        "recipeName": "Engine_Dirty"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064092,
+                        "locDescription": "Normal-space propulsion system.",
+                        "locName": "Thrusters",
+                        "name": "Int_Engine_Size6_Class5",
+                        "on": true,
+                        "priority": 0,
+                        "value": 13752602
+                    },
+                    "specialModifications": []
+                },
+                "MediumHardpoint1": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128671344,
+                        "locDescription": "A seeking missile launcher that fires multiple specialised micro missiles that swarm.",
+                        "locName": "Pack-hound",
+                        "name": "Hpt_DrunkMissileRack_Fixed_Medium",
+                        "on": true,
+                        "priority": 1,
+                        "value": 768600
+                    }
+                },
+                "MediumHardpoint2": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128671344,
+                        "locDescription": "A seeking missile launcher that fires multiple specialised micro missiles that swarm.",
+                        "locName": "Pack-hound",
+                        "name": "Hpt_DrunkMissileRack_Fixed_Medium",
+                        "on": true,
+                        "priority": 1,
+                        "value": 768600
+                    }
+                },
+                "PlanetaryApproachSuite": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128672317,
+                        "locDescription": "The required Thruster modifications, sensor package and avionics to allow a ship to fly effectively in close proximity to planets.",
+                        "locName": "Planetary Approach Suite",
+                        "name": "Int_PlanetApproachSuite",
+                        "on": true,
+                        "priority": 1,
+                        "value": 425
+                    }
+                },
+                "PowerDistributor": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_EnginesCapacity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-4.00%",
+                            "locName": "Engines capacity",
+                            "value": 0.96
+                        },
+                        "OutfittingFieldType_EnginesRecharge": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "29.97%",
+                            "locName": "Engines recharge",
+                            "value": 1.2997
+                        },
+                        "OutfittingFieldType_SystemsCapacity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-4.00%",
+                            "locName": "Systems capacity",
+                            "value": 0.96
+                        },
+                        "OutfittingFieldType_SystemsRecharge": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "29.97%",
+                            "locName": "Systems recharge",
+                            "value": 1.2997
+                        },
+                        "OutfittingFieldType_WeaponsCapacity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-4.00%",
+                            "locName": "Weapons capacity",
+                            "value": 0.96
+                        },
+                        "OutfittingFieldType_WeaponsRecharge": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "29.97%",
+                            "locName": "Weapons recharge",
+                            "value": 1.2997
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300180,
+                        "engineerName": "The Dweller",
+                        "recipeLevel": 4,
+                        "recipeLocDescription": "This blueprint impacts overall power capacity while providing a faster overall charge rate.",
+                        "recipeLocName": "Charge Enhanced Power Distributor",
+                        "recipeName": "PowerDistributor_HighFrequency"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064207,
+                        "locDescription": "Distribution system for ENG, SYS and WEP capacitors.",
+                        "locName": "Power Distributor",
+                        "name": "Int_PowerDistributor_Size6_Class5",
+                        "on": true,
+                        "priority": 0,
+                        "value": 2954335
+                    },
+                    "specialModifications": []
+                },
+                "PowerPlant": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_HeatEfficiency": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "4.00%",
+                            "locName": "Heat efficiency",
+                            "value": 0.96
+                        },
+                        "OutfittingFieldType_Integrity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "40.00%",
+                            "locName": "Integrity",
+                            "value": 1.4
+                        },
+                        "OutfittingFieldType_Mass": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-4.00%",
+                            "locName": "Mass",
+                            "value": 1.04
+                        },
+                        "OutfittingFieldType_PowerCapacity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "4.00%",
+                            "locName": "Power capacity",
+                            "value": 1.04
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300100,
+                        "engineerName": "Felicity Farseer",
+                        "recipeLevel": 1,
+                        "recipeLocDescription": "Module integrity is improved with this blueprint, allowing small improvements to power generation and heat efficiency, at the cost of increased mass.",
+                        "recipeLocName": "Armoured Power Plant",
+                        "recipeName": "PowerPlant_Armoured"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064057,
+                        "locDescription": "Consumes fuel to power all ship modules.",
+                        "locName": "Power Plant",
+                        "name": "Int_Powerplant_Size6_Class5",
+                        "on": true,
+                        "priority": 1,
+                        "value": 11025433
+                    },
+                    "specialModifications": []
+                },
+                "Radar": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_Integrity": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-20.00%",
+                            "locName": "Integrity",
+                            "value": 0.8
+                        },
+                        "OutfittingFieldType_Mass": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "31.79%",
+                            "locName": "Mass",
+                            "value": 0.6821
+                        },
+                        "OutfittingFieldType_SensorTargetScanAngle": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-10.00%",
+                            "locName": "Target Scan Angle",
+                            "value": 0.9
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300120,
+                        "engineerName": "Lei Cheung",
+                        "recipeLevel": 2,
+                        "recipeLocDescription": "Lowers the mass of the scanner by narrowing the passive scanning angle and decreasing the integrity.",
+                        "recipeLocName": "Light Weight Scanner",
+                        "recipeName": "Sensor_LightWeight"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064239,
+                        "locDescription": "Standard suite providing basic detection, identification and targeting capabilities.",
+                        "locName": "Sensors",
+                        "name": "Int_Sensors_Size5_Class2",
+                        "on": true,
+                        "priority": 0,
+                        "value": 67528
+                    },
+                    "specialModifications": []
+                },
+                "Slot01_Size7": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_BrokenRegenRate": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-10.00%",
+                            "locName": "Broken regen rate",
+                            "value": 0.9
+                        },
+                        "OutfittingFieldType_CollisionResistance": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "4.50%",
+                            "locName": null,
+                            "value": 0.955
+                        },
+                        "OutfittingFieldType_EnergyPerRegen": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "4.00%",
+                            "locName": "Distributor draw",
+                            "value": 1.04
+                        },
+                        "OutfittingFieldType_ExplosiveResistance": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "52.25%",
+                            "locName": "Explosive resistance",
+                            "value": 0.4775
+                        },
+                        "OutfittingFieldType_KineticResistance": {
+                            "LessIsGood": true,
+                            "dir": "\u02c4",
+                            "displayValue": "42.70%",
+                            "locName": "Kinetic resistance",
+                            "value": 0.573
+                        },
+                        "OutfittingFieldType_ShieldGenStrength": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "13.93%",
+                            "locName": "Optimal strength",
+                            "value": 1.1393
+                        },
+                        "OutfittingFieldType_ThermicResistance": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-14.60%",
+                            "locName": "Thermal resistance",
+                            "value": 1.146
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300120,
+                        "engineerName": "Lei Cheung",
+                        "recipeLevel": 1,
+                        "recipeLocDescription": "This modification trades broken shield recovery time and energy requirements for stronger shields.",
+                        "recipeLocName": "Reinforced Shields",
+                        "recipeName": "ShieldGenerator_Reinforced"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128671337,
+                        "locDescription": "An alternative shield generator that sacrifices overall shield strength for a much faster recharge rate.",
+                        "locName": "Bi-Weave Shield",
+                        "name": "Int_ShieldGenerator_Size7_Class3_Fast",
+                        "on": true,
+                        "priority": 0,
+                        "value": 7265958
+                    },
+                    "specialModifications": []
+                },
+                "Slot02_Size6": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064343,
+                        "locDescription": "Standardised storage rack for use in automated cargo transfer system.",
+                        "locName": "Cargo Rack",
+                        "name": "Int_CargoRack_Size6_Class1",
+                        "on": true,
+                        "priority": 1,
+                        "value": 362591
+                    }
+                },
+                "Slot03_Size4": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128064317,
+                        "locDescription": "Device that uses pre-charged cells to rapidly repair active shields. No effect on collapsed shields.",
+                        "locName": "Shield Cell Bank",
+                        "name": "Int_ShieldCellBank_Size4_Class5",
+                        "on": true,
+                        "priority": 0,
+                        "value": 376829
+                    }
+                },
+                "Slot04_Size4": {
+                    "WorkInProgress_modifications": {
+                        "OutfittingFieldType_FSDInterdictorFacingLimit": {
+                            "LessIsGood": false,
+                            "dir": "\u02c5",
+                            "displayValue": "-10.00%",
+                            "locName": "Facing limit",
+                            "value": 0.9
+                        },
+                        "OutfittingFieldType_FSDInterdictorRange": {
+                            "LessIsGood": false,
+                            "dir": "\u02c4",
+                            "displayValue": "20.00%",
+                            "locName": "Range",
+                            "value": 1.2
+                        },
+                        "OutfittingFieldType_Mass": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-10.00%",
+                            "locName": "Mass",
+                            "value": 1.1
+                        },
+                        "OutfittingFieldType_PowerDraw": {
+                            "LessIsGood": true,
+                            "dir": "\u02c5",
+                            "displayValue": "-10.00%",
+                            "locName": "Power draw",
+                            "value": 1.1
+                        }
+                    },
+                    "engineer": {
+                        "engineerId": 300100,
+                        "engineerName": "Felicity Farseer",
+                        "recipeLevel": 1,
+                        "recipeLocDescription": "To increase the range, this blueprint gains mass and power draw, and also requires a more accurate aim.",
+                        "recipeLocName": "Longer Range FSD Interdictor",
+                        "recipeName": "FSDinterdictor_LongRange"
+                    },
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128666714,
+                        "locDescription": "Used to pull targets out of supercruise.",
+                        "locName": "FSD Interdictor",
+                        "name": "Int_FSDInterdictor_Size3_Class3",
+                        "on": true,
+                        "priority": 0,
+                        "value": 719712
+                    },
+                    "specialModifications": []
+                },
+                "Slot05_Size3": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128671236,
+                        "locDescription": "Controls limpets to collect canisters and asteroid chunks automatically.",
+                        "locName": "Collector",
+                        "name": "Int_DroneControl_Collection_Size3_Class3",
+                        "on": true,
+                        "priority": 0,
+                        "value": 21600
+                    }
+                },
+                "Slot06_Size3": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128666678,
+                        "locDescription": "Fly close to the sun with an active fuel scoop to collect fuel.",
+                        "locName": "Fuel Scoop",
+                        "name": "Int_FuelScoop_Size3_Class5",
+                        "on": true,
+                        "priority": 0,
+                        "value": 902954
+                    }
+                },
+                "Slot07_Size2": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128066535,
+                        "locDescription": "Control unit that can program a blank limpet to hack a target's hold, causing cargo ejection.",
+                        "locName": "Hatch Breaker",
+                        "name": "Int_DroneControl_ResourceSiphon_Size1_Class4",
+                        "on": true,
+                        "priority": 0,
+                        "value": 4800
+                    }
+                },
+                "Slot08_Size2": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128663561,
+                        "locDescription": "Scanner used during exploration.",
+                        "locName": "D - Scanner",
+                        "name": "Int_StellarBodyDiscoveryScanner_Advanced",
+                        "on": true,
+                        "priority": 1,
+                        "value": 1313250
+                    }
+                },
+                "TinyHardpoint1": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128049519,
+                        "locDescription": "Purges ship's heat into a disposable sink block, which is then ejected. Requires ammunition.",
+                        "locName": "Heatsink",
+                        "name": "Hpt_HeatSinkLauncher_Turret_Tiny",
+                        "on": true,
+                        "priority": 0,
+                        "value": 3500
+                    }
+                },
+                "TinyHardpoint2": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128049522,
+                        "locDescription": "Missile defence. Automatically tracks and fires upon missiles and torpedoes in range when powered.",
+                        "locName": "Point Defence",
+                        "name": "Hpt_PlasmaPointDefence_Turret_Tiny",
+                        "on": true,
+                        "priority": 0,
+                        "value": 15765
+                    }
+                },
+                "TinyHardpoint3": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128662523,
+                        "locDescription": "Scanner that can detect and analyse the contents of a targeted vessel's cargo hold and passenger cabins.",
+                        "locName": "Manifest Scanner",
+                        "name": "Hpt_CargoScanner_Size0_Class4",
+                        "on": true,
+                        "priority": 0,
+                        "value": 365698
+                    }
+                },
+                "TinyHardpoint4": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128049519,
+                        "locDescription": "Purges ship's heat into a disposable sink block, which is then ejected. Requires ammunition.",
+                        "locName": "Heatsink",
+                        "name": "Hpt_HeatSinkLauncher_Turret_Tiny",
+                        "on": true,
+                        "priority": 0,
+                        "value": 2975
+                    }
+                },
+                "VesselVoice": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128824469,
+                        "locDescription": "COVAS Verity",
+                        "locName": "COVAS Verity",
+                        "name": "VoicePack_Verity",
+                        "on": true,
+                        "priority": 1,
+                        "value": 0
+                    }
+                },
+                "WeaponColour": {
+                    "module": {
+                        "free": false,
+                        "health": 1000000,
+                        "id": 128732189,
+                        "locDescription": null,
+                        "locName": null,
+                        "name": "WeaponCustomisation_Blue",
+                        "on": true,
+                        "priority": 1,
+                        "value": 0
+                    }
+                }
+            },
+            "name": "Empire_Trader",
+            "oxygenRemaining": 450000,
+            "starsystem": {
+                "id": 12000,
+                "name": "Eurybia",
+                "systemaddress": 1458309141194
+            },
+            "station": {
+                "id": 128339960,
+                "name": "Chris & Silvia's Paradise Hideout"
+            },
+            "value": {
+                "cargo": 1616,
+                "hull": 17949366,
+                "modules": 52939680,
+                "total": 70890662,
+                "unloaned": 133205
+            }
+        },
+        "ships": {
+            "0": {
+                "free": false,
+                "id": 0,
+                "name": "Vulture",
+                "shipID": "FR-VT1",
+                "shipName": "Gom Jabbar",
+                "starsystem": {
+                    "id": 5069000549777,
+                    "name": "Camulus",
+                    "systemaddress": 5069000549777
+                },
+                "station": {
+                    "id": 3222641152,
+                    "name": "Gaultier de Varennes Settlement"
+                },
+                "value": {
+                    "cargo": 0,
+                    "hull": 3985763,
+                    "modules": 16956548,
+                    "total": 20942311,
+                    "unloaned": 42539
+                }
+            },
+            "12": {
+                "free": false,
+                "id": 12,
+                "name": "Empire_Courier",
+                "shipID": "FR-IC1",
+                "shipName": "Hasimir Fenring",
+                "starsystem": {
+                    "id": 5069000549777,
+                    "name": "Camulus",
+                    "systemaddress": 5069000549777
+                },
+                "station": {
+                    "id": 3222641152,
+                    "name": "Gaultier de Varennes Settlement"
+                },
+                "value": {
+                    "cargo": 0,
+                    "hull": 2110671,
+                    "modules": 7048547,
+                    "total": 9159218,
+                    "unloaned": 34235
+                }
+            },
+            "14": {
+                "free": false,
+                "id": 14,
+                "name": "Empire_Trader",
+                "starsystem": {
+                    "id": 12000,
+                    "name": "Eurybia",
+                    "systemaddress": 1458309141194
+                },
+                "station": {
+                    "id": 128339960,
+                    "name": "Chris & Silvia's Paradise Hideout"
+                },
+                "value": {
+                    "cargo": 1616,
+                    "hull": 17949366,
+                    "modules": 52939680,
+                    "total": 70890662,
+                    "unloaned": 133205
+                }
+            },
+            "15": {
+                "free": false,
+                "id": 15,
+                "name": "Empire_Eagle",
+                "starsystem": {
+                    "id": 5069000549777,
+                    "name": "Camulus",
+                    "systemaddress": 5069000549777
+                },
+                "station": {
+                    "id": 3222641152,
+                    "name": "Gaultier de Varennes Settlement"
+                },
+                "value": {
+                    "cargo": 0,
+                    "hull": 61220,
+                    "modules": 8223950,
+                    "total": 8285170,
+                    "unloaned": 21932
+                }
+            },
+            "2": {
+                "free": false,
+                "id": 2,
+                "name": "DiamondBackXL",
+                "shipID": "FR-DX1",
+                "shipName": "Esmar Tuek",
+                "starsystem": {
+                    "id": 5069000549777,
+                    "name": "Camulus",
+                    "systemaddress": 5069000549777
+                },
+                "station": {
+                    "id": 3222641152,
+                    "name": "Gaultier de Varennes Settlement"
+                },
+                "value": {
+                    "cargo": 0,
+                    "hull": 1389917,
+                    "modules": 11082905,
+                    "total": 12472822,
+                    "unloaned": 108567
+                }
+            },
+            "4": {
+                "free": false,
+                "id": 4,
+                "name": "Federation_Gunship",
+                "shipID": "FR-FG1",
+                "shipName": "Shai-Hulud",
+                "starsystem": {
+                    "id": 5069000549777,
+                    "name": "Camulus",
+                    "systemaddress": 5069000549777
+                },
+                "station": {
+                    "id": 3222641152,
+                    "name": "Gaultier de Varennes Settlement"
+                },
+                "value": {
+                    "cargo": 0,
+                    "hull": 28685883,
+                    "modules": 77684635,
+                    "total": 106370518,
+                    "unloaned": 217340
+                }
+            },
+            "7": {
+                "free": false,
+                "id": 7,
+                "name": "Type6",
+                "shipID": "FR-T62",
+                "shipName": "Lankiveil",
+                "starsystem": {
+                    "id": 5069000549777,
+                    "name": "Camulus",
+                    "systemaddress": 5069000549777
+                },
+                "station": {
+                    "id": 3222641152,
+                    "name": "Gaultier de Varennes Settlement"
+                },
+                "value": {
+                    "cargo": 0,
+                    "hull": 735497,
+                    "modules": 7020810,
+                    "total": 7756307,
+                    "unloaned": 42893
+                }
+            }
+        }
+    },
+    "shipyard": {
+        "economies": {
+            "30": {
+                "name": "HighTech",
+                "proportion": 1
+            }
+        },
+        "exported": {
+            "128049185": "SyntheticMeat",
+            "128049202": "HydrogenFuel",
+            "128049205": "Pesticides",
+            "128049208": "AgriculturalMedicines",
+            "128049209": "PerformanceEnhancers",
+            "128049210": "BasicMedicines",
+            "128049212": "BasicNarcotics",
+            "128049220": "HeliostaticFurnaces",
+            "128049226": "HazardousEnvironmentSuits",
+            "128049227": "Robotics",
+            "128049228": "AutoFabricators",
+            "128049229": "AnimalMonitors",
+            "128049230": "AquaponicSystems",
+            "128049231": "AdvancedCatalysers",
+            "128049232": "TerrainEnrichmentSystems",
+            "128049233": "PersonalWeapons",
+            "128049234": "BattleWeapons",
+            "128049235": "ReactiveArmour",
+            "128049236": "NonLethalWeapons",
+            "128049240": "ConsumerTechnology",
+            "128049244": "Biowaste",
+            "128049248": "Scrap",
+            "128049669": "ProgenitorCells",
+            "128049670": "CombatStabilisers",
+            "128049671": "ResonatingSeparators",
+            "128049672": "BioReducingLichen",
+            "128066403": "Drones",
+            "128672311": "StructuralRegulators",
+            "128672314": "EvacuationShelter",
+            "128673873": "MicroControllers",
+            "128682046": "AdvancedMedicines",
+            "128682047": "MedicalDiagnosticEquipment"
+        },
+        "id": 128339960,
+        "imported": {
+            "128049152": "Platinum",
+            "128049153": "Palladium",
+            "128049154": "Gold",
+            "128049155": "Silver",
+            "128049158": "Gallite",
+            "128049162": "Cobalt",
+            "128049163": "Rutile",
+            "128049166": "Water",
+            "128049168": "Beryllium",
+            "128049169": "Indium",
+            "128049170": "Gallium",
+            "128049171": "Tantalum",
+            "128049172": "Uranium",
+            "128049173": "Lithium",
+            "128049178": "FruitAndVegetables",
+            "128049180": "Grain",
+            "128049182": "Animalmeat",
+            "128049183": "Fish",
+            "128049184": "FoodCartridges",
+            "128049188": "Tea",
+            "128049189": "Coffee",
+            "128049200": "Superconductors",
+            "128049213": "Tobacco",
+            "128049214": "Beer",
+            "128049215": "Wine",
+            "128049216": "Liquor",
+            "128049217": "PowerGenerators",
+            "128049218": "WaterPurifiers",
+            "128049225": "ComputerComponents",
+            "128049238": "DomesticAppliances",
+            "128049241": "Clothing",
+            "128049243": "Slaves",
+            "128049245": "ToxicWaste",
+            "128667728": "ImperialSlaves",
+            "128668550": "Painite",
+            "128671118": "Osmium",
+            "128672294": "Cryolite",
+            "128672297": "Pyrophyllite",
+            "128672298": "Lanthanum",
+            "128672299": "Thallium",
+            "128672300": "Bismuth",
+            "128672301": "Thorium",
+            "128672302": "CeramicComposites",
+            "128672303": "SyntheticReagents",
+            "128672701": "MetaAlloys",
+            "128673845": "Praseodymium",
+            "128673846": "Bromellite",
+            "128673847": "Samarium",
+            "128673848": "LowTemperatureDiamond",
+            "128673852": "MethanolMonohydrateCrystals",
+            "128673853": "LithiumHydroxide",
+            "128673855": "InsulatingMembrane",
+            "128673856": "CMMComposite",
+            "128673858": "NeofabricInsulation",
+            "128673859": "ArticulationMotors",
+            "128673860": "HNShockMount",
+            "128673862": "PowerConverter",
+            "128673863": "PowerGridAssembly",
+            "128673868": "HeatsinkInterlink",
+            "128673869": "MagneticEmitterCoil",
+            "128673870": "ModularTerminals",
+            "128673871": "Nanobreakers",
+            "128673872": "TelemetrySuite",
+            "128673875": "DiagnosticSensor",
+            "128682044": "ConductiveFabrics",
+            "128824468": "ThargoidScoutTissueSample"
+        },
+        "modules": {
+            "128049292": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049292,
+                "name": "Dolphin_Armour_Grade1",
+                "sku": null
+            },
+            "128049293": {
+                "category": "module",
+                "cost": 534929,
+                "id": 128049293,
+                "name": "Dolphin_Armour_Grade2",
+                "sku": null
+            },
+            "128049294": {
+                "category": "module",
+                "cost": 1203590,
+                "id": 128049294,
+                "name": "Dolphin_Armour_Grade3",
+                "sku": null
+            },
+            "128049295": {
+                "category": "module",
+                "cost": 2808378,
+                "id": 128049295,
+                "name": "Dolphin_Armour_Mirrored",
+                "sku": null
+            },
+            "128049296": {
+                "category": "module",
+                "cost": 3152070,
+                "id": 128049296,
+                "name": "Dolphin_Armour_Reactive",
+                "sku": null
+            },
+            "128049304": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049304,
+                "name": "Asp_Armour_Grade1",
+                "sku": null
+            },
+            "128049305": {
+                "category": "module",
+                "cost": 2664461,
+                "id": 128049305,
+                "name": "Asp_Armour_Grade2",
+                "sku": null
+            },
+            "128049306": {
+                "category": "module",
+                "cost": 5995038,
+                "id": 128049306,
+                "name": "Asp_Armour_Grade3",
+                "sku": null
+            },
+            "128049307": {
+                "category": "module",
+                "cost": 14168274,
+                "id": 128049307,
+                "name": "Asp_Armour_Mirrored",
+                "sku": null
+            },
+            "128049308": {
+                "category": "module",
+                "cost": 15700339,
+                "id": 128049308,
+                "name": "Asp_Armour_Reactive",
+                "sku": null
+            },
+            "128049316": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049316,
+                "name": "Empire_Trader_Armour_Grade1",
+                "sku": null
+            },
+            "128049317": {
+                "category": "module",
+                "cost": 8918344,
+                "id": 128049317,
+                "name": "Empire_Trader_Armour_Grade2",
+                "sku": null
+            },
+            "128049318": {
+                "category": "module",
+                "cost": 20066274,
+                "id": 128049318,
+                "name": "Empire_Trader_Armour_Grade3",
+                "sku": null
+            },
+            "128049319": {
+                "category": "module",
+                "cost": 47423294,
+                "id": 128049319,
+                "name": "Empire_Trader_Armour_Mirrored",
+                "sku": null
+            },
+            "128049320": {
+                "category": "module",
+                "cost": 52551342,
+                "id": 128049320,
+                "name": "Empire_Trader_Armour_Reactive",
+                "sku": null
+            },
+            "128049328": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049328,
+                "name": "Orca_Armour_Grade1",
+                "sku": null
+            },
+            "128049329": {
+                "category": "module",
+                "cost": 19415954,
+                "id": 128049329,
+                "name": "Orca_Armour_Grade2",
+                "sku": null
+            },
+            "128049330": {
+                "category": "module",
+                "cost": 43685898,
+                "id": 128049330,
+                "name": "Orca_Armour_Grade3",
+                "sku": null
+            },
+            "128049331": {
+                "category": "module",
+                "cost": 103244339,
+                "id": 128049331,
+                "name": "Orca_Armour_Mirrored",
+                "sku": null
+            },
+            "128049332": {
+                "category": "module",
+                "cost": 114408513,
+                "id": 128049332,
+                "name": "Orca_Armour_Reactive",
+                "sku": null
+            },
+            "128049340": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049340,
+                "name": "Python_Armour_Grade1",
+                "sku": null
+            },
+            "128049341": {
+                "category": "module",
+                "cost": 22791271,
+                "id": 128049341,
+                "name": "Python_Armour_Grade2",
+                "sku": null
+            },
+            "128049342": {
+                "category": "module",
+                "cost": 51280361,
+                "id": 128049342,
+                "name": "Python_Armour_Grade3",
+                "sku": null
+            },
+            "128049343": {
+                "category": "module",
+                "cost": 121192586,
+                "id": 128049343,
+                "name": "Python_Armour_Mirrored",
+                "sku": null
+            },
+            "128049344": {
+                "category": "module",
+                "cost": 134297567,
+                "id": 128049344,
+                "name": "Python_Armour_Reactive",
+                "sku": null
+            },
+            "128049346": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049346,
+                "name": "BelugaLiner_Armour_Grade1",
+                "sku": null
+            },
+            "128049347": {
+                "category": "module",
+                "cost": 33813105,
+                "id": 128049347,
+                "name": "BelugaLiner_Armour_Grade2",
+                "sku": null
+            },
+            "128049348": {
+                "category": "module",
+                "cost": 76079487,
+                "id": 128049348,
+                "name": "BelugaLiner_Armour_Grade3",
+                "sku": null
+            },
+            "128049349": {
+                "category": "module",
+                "cost": 179801189,
+                "id": 128049349,
+                "name": "BelugaLiner_Armour_Mirrored",
+                "sku": null
+            },
+            "128049350": {
+                "category": "module",
+                "cost": 199243724,
+                "id": 128049350,
+                "name": "BelugaLiner_Armour_Reactive",
+                "sku": null
+            },
+            "128049352": {
+                "category": "module",
+                "cost": 0,
+                "id": 128049352,
+                "name": "FerDeLance_Armour_Grade1",
+                "sku": null
+            },
+            "128049353": {
+                "category": "module",
+                "cost": 20626816,
+                "id": 128049353,
+                "name": "FerDeLance_Armour_Grade2",
+                "sku": null
+            },
+            "128049354": {
+                "category": "module",
+                "cost": 46410336,
+                "id": 128049354,
+                "name": "FerDeLance_Armour_Grade3",
+                "sku": null
+            },
+            "128049355": {
+                "category": "module",
+                "cost": 109683094,
+                "id": 128049355,
+                "name": "FerDeLance_Armour_Mirrored",
+                "sku": null
+            },
+            "128049356": {
+                "category": "module",
+                "cost": 121543513,
+                "id": 128049356,
+                "name": "FerDeLance_Armour_Reactive",
+                "sku": null
+            },
+            "128049408": {
+                "category": "weapon",
+                "cost": 162800,
+                "id": 128049408,
+                "name": "Hpt_PulseLaserBurst_Turret_Medium",
+                "sku": null
+            },
+            "128049409": {
+                "category": "weapon",
+                "cost": 800400,
+                "id": 128049409,
+                "name": "Hpt_PulseLaserBurst_Turret_Large",
+                "sku": null
+            },
+            "128049433": {
+                "category": "weapon",
+                "cost": 500600,
+                "id": 128049433,
+                "name": "Hpt_BeamLaser_Gimbal_Medium",
+                "sku": null
+            },
+            "128049434": {
+                "category": "weapon",
+                "cost": 2396160,
+                "id": 128049434,
+                "name": "Hpt_BeamLaser_Gimbal_Large",
+                "sku": null
+            },
+            "128049436": {
+                "category": "weapon",
+                "cost": 2099900,
+                "id": 128049436,
+                "name": "Hpt_BeamLaser_Turret_Medium",
+                "sku": null
+            },
+            "128049441": {
+                "category": "weapon",
+                "cost": 2700800,
+                "id": 128049441,
+                "name": "Hpt_Cannon_Fixed_Huge",
+                "sku": null
+            },
+            "128049444": {
+                "category": "weapon",
+                "cost": 5401600,
+                "id": 128049444,
+                "name": "Hpt_Cannon_Gimbal_Huge",
+                "sku": null
+            },
+            "128049445": {
+                "category": "weapon",
+                "cost": 506400,
+                "id": 128049445,
+                "name": "Hpt_Cannon_Turret_Small",
+                "sku": null
+            },
+            "128049446": {
+                "category": "weapon",
+                "cost": 4051200,
+                "id": 128049446,
+                "name": "Hpt_Cannon_Turret_Medium",
+                "sku": null
+            },
+            "128049450": {
+                "category": "weapon",
+                "cost": 1167360,
+                "id": 128049450,
+                "name": "Hpt_Slugshot_Fixed_Large",
+                "sku": null
+            },
+            "128049453": {
+                "category": "weapon",
+                "cost": 182400,
+                "id": 128049453,
+                "name": "Hpt_Slugshot_Turret_Small",
+                "sku": null
+            },
+            "128049454": {
+                "category": "weapon",
+                "cost": 1459200,
+                "id": 128049454,
+                "name": "Hpt_Slugshot_Turret_Medium",
+                "sku": null
+            },
+            "128049458": {
+                "category": "weapon",
+                "cost": 1177600,
+                "id": 128049458,
+                "name": "Hpt_MultiCannon_Fixed_Huge",
+                "sku": null
+            },
+            "128049461": {
+                "category": "weapon",
+                "cost": 578436,
+                "id": 128049461,
+                "name": "Hpt_MultiCannon_Gimbal_Large",
+                "sku": null
+            },
+            "128049465": {
+                "category": "weapon",
+                "cost": 834200,
+                "id": 128049465,
+                "name": "Hpt_PlasmaAccelerator_Fixed_Medium",
+                "sku": null
+            },
+            "128049466": {
+                "category": "weapon",
+                "cost": 3051200,
+                "id": 128049466,
+                "name": "Hpt_PlasmaAccelerator_Fixed_Large",
+                "sku": null
+            },
+            "128049488": {
+                "category": "weapon",
+                "cost": 51600,
+                "id": 128049488,
+                "name": "Hpt_Railgun_Fixed_Small",
+                "sku": null
+            },
+            "128049489": {
+                "category": "weapon",
+                "cost": 412800,
+                "id": 128049489,
+                "name": "Hpt_Railgun_Fixed_Medium",
+                "sku": null
+            },
+            "128049492": {
+                "category": "weapon",
+                "cost": 72600,
+                "id": 128049492,
+                "name": "Hpt_BasicMissileRack_Fixed_Small",
+                "sku": null
+            },
+            "128049493": {
+                "category": "weapon",
+                "cost": 512400,
+                "id": 128049493,
+                "name": "Hpt_BasicMissileRack_Fixed_Medium",
+                "sku": null
+            },
+            "128049500": {
+                "category": "weapon",
+                "cost": 24260,
+                "id": 128049500,
+                "name": "Hpt_MineLauncher_Fixed_Small",
+                "sku": null
+            },
+            "128049509": {
+                "category": "weapon",
+                "cost": 11200,
+                "id": 128049509,
+                "name": "Hpt_AdvancedTorpPylon_Fixed_Small",
+                "sku": null
+            },
+            "128049510": {
+                "category": "weapon",
+                "cost": 44800,
+                "id": 128049510,
+                "name": "Hpt_AdvancedTorpPylon_Fixed_Medium",
+                "sku": null
+            },
+            "128049513": {
+                "category": "utility",
+                "cost": 8500,
+                "id": 128049513,
+                "name": "Hpt_ChaffLauncher_Tiny",
+                "sku": null
+            },
+            "128049519": {
+                "category": "utility",
+                "cost": 3500,
+                "id": 128049519,
+                "name": "Hpt_HeatSinkLauncher_Turret_Tiny",
+                "sku": null
+            },
+            "128049522": {
+                "category": "utility",
+                "cost": 18546,
+                "id": 128049522,
+                "name": "Hpt_PlasmaPointDefence_Turret_Tiny",
+                "sku": null
+            },
+            "128049526": {
+                "category": "utility",
+                "cost": 22576,
+                "id": 128049526,
+                "name": "Hpt_MiningLaser_Fixed_Medium",
+                "sku": null
+            },
+            "128064059": {
+                "category": "module",
+                "cost": 1441233,
+                "id": 128064059,
+                "name": "Int_Powerplant_Size7_Class2",
+                "sku": null
+            },
+            "128064061": {
+                "category": "module",
+                "cost": 12971097,
+                "id": 128064061,
+                "name": "Int_Powerplant_Size7_Class4",
+                "sku": null
+            },
+            "128064065": {
+                "category": "module",
+                "cost": 12971097,
+                "id": 128064065,
+                "name": "Int_Powerplant_Size8_Class3",
+                "sku": null
+            },
+            "128064068": {
+                "category": "module",
+                "cost": 1978,
+                "id": 128064068,
+                "name": "Int_Engine_Size2_Class1",
+                "sku": null
+            },
+            "128064069": {
+                "category": "module",
+                "cost": 5934,
+                "id": 128064069,
+                "name": "Int_Engine_Size2_Class2",
+                "sku": null
+            },
+            "128064070": {
+                "category": "module",
+                "cost": 17803,
+                "id": 128064070,
+                "name": "Int_Engine_Size2_Class3",
+                "sku": null
+            },
+            "128064071": {
+                "category": "module",
+                "cost": 53408,
+                "id": 128064071,
+                "name": "Int_Engine_Size2_Class4",
+                "sku": null
+            },
+            "128064073": {
+                "category": "module",
+                "cost": 6271,
+                "id": 128064073,
+                "name": "Int_Engine_Size3_Class1",
+                "sku": null
+            },
+            "128064074": {
+                "category": "module",
+                "cost": 18812,
+                "id": 128064074,
+                "name": "Int_Engine_Size3_Class2",
+                "sku": null
+            },
+            "128064077": {
+                "category": "module",
+                "cost": 507912,
+                "id": 128064077,
+                "name": "Int_Engine_Size3_Class5",
+                "sku": null
+            },
+            "128064097": {
+                "category": "module",
+                "cost": 51289112,
+                "id": 128064097,
+                "name": "Int_Engine_Size7_Class5",
+                "sku": null
+            },
+            "128064102": {
+                "category": "module",
+                "cost": 162586486,
+                "id": 128064102,
+                "name": "Int_Engine_Size8_Class5",
+                "sku": null
+            },
+            "128064103": {
+                "category": "module",
+                "cost": 1978,
+                "id": 128064103,
+                "name": "Int_Hyperdrive_Size2_Class1",
+                "sku": null
+            },
+            "128064104": {
+                "category": "module",
+                "cost": 5934,
+                "id": 128064104,
+                "name": "Int_Hyperdrive_Size2_Class2",
+                "sku": null
+            },
+            "128064105": {
+                "category": "module",
+                "cost": 17803,
+                "id": 128064105,
+                "name": "Int_Hyperdrive_Size2_Class3",
+                "sku": null
+            },
+            "128064106": {
+                "category": "module",
+                "cost": 53408,
+                "id": 128064106,
+                "name": "Int_Hyperdrive_Size2_Class4",
+                "sku": null
+            },
+            "128064107": {
+                "category": "module",
+                "cost": 160224,
+                "id": 128064107,
+                "name": "Int_Hyperdrive_Size2_Class5",
+                "sku": null
+            },
+            "128064108": {
+                "category": "module",
+                "cost": 6271,
+                "id": 128064108,
+                "name": "Int_Hyperdrive_Size3_Class1",
+                "sku": null
+            },
+            "128064109": {
+                "category": "module",
+                "cost": 18812,
+                "id": 128064109,
+                "name": "Int_Hyperdrive_Size3_Class2",
+                "sku": null
+            },
+            "128064110": {
+                "category": "module",
+                "cost": 56435,
+                "id": 128064110,
+                "name": "Int_Hyperdrive_Size3_Class3",
+                "sku": null
+            },
+            "128064111": {
+                "category": "module",
+                "cost": 169304,
+                "id": 128064111,
+                "name": "Int_Hyperdrive_Size3_Class4",
+                "sku": null
+            },
+            "128064112": {
+                "category": "module",
+                "cost": 507912,
+                "id": 128064112,
+                "name": "Int_Hyperdrive_Size3_Class5",
+                "sku": null
+            },
+            "128064132": {
+                "category": "module",
+                "cost": 51289112,
+                "id": 128064132,
+                "name": "Int_Hyperdrive_Size7_Class5",
+                "sku": null
+            },
+            "128064136": {
+                "category": "module",
+                "cost": 54195495,
+                "id": 128064136,
+                "name": "Int_Hyperdrive_Size8_Class4",
+                "sku": null
+            },
+            "128064141": {
+                "category": "module",
+                "cost": 8078,
+                "id": 128064141,
+                "name": "Int_LifeSupport_Size1_Class4",
+                "sku": null
+            },
+            "128064146": {
+                "category": "module",
+                "cost": 22619,
+                "id": 128064146,
+                "name": "Int_LifeSupport_Size2_Class4",
+                "sku": null
+            },
+            "128064147": {
+                "category": "module",
+                "cost": 56547,
+                "id": 128064147,
+                "name": "Int_LifeSupport_Size2_Class5",
+                "sku": null
+            },
+            "128064150": {
+                "category": "module",
+                "cost": 25333,
+                "id": 128064150,
+                "name": "Int_LifeSupport_Size3_Class3",
+                "sku": null
+            },
+            "128064151": {
+                "category": "module",
+                "cost": 63333,
+                "id": 128064151,
+                "name": "Int_LifeSupport_Size3_Class4",
+                "sku": null
+            },
+            "128064152": {
+                "category": "module",
+                "cost": 158331,
+                "id": 128064152,
+                "name": "Int_LifeSupport_Size3_Class5",
+                "sku": null
+            },
+            "128064171": {
+                "category": "module",
+                "cost": 3892770,
+                "id": 128064171,
+                "name": "Int_LifeSupport_Size7_Class4",
+                "sku": null
+            },
+            "128064175": {
+                "category": "module",
+                "cost": 4359903,
+                "id": 128064175,
+                "name": "Int_LifeSupport_Size8_Class3",
+                "sku": null
+            },
+            "128064176": {
+                "category": "module",
+                "cost": 10899756,
+                "id": 128064176,
+                "name": "Int_LifeSupport_Size8_Class4",
+                "sku": null
+            },
+            "128064177": {
+                "category": "module",
+                "cost": 27249391,
+                "id": 128064177,
+                "name": "Int_LifeSupport_Size8_Class5",
+                "sku": null
+            },
+            "128064194": {
+                "category": "module",
+                "cost": 28373,
+                "id": 128064194,
+                "name": "Int_PowerDistributor_Size4_Class2",
+                "sku": null
+            },
+            "128064195": {
+                "category": "module",
+                "cost": 70932,
+                "id": 128064195,
+                "name": "Int_PowerDistributor_Size4_Class3",
+                "sku": null
+            },
+            "128064196": {
+                "category": "module",
+                "cost": 177331,
+                "id": 128064196,
+                "name": "Int_PowerDistributor_Size4_Class4",
+                "sku": null
+            },
+            "128064197": {
+                "category": "module",
+                "cost": 443328,
+                "id": 128064197,
+                "name": "Int_PowerDistributor_Size4_Class5",
+                "sku": null
+            },
+            "128064198": {
+                "category": "module",
+                "cost": 31778,
+                "id": 128064198,
+                "name": "Int_PowerDistributor_Size5_Class1",
+                "sku": null
+            },
+            "128064199": {
+                "category": "module",
+                "cost": 79444,
+                "id": 128064199,
+                "name": "Int_PowerDistributor_Size5_Class2",
+                "sku": null
+            },
+            "128064200": {
+                "category": "module",
+                "cost": 198611,
+                "id": 128064200,
+                "name": "Int_PowerDistributor_Size5_Class3",
+                "sku": null
+            },
+            "128064201": {
+                "category": "module",
+                "cost": 496527,
+                "id": 128064201,
+                "name": "Int_PowerDistributor_Size5_Class4",
+                "sku": null
+            },
+            "128064203": {
+                "category": "module",
+                "cost": 88978,
+                "id": 128064203,
+                "name": "Int_PowerDistributor_Size6_Class1",
+                "sku": null
+            },
+            "128064204": {
+                "category": "module",
+                "cost": 222444,
+                "id": 128064204,
+                "name": "Int_PowerDistributor_Size6_Class2",
+                "sku": null
+            },
+            "128064205": {
+                "category": "module",
+                "cost": 556110,
+                "id": 128064205,
+                "name": "Int_PowerDistributor_Size6_Class3",
+                "sku": null
+            },
+            "128064206": {
+                "category": "module",
+                "cost": 1390275,
+                "id": 128064206,
+                "name": "Int_PowerDistributor_Size6_Class4",
+                "sku": null
+            },
+            "128064207": {
+                "category": "module",
+                "cost": 3475688,
+                "id": 128064207,
+                "name": "Int_PowerDistributor_Size6_Class5",
+                "sku": null
+            },
+            "128064222": {
+                "category": "module",
+                "cost": 20195,
+                "id": 128064222,
+                "name": "Int_Sensors_Size1_Class5",
+                "sku": null
+            },
+            "128064227": {
+                "category": "module",
+                "cost": 56547,
+                "id": 128064227,
+                "name": "Int_Sensors_Size2_Class5",
+                "sku": null
+            },
+            "128064231": {
+                "category": "module",
+                "cost": 63333,
+                "id": 128064231,
+                "name": "Int_Sensors_Size3_Class4",
+                "sku": null
+            },
+            "128064232": {
+                "category": "module",
+                "cost": 158331,
+                "id": 128064232,
+                "name": "Int_Sensors_Size3_Class5",
+                "sku": null
+            },
+            "128064263": {
+                "category": "module",
+                "cost": 1978,
+                "id": 128064263,
+                "name": "Int_ShieldGenerator_Size2_Class1",
+                "sku": null
+            },
+            "128064264": {
+                "category": "module",
+                "cost": 5934,
+                "id": 128064264,
+                "name": "Int_ShieldGenerator_Size2_Class2",
+                "sku": null
+            },
+            "128064265": {
+                "category": "module",
+                "cost": 17803,
+                "id": 128064265,
+                "name": "Int_ShieldGenerator_Size2_Class3",
+                "sku": null
+            },
+            "128064266": {
+                "category": "module",
+                "cost": 53408,
+                "id": 128064266,
+                "name": "Int_ShieldGenerator_Size2_Class4",
+                "sku": null
+            },
+            "128064267": {
+                "category": "module",
+                "cost": 160224,
+                "id": 128064267,
+                "name": "Int_ShieldGenerator_Size2_Class5",
+                "sku": null
+            },
+            "128064268": {
+                "category": "module",
+                "cost": 6271,
+                "id": 128064268,
+                "name": "Int_ShieldGenerator_Size3_Class1",
+                "sku": null
+            },
+            "128064269": {
+                "category": "module",
+                "cost": 18812,
+                "id": 128064269,
+                "name": "Int_ShieldGenerator_Size3_Class2",
+                "sku": null
+            },
+            "128064270": {
+                "category": "module",
+                "cost": 56435,
+                "id": 128064270,
+                "name": "Int_ShieldGenerator_Size3_Class3",
+                "sku": null
+            },
+            "128064271": {
+                "category": "module",
+                "cost": 169304,
+                "id": 128064271,
+                "name": "Int_ShieldGenerator_Size3_Class4",
+                "sku": null
+            },
+            "128064299": {
+                "category": "module",
+                "cost": 1293,
+                "id": 128064299,
+                "name": "Int_ShieldCellBank_Size1_Class2",
+                "sku": null
+            },
+            "128064300": {
+                "category": "module",
+                "cost": 3231,
+                "id": 128064300,
+                "name": "Int_ShieldCellBank_Size1_Class3",
+                "sku": null
+            },
+            "128064301": {
+                "category": "module",
+                "cost": 8078,
+                "id": 128064301,
+                "name": "Int_ShieldCellBank_Size1_Class4",
+                "sku": null
+            },
+            "128064304": {
+                "category": "module",
+                "cost": 3619,
+                "id": 128064304,
+                "name": "Int_ShieldCellBank_Size2_Class2",
+                "sku": null
+            },
+            "128064305": {
+                "category": "module",
+                "cost": 9048,
+                "id": 128064305,
+                "name": "Int_ShieldCellBank_Size2_Class3",
+                "sku": null
+            },
+            "128064306": {
+                "category": "module",
+                "cost": 22619,
+                "id": 128064306,
+                "name": "Int_ShieldCellBank_Size2_Class4",
+                "sku": null
+            },
+            "128064307": {
+                "category": "module",
+                "cost": 56547,
+                "id": 128064307,
+                "name": "Int_ShieldCellBank_Size2_Class5",
+                "sku": null
+            },
+            "128064308": {
+                "category": "module",
+                "cost": 4053,
+                "id": 128064308,
+                "name": "Int_ShieldCellBank_Size3_Class1",
+                "sku": null
+            },
+            "128064309": {
+                "category": "module",
+                "cost": 10133,
+                "id": 128064309,
+                "name": "Int_ShieldCellBank_Size3_Class2",
+                "sku": null
+            },
+            "128064310": {
+                "category": "module",
+                "cost": 25333,
+                "id": 128064310,
+                "name": "Int_ShieldCellBank_Size3_Class3",
+                "sku": null
+            },
+            "128064312": {
+                "category": "module",
+                "cost": 158331,
+                "id": 128064312,
+                "name": "Int_ShieldCellBank_Size3_Class5",
+                "sku": null
+            },
+            "128064329": {
+                "category": "module",
+                "cost": 622843,
+                "id": 128064329,
+                "name": "Int_ShieldCellBank_Size7_Class2",
+                "sku": null
+            },
+            "128064330": {
+                "category": "module",
+                "cost": 1557108,
+                "id": 128064330,
+                "name": "Int_ShieldCellBank_Size7_Class3",
+                "sku": null
+            },
+            "128064331": {
+                "category": "module",
+                "cost": 3892770,
+                "id": 128064331,
+                "name": "Int_ShieldCellBank_Size7_Class4",
+                "sku": null
+            },
+            "128064332": {
+                "category": "module",
+                "cost": 9731925,
+                "id": 128064332,
+                "name": "Int_ShieldCellBank_Size7_Class5",
+                "sku": null
+            },
+            "128064333": {
+                "category": "module",
+                "cost": 697584,
+                "id": 128064333,
+                "name": "Int_ShieldCellBank_Size8_Class1",
+                "sku": null
+            },
+            "128064335": {
+                "category": "module",
+                "cost": 4359903,
+                "id": 128064335,
+                "name": "Int_ShieldCellBank_Size8_Class3",
+                "sku": null
+            },
+            "128064336": {
+                "category": "module",
+                "cost": 10899756,
+                "id": 128064336,
+                "name": "Int_ShieldCellBank_Size8_Class4",
+                "sku": null
+            },
+            "128064338": {
+                "category": "module",
+                "cost": 1000,
+                "id": 128064338,
+                "name": "Int_CargoRack_Size1_Class1",
+                "sku": null
+            },
+            "128064339": {
+                "category": "module",
+                "cost": 3250,
+                "id": 128064339,
+                "name": "Int_CargoRack_Size2_Class1",
+                "sku": null
+            },
+            "128064340": {
+                "category": "module",
+                "cost": 10563,
+                "id": 128064340,
+                "name": "Int_CargoRack_Size3_Class1",
+                "sku": null
+            },
+            "128064341": {
+                "category": "module",
+                "cost": 34328,
+                "id": 128064341,
+                "name": "Int_CargoRack_Size4_Class1",
+                "sku": null
+            },
+            "128064342": {
+                "category": "module",
+                "cost": 111566,
+                "id": 128064342,
+                "name": "Int_CargoRack_Size5_Class1",
+                "sku": null
+            },
+            "128064343": {
+                "category": "module",
+                "cost": 362591,
+                "id": 128064343,
+                "name": "Int_CargoRack_Size6_Class1",
+                "sku": null
+            },
+            "128064344": {
+                "category": "module",
+                "cost": 1178420,
+                "id": 128064344,
+                "name": "Int_CargoRack_Size7_Class1",
+                "sku": null
+            },
+            "128064345": {
+                "category": "module",
+                "cost": 3829866,
+                "id": 128064345,
+                "name": "Int_CargoRack_Size8_Class1",
+                "sku": null
+            },
+            "128066532": {
+                "category": "module",
+                "cost": 600,
+                "id": 128066532,
+                "name": "Int_DroneControl_ResourceSiphon_Size1_Class1",
+                "sku": null
+            },
+            "128066533": {
+                "category": "module",
+                "cost": 1200,
+                "id": 128066533,
+                "name": "Int_DroneControl_ResourceSiphon_Size1_Class2",
+                "sku": null
+            },
+            "128066534": {
+                "category": "module",
+                "cost": 2400,
+                "id": 128066534,
+                "name": "Int_DroneControl_ResourceSiphon_Size1_Class3",
+                "sku": null
+            },
+            "128066535": {
+                "category": "module",
+                "cost": 4800,
+                "id": 128066535,
+                "name": "Int_DroneControl_ResourceSiphon_Size1_Class4",
+                "sku": null
+            },
+            "128066536": {
+                "category": "module",
+                "cost": 9600,
+                "id": 128066536,
+                "name": "Int_DroneControl_ResourceSiphon_Size1_Class5",
+                "sku": null
+            },
+            "128066538": {
+                "category": "module",
+                "cost": 10800,
+                "id": 128066538,
+                "name": "Int_DroneControl_ResourceSiphon_Size3_Class2",
+                "sku": null
+            },
+            "128066539": {
+                "category": "module",
+                "cost": 21600,
+                "id": 128066539,
+                "name": "Int_DroneControl_ResourceSiphon_Size3_Class3",
+                "sku": null
+            },
+            "128066540": {
+                "category": "module",
+                "cost": 43200,
+                "id": 128066540,
+                "name": "Int_DroneControl_ResourceSiphon_Size3_Class4",
+                "sku": null
+            },
+            "128066541": {
+                "category": "module",
+                "cost": 86400,
+                "id": 128066541,
+                "name": "Int_DroneControl_ResourceSiphon_Size3_Class5",
+                "sku": null
+            },
+            "128066544": {
+                "category": "module",
+                "cost": 194400,
+                "id": 128066544,
+                "name": "Int_DroneControl_ResourceSiphon_Size5_Class3",
+                "sku": null
+            },
+            "128066545": {
+                "category": "module",
+                "cost": 388800,
+                "id": 128066545,
+                "name": "Int_DroneControl_ResourceSiphon_Size5_Class4",
+                "sku": null
+            },
+            "128066546": {
+                "category": "module",
+                "cost": 777600,
+                "id": 128066546,
+                "name": "Int_DroneControl_ResourceSiphon_Size5_Class5",
+                "sku": null
+            },
+            "128066548": {
+                "category": "module",
+                "cost": 874800,
+                "id": 128066548,
+                "name": "Int_DroneControl_ResourceSiphon_Size7_Class2",
+                "sku": null
+            },
+            "128066550": {
+                "category": "module",
+                "cost": 3499200,
+                "id": 128066550,
+                "name": "Int_DroneControl_ResourceSiphon_Size7_Class4",
+                "sku": null
+            },
+            "128662521": {
+                "category": "utility",
+                "cost": 40633,
+                "id": 128662521,
+                "name": "Hpt_CargoScanner_Size0_Class2",
+                "sku": null
+            },
+            "128662522": {
+                "category": "utility",
+                "cost": 121899,
+                "id": 128662522,
+                "name": "Hpt_CargoScanner_Size0_Class3",
+                "sku": null
+            },
+            "128662523": {
+                "category": "utility",
+                "cost": 365698,
+                "id": 128662523,
+                "name": "Hpt_CargoScanner_Size0_Class4",
+                "sku": null
+            },
+            "128662526": {
+                "category": "utility",
+                "cost": 40633,
+                "id": 128662526,
+                "name": "Hpt_CloudScanner_Size0_Class2",
+                "sku": null
+            },
+            "128662528": {
+                "category": "utility",
+                "cost": 365698,
+                "id": 128662528,
+                "name": "Hpt_CloudScanner_Size0_Class4",
+                "sku": null
+            },
+            "128662529": {
+                "category": "utility",
+                "cost": 1097095,
+                "id": 128662529,
+                "name": "Hpt_CloudScanner_Size0_Class5",
+                "sku": null
+            },
+            "128662530": {
+                "category": "utility",
+                "cost": 13544,
+                "id": 128662530,
+                "name": "Hpt_CrimeScanner_Size0_Class1",
+                "sku": null
+            },
+            "128662533": {
+                "category": "utility",
+                "cost": 365698,
+                "id": 128662533,
+                "name": "Hpt_CrimeScanner_Size0_Class4",
+                "sku": null
+            },
+            "128662534": {
+                "category": "utility",
+                "cost": 1097095,
+                "id": 128662534,
+                "name": "Hpt_CrimeScanner_Size0_Class5",
+                "sku": null
+            },
+            "128662535": {
+                "category": "module",
+                "cost": 1000,
+                "id": 128662535,
+                "name": "Int_StellarBodyDiscoveryScanner_Standard",
+                "sku": null
+            },
+            "128663560": {
+                "category": "module",
+                "cost": 505000,
+                "id": 128663560,
+                "name": "Int_StellarBodyDiscoveryScanner_Intermediate",
+                "sku": null
+            },
+            "128663561": {
+                "category": "module",
+                "cost": 1545000,
+                "id": 128663561,
+                "name": "Int_StellarBodyDiscoveryScanner_Advanced",
+                "sku": null
+            },
+            "128666634": {
+                "category": "module",
+                "cost": 250000,
+                "id": 128666634,
+                "name": "Int_DetailedSurfaceScanner_Tiny",
+                "sku": null
+            },
+            "128666644": {
+                "category": "module",
+                "cost": 309,
+                "id": 128666644,
+                "name": "Int_FuelScoop_Size1_Class1",
+                "sku": null
+            },
+            "128666651": {
+                "category": "module",
+                "cost": 1083910,
+                "id": 128666651,
+                "name": "Int_FuelScoop_Size8_Class1",
+                "sku": null
+            },
+            "128666658": {
+                "category": "module",
+                "cost": 1424698,
+                "id": 128666658,
+                "name": "Int_FuelScoop_Size7_Class2",
+                "sku": null
+            },
+            "128666659": {
+                "category": "module",
+                "cost": 4516291,
+                "id": 128666659,
+                "name": "Int_FuelScoop_Size8_Class2",
+                "sku": null
+            },
+            "128666666": {
+                "category": "module",
+                "cost": 5698790,
+                "id": 128666666,
+                "name": "Int_FuelScoop_Size7_Class3",
+                "sku": null
+            },
+            "128666667": {
+                "category": "module",
+                "cost": 18065165,
+                "id": 128666667,
+                "name": "Int_FuelScoop_Size8_Class3",
+                "sku": null
+            },
+            "128666675": {
+                "category": "module",
+                "cost": 72260660,
+                "id": 128666675,
+                "name": "Int_FuelScoop_Size8_Class4",
+                "sku": null
+            },
+            "128666682": {
+                "category": "module",
+                "cost": 91180644,
+                "id": 128666682,
+                "name": "Int_FuelScoop_Size7_Class5",
+                "sku": null
+            },
+            "128666683": {
+                "category": "module",
+                "cost": 289042641,
+                "id": 128666683,
+                "name": "Int_FuelScoop_Size8_Class5",
+                "sku": null
+            },
+            "128666684": {
+                "category": "module",
+                "cost": 6000,
+                "id": 128666684,
+                "name": "Int_Refinery_Size1_Class1",
+                "sku": null
+            },
+            "128666704": {
+                "category": "module",
+                "cost": 12000,
+                "id": 128666704,
+                "name": "Int_FSDInterdictor_Size1_Class1",
+                "sku": null
+            },
+            "128666706": {
+                "category": "module",
+                "cost": 94080,
+                "id": 128666706,
+                "name": "Int_FSDInterdictor_Size3_Class1",
+                "sku": null
+            },
+            "128666707": {
+                "category": "module",
+                "cost": 263424,
+                "id": 128666707,
+                "name": "Int_FSDInterdictor_Size4_Class1",
+                "sku": null
+            },
+            "128666710": {
+                "category": "module",
+                "cost": 282240,
+                "id": 128666710,
+                "name": "Int_FSDInterdictor_Size3_Class2",
+                "sku": null
+            },
+            "128666711": {
+                "category": "module",
+                "cost": 790272,
+                "id": 128666711,
+                "name": "Int_FSDInterdictor_Size4_Class2",
+                "sku": null
+            },
+            "128666714": {
+                "category": "module",
+                "cost": 846720,
+                "id": 128666714,
+                "name": "Int_FSDInterdictor_Size3_Class3",
+                "sku": null
+            },
+            "128666715": {
+                "category": "module",
+                "cost": 2370816,
+                "id": 128666715,
+                "name": "Int_FSDInterdictor_Size4_Class3",
+                "sku": null
+            },
+            "128666718": {
+                "category": "module",
+                "cost": 2540160,
+                "id": 128666718,
+                "name": "Int_FSDInterdictor_Size3_Class4",
+                "sku": null
+            },
+            "128666722": {
+                "category": "module",
+                "cost": 7620480,
+                "id": 128666722,
+                "name": "Int_FSDInterdictor_Size3_Class5",
+                "sku": null
+            },
+            "128666723": {
+                "category": "module",
+                "cost": 21337344,
+                "id": 128666723,
+                "name": "Int_FSDInterdictor_Size4_Class5",
+                "sku": null
+            },
+            "128666724": {
+                "category": "weapon",
+                "cost": 32175,
+                "id": 128666724,
+                "name": "Hpt_DumbfireMissileRack_Fixed_Small",
+                "sku": null
+            },
+            "128666725": {
+                "category": "weapon",
+                "cost": 240400,
+                "id": 128666725,
+                "name": "Hpt_DumbfireMissileRack_Fixed_Medium",
+                "sku": null
+            },
+            "128667604": {
+                "category": "module",
+                "cost": 340122,
+                "id": 128667604,
+                "name": "Int_Repairer_Size7_Class1",
+                "sku": null
+            },
+            "128667605": {
+                "category": "module",
+                "cost": 612220,
+                "id": 128667605,
+                "name": "Int_Repairer_Size8_Class1",
+                "sku": null
+            },
+            "128667609": {
+                "category": "module",
+                "cost": 174960,
+                "id": 128667609,
+                "name": "Int_Repairer_Size4_Class2",
+                "sku": null
+            },
+            "128667610": {
+                "category": "module",
+                "cost": 314928,
+                "id": 128667610,
+                "name": "Int_Repairer_Size5_Class2",
+                "sku": null
+            },
+            "128667611": {
+                "category": "module",
+                "cost": 566870,
+                "id": 128667611,
+                "name": "Int_Repairer_Size6_Class2",
+                "sku": null
+            },
+            "128667616": {
+                "category": "module",
+                "cost": 291600,
+                "id": 128667616,
+                "name": "Int_Repairer_Size3_Class3",
+                "sku": null
+            },
+            "128667623": {
+                "category": "module",
+                "cost": 486000,
+                "id": 128667623,
+                "name": "Int_Repairer_Size2_Class4",
+                "sku": null
+            },
+            "128671120": {
+                "category": "weapon",
+                "cost": 1350400,
+                "id": 128671120,
+                "name": "Hpt_Cannon_Gimbal_Large",
+                "sku": null
+            },
+            "128671231": {
+                "category": "module",
+                "cost": 2400,
+                "id": 128671231,
+                "name": "Int_DroneControl_Collection_Size1_Class3",
+                "sku": null
+            },
+            "128671232": {
+                "category": "module",
+                "cost": 4800,
+                "id": 128671232,
+                "name": "Int_DroneControl_Collection_Size1_Class4",
+                "sku": null
+            },
+            "128671233": {
+                "category": "module",
+                "cost": 9600,
+                "id": 128671233,
+                "name": "Int_DroneControl_Collection_Size1_Class5",
+                "sku": null
+            },
+            "128671235": {
+                "category": "module",
+                "cost": 10800,
+                "id": 128671235,
+                "name": "Int_DroneControl_Collection_Size3_Class2",
+                "sku": null
+            },
+            "128671236": {
+                "category": "module",
+                "cost": 21600,
+                "id": 128671236,
+                "name": "Int_DroneControl_Collection_Size3_Class3",
+                "sku": null
+            },
+            "128671237": {
+                "category": "module",
+                "cost": 43200,
+                "id": 128671237,
+                "name": "Int_DroneControl_Collection_Size3_Class4",
+                "sku": null
+            },
+            "128671238": {
+                "category": "module",
+                "cost": 86400,
+                "id": 128671238,
+                "name": "Int_DroneControl_Collection_Size3_Class5",
+                "sku": null
+            },
+            "128671239": {
+                "category": "module",
+                "cost": 48600,
+                "id": 128671239,
+                "name": "Int_DroneControl_Collection_Size5_Class1",
+                "sku": null
+            },
+            "128671240": {
+                "category": "module",
+                "cost": 97200,
+                "id": 128671240,
+                "name": "Int_DroneControl_Collection_Size5_Class2",
+                "sku": null
+            },
+            "128671241": {
+                "category": "module",
+                "cost": 194400,
+                "id": 128671241,
+                "name": "Int_DroneControl_Collection_Size5_Class3",
+                "sku": null
+            },
+            "128671242": {
+                "category": "module",
+                "cost": 388800,
+                "id": 128671242,
+                "name": "Int_DroneControl_Collection_Size5_Class4",
+                "sku": null
+            },
+            "128671243": {
+                "category": "module",
+                "cost": 777600,
+                "id": 128671243,
+                "name": "Int_DroneControl_Collection_Size5_Class5",
+                "sku": null
+            },
+            "128671244": {
+                "category": "module",
+                "cost": 437400,
+                "id": 128671244,
+                "name": "Int_DroneControl_Collection_Size7_Class1",
+                "sku": null
+            },
+            "128671245": {
+                "category": "module",
+                "cost": 874800,
+                "id": 128671245,
+                "name": "Int_DroneControl_Collection_Size7_Class2",
+                "sku": null
+            },
+            "128671246": {
+                "category": "module",
+                "cost": 1749600,
+                "id": 128671246,
+                "name": "Int_DroneControl_Collection_Size7_Class3",
+                "sku": null
+            },
+            "128671247": {
+                "category": "module",
+                "cost": 3499200,
+                "id": 128671247,
+                "name": "Int_DroneControl_Collection_Size7_Class4",
+                "sku": null
+            },
+            "128671271": {
+                "category": "module",
+                "cost": 2400,
+                "id": 128671271,
+                "name": "Int_DroneControl_Prospector_Size1_Class3",
+                "sku": null
+            },
+            "128671272": {
+                "category": "module",
+                "cost": 4800,
+                "id": 128671272,
+                "name": "Int_DroneControl_Prospector_Size1_Class4",
+                "sku": null
+            },
+            "128671276": {
+                "category": "module",
+                "cost": 21600,
+                "id": 128671276,
+                "name": "Int_DroneControl_Prospector_Size3_Class3",
+                "sku": null
+            },
+            "128671279": {
+                "category": "module",
+                "cost": 48600,
+                "id": 128671279,
+                "name": "Int_DroneControl_Prospector_Size5_Class1",
+                "sku": null
+            },
+            "128671280": {
+                "category": "module",
+                "cost": 97200,
+                "id": 128671280,
+                "name": "Int_DroneControl_Prospector_Size5_Class2",
+                "sku": null
+            },
+            "128671284": {
+                "category": "module",
+                "cost": 437400,
+                "id": 128671284,
+                "name": "Int_DroneControl_Prospector_Size7_Class1",
+                "sku": null
+            },
+            "128671321": {
+                "category": "weapon",
+                "cost": 1751040,
+                "id": 128671321,
+                "name": "Hpt_Slugshot_Gimbal_Large",
+                "sku": null
+            },
+            "128671331": {
+                "category": "module",
+                "cost": 7713,
+                "id": 128671331,
+                "name": "Int_ShieldGenerator_Size1_Class3_Fast",
+                "sku": null
+            },
+            "128671332": {
+                "category": "module",
+                "cost": 26705,
+                "id": 128671332,
+                "name": "Int_ShieldGenerator_Size2_Class3_Fast",
+                "sku": null
+            },
+            "128671333": {
+                "category": "module",
+                "cost": 84653,
+                "id": 128671333,
+                "name": "Int_ShieldGenerator_Size3_Class3_Fast",
+                "sku": null
+            },
+            "128671448": {
+                "category": "weapon",
+                "cost": 36390,
+                "id": 128671448,
+                "name": "Hpt_MineLauncher_Fixed_Small_Impulse",
+                "sku": null
+            },
+            "128672278": {
+                "category": "module",
+                "cost": 0,
+                "id": 128672278,
+                "name": "Asp_Scout_Armour_Grade1",
+                "sku": null
+            },
+            "128672279": {
+                "category": "module",
+                "cost": 1584461,
+                "id": 128672279,
+                "name": "Asp_Scout_Armour_Grade2",
+                "sku": null
+            },
+            "128672280": {
+                "category": "module",
+                "cost": 3565038,
+                "id": 128672280,
+                "name": "Asp_Scout_Armour_Grade3",
+                "sku": null
+            },
+            "128672281": {
+                "category": "module",
+                "cost": 8425374,
+                "id": 128672281,
+                "name": "Asp_Scout_Armour_Mirrored",
+                "sku": null
+            },
+            "128672282": {
+                "category": "module",
+                "cost": 9336439,
+                "id": 128672282,
+                "name": "Asp_Scout_Armour_Reactive",
+                "sku": null
+            },
+            "128672288": {
+                "category": "module",
+                "cost": 18000,
+                "id": 128672288,
+                "name": "Int_BuggyBay_Size2_Class1",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128672289": {
+                "category": "module",
+                "cost": 21600,
+                "id": 128672289,
+                "name": "Int_BuggyBay_Size2_Class2",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128672290": {
+                "category": "module",
+                "cost": 72000,
+                "id": 128672290,
+                "name": "Int_BuggyBay_Size4_Class1",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128672291": {
+                "category": "module",
+                "cost": 86400,
+                "id": 128672291,
+                "name": "Int_BuggyBay_Size4_Class2",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128672292": {
+                "category": "module",
+                "cost": 576000,
+                "id": 128672292,
+                "name": "Int_BuggyBay_Size6_Class1",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128672293": {
+                "category": "module",
+                "cost": 691200,
+                "id": 128672293,
+                "name": "Int_BuggyBay_Size6_Class2",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128672317": {
+                "category": "module",
+                "cost": 500,
+                "id": 128672317,
+                "name": "Int_PlanetApproachSuite",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128681996": {
+                "category": "weapon",
+                "cost": 6377600,
+                "id": 128681996,
+                "name": "Hpt_MultiCannon_Gimbal_Huge",
+                "sku": null
+            },
+            "128727923": {
+                "category": "module",
+                "cost": 56862,
+                "id": 128727923,
+                "name": "Int_PassengerCabin_Size4_Class2",
+                "sku": null
+            },
+            "128727926": {
+                "category": "module",
+                "cost": 61410,
+                "id": 128727926,
+                "name": "Int_PassengerCabin_Size6_Class1",
+                "sku": null
+            },
+            "128727927": {
+                "category": "module",
+                "cost": 184232,
+                "id": 128727927,
+                "name": "Int_PassengerCabin_Size6_Class2",
+                "sku": null
+            },
+            "128727930": {
+                "category": "module",
+                "cost": 575643,
+                "id": 128727930,
+                "name": "Int_FighterBay_Size5_Class1",
+                "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+            },
+            "128734690": {
+                "category": "module",
+                "cost": 4312,
+                "id": 128734690,
+                "name": "Int_PassengerCabin_Size2_Class1",
+                "sku": null
+            },
+            "128734692": {
+                "category": "module",
+                "cost": 26705,
+                "id": 128734692,
+                "name": "Int_PassengerCabin_Size3_Class2",
+                "sku": null
+            },
+            "128734693": {
+                "category": "module",
+                "cost": 34954,
+                "id": 128734693,
+                "name": "Int_PassengerCabin_Size5_Class1",
+                "sku": null
+            },
+            "128734694": {
+                "category": "module",
+                "cost": 92362,
+                "id": 128734694,
+                "name": "Int_PassengerCabin_Size5_Class2",
+                "sku": null
+            },
+            "128740819": {
+                "category": "utility",
+                "cost": 9400,
+                "id": 128740819,
+                "name": "Hpt_MiningLaser_Turret_Small",
+                "sku": null
+            },
+            "128837858": {
+                "category": "module",
+                "cost": 2600,
+                "id": 128837858,
+                "name": "Int_DroneControl_Recon_Size1_Class1",
+                "sku": null
+            },
+            "128841593": {
+                "category": "module",
+                "cost": 75800,
+                "id": 128841593,
+                "name": "Int_DroneControl_Recon_Size5_Class1",
+                "sku": null
+            },
+            "128841594": {
+                "category": "module",
+                "cost": 612200,
+                "id": 128841594,
+                "name": "Int_DroneControl_Recon_Size7_Class1",
+                "sku": null
+            }
+        },
+        "name": "Chris & Silvia's Paradise Hideout",
+        "outpostType": "starport",
+        "services": {
+            "blackmarket": "ok",
+            "commodities": "ok",
+            "contacts": "ok",
+            "crewlounge": "ok",
+            "dock": "ok",
+            "engineer": "ok",
+            "exploration": "ok",
+            "facilitator": "ok",
+            "outfitting": "ok",
+            "powerplay": "ok",
+            "rearm": "ok",
+            "refuel": "ok",
+            "repair": "ok",
+            "searchrescue": "unavailable",
+            "shipyard": "ok"
+        },
+        "ships": {
+            "shipyard_list": {
+                "Asp": {
+                    "basevalue": 6661154,
+                    "id": 128049303,
+                    "name": "Asp",
+                    "sku": ""
+                },
+                "Asp_Scout": {
+                    "basevalue": 3961154,
+                    "id": 128672276,
+                    "name": "Asp_Scout",
+                    "sku": ""
+                },
+                "BelugaLiner": {
+                    "basevalue": 84532764,
+                    "id": 128049345,
+                    "name": "BelugaLiner",
+                    "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+                },
+                "Dolphin": {
+                    "basevalue": 1337323,
+                    "id": 128049291,
+                    "name": "Dolphin",
+                    "sku": "ELITE_HORIZONS_V_PLANETARY_LANDINGS"
+                },
+                "Empire_Trader": {
+                    "basevalue": 22295860,
+                    "id": 128049315,
+                    "name": "Empire_Trader",
+                    "sku": ""
+                },
+                "FerDeLance": {
+                    "basevalue": 51567040,
+                    "id": 128049351,
+                    "name": "FerDeLance",
+                    "sku": ""
+                },
+                "Orca": {
+                    "basevalue": 48539887,
+                    "id": 128049327,
+                    "name": "Orca",
+                    "sku": ""
+                },
+                "Python": {
+                    "basevalue": 56978179,
+                    "id": 128049339,
+                    "name": "Python",
+                    "sku": ""
+                }
+            },
+            "unavailable_list": []
+        }
+    }
+}
