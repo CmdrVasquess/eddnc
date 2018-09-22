@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+//go:generate versioner -bno build_no -pkg eddn ./VERSION ./version.go
+
 const UploadURL = "https://eddn.edcd.io:4430/upload/"
 const ConentType = "application/json; charset=utf-8"
 

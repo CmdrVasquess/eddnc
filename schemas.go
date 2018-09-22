@@ -61,7 +61,7 @@ var ScmDefs = []string{
                 "stationName": {
                     "type"          : "string",
                     "minLength"     : 1
-                },
+                },                
                 "marketId": {
                     "type"          : "number"
                 },
@@ -130,7 +130,7 @@ var ScmDefs = []string{
                 "stationName": {
                     "type"      : "string",
                     "minLength" : 1
-                },
+                },                
                 "marketId": {
                     "type"          : "number"
                 },
@@ -346,7 +346,7 @@ var ScmDefs = []string{
                 "stationName": {
                     "type"      : "string",
                     "minLength" : 1
-                },
+                },                
                 "marketId": {
                     "type"          : "number"
                 },
@@ -413,7 +413,7 @@ var ScmDefs = []string{
                 "stationName": {
                     "type"      : "string",
                     "minLength" : 1
-                },
+                },                
                 "marketId": {
                     "type"          : "number"
                 },

@@ -1,0 +1,20 @@
+* from discord
+Need to strip off the $ at the start and the _name at the end of the commodity names.
+
+msg = {
+ 'timestamp': je['timestamp'],
+ 'systemName': je['StarSystem'],
+ 'stationName': je['StationName'],
+ 'marketId': je['MarketID'],
+ 'commodities': [{
+   'name': c['Name'][1:-5] if c['Name'][0] == '$' and c['Name'][-5:] == '_name' else c['Name'],
+   'meanPrice': c['MeanPrice'],
+   'buyPrice': c['BuyPrice'],
+   'stock': c['Stock'],
+   'stockBracket': c['StockBracket'],
+   'sellPrice': c['SellPrice'],
+   'demand': c['Demand'],
+   'demandBracket': c['DemandBracket'],
+   'statusFlags': c['StatusFlags'] if 'StatusFlags' in c else []
+  } for c in je['Items'] if 'nonmarketable' not in c['Category'].lower()]
+}

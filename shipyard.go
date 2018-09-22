@@ -17,7 +17,7 @@ func SetShipyardJ(msg map[string]interface{}, journal map[string]interface{}) er
 	}
 	tmp, ok := journal["PriceList"]
 	if !ok {
-		return fmt.Errorf("missing price list in shipyard data: $s", journal)
+		return fmt.Errorf("missing price list in shipyard data: %s", journal)
 	}
 	list := tmp.([]interface{})
 	items := make([]string, 0, len(list))
