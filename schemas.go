@@ -63,7 +63,7 @@ var ScmDefs = []string{
                     "minLength"     : 1
                 },                
                 "marketId": {
-                    "type"          : "number"
+                    "type"          : "integer"
                 },
                 "timestamp": {
                     "type"          : "string",
@@ -121,7 +121,7 @@ var ScmDefs = []string{
         "message": {
             "type"                  : "object",
             "additionalProperties"  : false,
-            "required"              : [ "systemName", "stationName", "timestamp", "commodities" ],
+            "required"              : [ "systemName", "stationName", "marketId", "timestamp", "commodities" ],
             "properties"            : {
                 "systemName": {
                     "type"      : "string",
@@ -132,7 +132,11 @@ var ScmDefs = []string{
                     "minLength" : 1
                 },                
                 "marketId": {
-                    "type"          : "number"
+                    "type"      : "integer"
+                },
+                "horizons": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
                 "timestamp": {
                     "type"      : "string",
@@ -259,7 +263,7 @@ var ScmDefs = []string{
             "type"                  : "object",
             "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : true,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos" ],
+          "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
@@ -281,17 +285,32 @@ var ScmDefs = []string{
                     "description"   : "Must be added by the sender if not present in the journal event"
                 },
                 "SystemAddress": {
-                    "type"          : "number",
+                    "type"          : "integer",
                     "description"   : "Should be added by the sender if not present in the journal event"
                 },
 
+                "Factions": {
+                    "type"          : "array",
+                    "description"   : "Present in Location and FSDJump messages",
+                    "items" : {
+                        "type"      : "object",
+                        "properties": {
+                            "HappiestSystem"  : { "$ref" : "#/definitions/disallowed" },
+                            "HomeSystem"      : { "$ref" : "#/definitions/disallowed" },
+                            "MyReputation"    : { "$ref" : "#/definitions/disallowed" },
+                            "SquadronFaction" : { "$ref" : "#/definitions/disallowed" }
+                        }
+                    }
+                },
+                "ActiveFine"        : { "$ref" : "#/definitions/disallowed" },
                 "CockpitBreach"     : { "$ref" : "#/definitions/disallowed" },
                 "BoostUsed"         : { "$ref" : "#/definitions/disallowed" },
                 "FuelLevel"         : { "$ref" : "#/definitions/disallowed" },
                 "FuelUsed"          : { "$ref" : "#/definitions/disallowed" },
                 "JumpDist"          : { "$ref" : "#/definitions/disallowed" },
                 "Latitude"          : { "$ref" : "#/definitions/disallowed" },
-                "Longitude"         : { "$ref" : "#/definitions/disallowed" }
+                "Longitude"         : { "$ref" : "#/definitions/disallowed" },
+                "Wanted"            : { "$ref" : "#/definitions/disallowed" }
             },
             "patternProperties"     : {
                 "_Localised$"       : { "$ref" : "#/definitions/disallowed" }
@@ -337,7 +356,7 @@ var ScmDefs = []string{
         "message": {
             "type"                  : "object",
             "additionalProperties"  : false,
-            "required"              : [ "systemName", "stationName", "timestamp", "modules" ],
+            "required"              : [ "systemName", "stationName", "marketId", "timestamp", "modules" ],
             "properties"            : {
                 "systemName": {
                     "type"      : "string",
@@ -348,7 +367,11 @@ var ScmDefs = []string{
                     "minLength" : 1
                 },                
                 "marketId": {
-                    "type"          : "number"
+                    "type"      : "integer"
+                },
+                "horizons": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
                 "timestamp": {
                     "type"      : "string",
@@ -361,7 +384,7 @@ var ScmDefs = []string{
                     "items"         : {
                         "type"          : "string",
                         "minLength"     : 1,
-                        "pattern"       : "(^Hpt_|^Int_|_Armour_)",
+                        "pattern"       : "(^Hpt_|^hpt_|^Int_|^int_|_Armour_|_armour_)",
                         "description"   : "Module symbolic name. e.g. Hpt_ChaffLauncher_Tiny, Int_Engine_Size3_Class5_Fast, Independant_Trader_Armour_Grade1, etc. Modules that depend on the Cmdr's purchases (e.g. bobbleheads, paintjobs) or rank (e.g. decals and PowerPlay faction-specific modules) should be omitted."
                     }
                 }
@@ -404,7 +427,7 @@ var ScmDefs = []string{
         "message": {
             "type"                  : "object",
             "additionalProperties"  : false,
-            "required"              : [ "systemName", "stationName", "timestamp", "ships" ],
+            "required"              : [ "systemName", "stationName", "marketId", "timestamp", "ships" ],
             "properties"            : {
                 "systemName": {
                     "type"      : "string",
@@ -415,7 +438,11 @@ var ScmDefs = []string{
                     "minLength" : 1
                 },                
                 "marketId": {
-                    "type"          : "number"
+                    "type"          : "integer"
+                },
+                "horizons": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
                 "timestamp": {
                     "type"      : "string",

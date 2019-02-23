@@ -15,6 +15,11 @@ func SetShipyardJ(msg map[string]interface{}, journal map[string]interface{}) er
 	} else {
 		return fmt.Errorf("missing station name in shipyard data: %s", journal)
 	}
+	if tmp, ok := journal["MarketID"]; ok {
+		msg["marketId"] = tmp
+	} else {
+		return fmt.Errorf("missing market ID in shipyard data: %s", journal)
+	}
 	tmp, ok := journal["PriceList"]
 	if !ok {
 		return fmt.Errorf("missing price list in shipyard data: %s", journal)

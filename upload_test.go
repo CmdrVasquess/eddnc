@@ -20,6 +20,7 @@ func TestValidate(t *testing.T) {
     "systemName": "Munfayl",
     "stationName": "Samson",
     "timestamp": "2016-10-01T16:01:18Z",
+	"marketId": 4711,
     "ships": [
       "Adder",
       "Asp_Scout",
