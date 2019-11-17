@@ -263,14 +263,14 @@ var ScmDefs = []string{
             "type"                  : "object",
             "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : true,
-          "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress" ],
+            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "Docked", "FSDJump", "Scan", "Location" ]
+                    "enum"          : [ "Docked", "FSDJump", "Scan", "Location", "SAASignalsFound" ]
                 },
                 "StarSystem": {
                     "type"          : "string",
@@ -299,9 +299,13 @@ var ScmDefs = []string{
                             "HomeSystem"      : { "$ref" : "#/definitions/disallowed" },
                             "MyReputation"    : { "$ref" : "#/definitions/disallowed" },
                             "SquadronFaction" : { "$ref" : "#/definitions/disallowed" }
+                        },
+                        "patternProperties"   : {
+                            "_Localised$"     : { "$ref" : "#/definitions/disallowed" }
                         }
                     }
                 },
+                
                 "ActiveFine"        : { "$ref" : "#/definitions/disallowed" },
                 "CockpitBreach"     : { "$ref" : "#/definitions/disallowed" },
                 "BoostUsed"         : { "$ref" : "#/definitions/disallowed" },
@@ -313,7 +317,17 @@ var ScmDefs = []string{
                 "Wanted"            : { "$ref" : "#/definitions/disallowed" }
             },
             "patternProperties"     : {
-                "_Localised$"       : { "$ref" : "#/definitions/disallowed" }
+                "_Localised$"       : { "$ref" : "#/definitions/disallowed" },
+                "^(Materials|StationEconomies|Signals)$" : {
+                    "type"          : "array",
+                    "description"   : "Present in Scan, Docked and SAASignalsFound messages",
+                    "items" : {
+                        "type"      : "object",
+                        "patternProperties"     : {
+                            "_Localised$"       : { "$ref" : "#/definitions/disallowed" }
+                        }
+                    }
+                }
             }
         }
     },
