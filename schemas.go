@@ -270,7 +270,7 @@ var ScmDefs = []string{
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "Docked", "FSDJump", "Scan", "Location", "SAASignalsFound" ]
+                    "enum"          : [ "Docked", "FSDJump", "Scan", "Location", "SAASignalsFound", "CarrierJump" ]
                 },
                 "StarSystem": {
                     "type"          : "string",
@@ -291,7 +291,7 @@ var ScmDefs = []string{
 
                 "Factions": {
                     "type"          : "array",
-                    "description"   : "Present in Location and FSDJump messages",
+                    "description"   : "Present in Location, FSDJump and CarrierJump messages",
                     "items" : {
                         "type"      : "object",
                         "properties": {
