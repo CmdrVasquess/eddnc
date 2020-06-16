@@ -26,6 +26,7 @@ type Subscriber struct {
 	Outfitting  <-chan *schema.Outfitting
 	Shipyard    <-chan *schema.Shipyard
 
+	chanNo  int
 	relay   string
 	timeout time.Duration
 	closing int32
@@ -54,20 +55,26 @@ func New(cfg Config) *Subscriber {
 		oChan chan *schema.Outfitting
 		sChan chan *schema.Shipyard
 	)
+	chanNo := 0
 	if cfg.QCapBlackmarket >= 0 {
 		bChan = make(chan *schema.Blackmarket, cfg.QCapBlackmarket)
+		chanNo++
 	}
 	if cfg.QCapCommodity >= 0 {
 		cChan = make(chan *schema.Commodity, cfg.QCapCommodity)
+		chanNo++
 	}
 	if cfg.QCapJournal >= 0 {
 		jChan = make(chan *schema.Journal, cfg.QCapJournal)
+		chanNo++
 	}
 	if cfg.QCapOutfitting >= 0 {
 		oChan = make(chan *schema.Outfitting, cfg.QCapOutfitting)
+		chanNo++
 	}
 	if cfg.QCapShipyard >= 0 {
 		sChan = make(chan *schema.Shipyard, cfg.QCapShipyard)
+		chanNo++
 	}
 	res := &Subscriber{
 		Blackmarket: bChan,
@@ -75,6 +82,7 @@ func New(cfg Config) *Subscriber {
 		Journal:     jChan,
 		Outfitting:  oChan,
 		Shipyard:    sChan,
+		chanNo:      chanNo,
 		relay:       cfg.Relay,
 		timeout:     cfg.Timeout,
 	}
@@ -84,6 +92,8 @@ func New(cfg Config) *Subscriber {
 	go res.loop(bChan, cChan, jChan, oChan, sChan)
 	return res
 }
+
+func (s *Subscriber) UsedChannels() int { return s.chanNo }
 
 func (s *Subscriber) Close() bool {
 	return atomic.CompareAndSwapInt32(&s.closing, 0, 1)
@@ -200,14 +210,14 @@ func (s *Subscriber) loop(
 		case bytes.Index(scm, journalTag) >= 0:
 			if jChan != nil {
 				msg := new(schema.Journal)
-				if err = json.Unmarshal(line, msg); err != nil {
+				if err = json.Unmarshal(line, &msg); err != nil {
 					log.Errore(err)
 				} else {
 					jChan <- msg
 				}
 			}
 		case bytes.Index(scm, outfittingTag) >= 0:
-			if jChan != nil {
+			if oChan != nil {
 				msg := new(schema.Outfitting)
 				if err = json.Unmarshal(line, msg); err != nil {
 					log.Errore(err)
