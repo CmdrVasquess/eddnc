@@ -2,11 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
-	"runtime"
 	"time"
 
 	"github.com/CmdrVasquess/goEDDNc/down"
@@ -52,21 +50,21 @@ func eventLoop(subs *down.Subscriber) {
 	log.Println("exit event loop")
 }
 
-func writeMemStats() {
-	wr, _ := os.Create("eddn-dump.memstats")
-	defer wr.Close()
-	ticks := time.NewTicker(10 * time.Second)
-	var mstat runtime.MemStats
-	for {
-		<-ticks.C
-		runtime.ReadMemStats(&mstat)
-		fmt.Fprintf(wr, "%+v\n", &mstat)
-	}
-}
+// func writeMemStats() {
+// 	wr, _ := os.Create("eddn-dump.memstats")
+// 	defer wr.Close()
+// 	ticks := time.NewTicker(10 * time.Second)
+// 	var mstat runtime.MemStats
+// 	for {
+// 		<-ticks.C
+// 		runtime.ReadMemStats(&mstat)
+// 		fmt.Fprintf(wr, "%+v\n", &mstat)
+// 	}
+// }
 
 func main() {
 	subs := down.New(down.Config{Timeout: down.GoodTimeout})
-	go writeMemStats()
+	// go writeMemStats()
 	go eventLoop(subs)
 	// Be polite and clean up…
 	sigs := make(chan os.Signal)
