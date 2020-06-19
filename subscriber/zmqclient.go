@@ -1,16 +1,15 @@
-package down
+package subscriber
 
 import (
 	"bytes"
 	"compress/zlib"
-	"encoding/json"
 	"io"
+	"sync"
 	"sync/atomic"
 	"time"
 
 	"git.fractalqb.de/fractalqb/c4hgol"
 	"git.fractalqb.de/fractalqb/qbsllm"
-	"github.com/CmdrVasquess/goEDDNc/schema"
 	zmq "github.com/pebbe/zmq4"
 )
 
@@ -19,12 +18,12 @@ var (
 	LogCfg = c4hgol.Config(qbsllm.NewConfig(log))
 )
 
-type Subscriber struct {
-	Blackmarket <-chan *schema.Blackmarket
-	Commodity   <-chan *schema.Commodity
-	Journal     <-chan *schema.Journal
-	Outfitting  <-chan *schema.Outfitting
-	Shipyard    <-chan *schema.Shipyard
+type S struct {
+	Blackmarket <-chan []byte
+	Commodity   <-chan []byte
+	Journal     <-chan []byte
+	Outfitting  <-chan []byte
+	Shipyard    <-chan []byte
 
 	chanNo  int
 	relay   string
@@ -47,36 +46,36 @@ type Config struct {
 	QCapShipyard    int
 }
 
-func New(cfg Config) *Subscriber {
+func New(cfg Config) *S {
 	var (
-		bChan chan *schema.Blackmarket
-		cChan chan *schema.Commodity
-		jChan chan *schema.Journal
-		oChan chan *schema.Outfitting
-		sChan chan *schema.Shipyard
+		bChan chan []byte
+		cChan chan []byte
+		jChan chan []byte
+		oChan chan []byte
+		sChan chan []byte
 	)
 	chanNo := 0
 	if cfg.QCapBlackmarket >= 0 {
-		bChan = make(chan *schema.Blackmarket, cfg.QCapBlackmarket)
+		bChan = make(chan []byte, cfg.QCapBlackmarket)
 		chanNo++
 	}
 	if cfg.QCapCommodity >= 0 {
-		cChan = make(chan *schema.Commodity, cfg.QCapCommodity)
+		cChan = make(chan []byte, cfg.QCapCommodity)
 		chanNo++
 	}
 	if cfg.QCapJournal >= 0 {
-		jChan = make(chan *schema.Journal, cfg.QCapJournal)
+		jChan = make(chan []byte, cfg.QCapJournal)
 		chanNo++
 	}
 	if cfg.QCapOutfitting >= 0 {
-		oChan = make(chan *schema.Outfitting, cfg.QCapOutfitting)
+		oChan = make(chan []byte, cfg.QCapOutfitting)
 		chanNo++
 	}
 	if cfg.QCapShipyard >= 0 {
-		sChan = make(chan *schema.Shipyard, cfg.QCapShipyard)
+		sChan = make(chan []byte, cfg.QCapShipyard)
 		chanNo++
 	}
-	res := &Subscriber{
+	res := &S{
 		Blackmarket: bChan,
 		Commodity:   cChan,
 		Journal:     jChan,
@@ -93,9 +92,13 @@ func New(cfg Config) *Subscriber {
 	return res
 }
 
-func (s *Subscriber) UsedChannels() int { return s.chanNo }
+func (s *S) Return(rawEvent []byte) {
+	bufPool.Put(rawEvent[:0])
+}
 
-func (s *Subscriber) Close() bool {
+func (s *S) UsedChannels() int { return s.chanNo }
+
+func (s *S) Close() bool {
 	return atomic.CompareAndSwapInt32(&s.closing, 0, 1)
 }
 
@@ -112,6 +115,10 @@ var (
 	journalTag     = []byte("journal")
 	outfittingTag  = []byte("outfitting")
 	shipyardTag    = []byte("shipyard")
+
+	bufPool = sync.Pool{
+		New: func() interface{} { return []byte{} }, // TODO good default size
+	}
 )
 
 func pickSchema(text []byte) []byte {
@@ -130,12 +137,12 @@ func pickSchema(text []byte) []byte {
 	return text[:idx]
 }
 
-func (s *Subscriber) loop(
-	bChan chan<- *schema.Blackmarket,
-	cChan chan<- *schema.Commodity,
-	jChan chan<- *schema.Journal,
-	oChan chan<- *schema.Outfitting,
-	sChan chan<- *schema.Shipyard,
+func (s *S) loop(
+	bChan chan<- []byte,
+	cChan chan<- []byte,
+	jChan chan<- []byte,
+	oChan chan<- []byte,
+	sChan chan<- []byte,
 ) {
 	zctx, err := zmq.NewContext()
 	if err != nil {
@@ -149,7 +156,6 @@ func (s *Subscriber) loop(
 	must(subs.SetSubscribe(""))
 	must(subs.SetConnectTimeout(s.timeout))
 	must(subs.Connect(s.relay))
-	var txt bytes.Buffer
 	for {
 		if atomic.CompareAndSwapInt32(&s.closing, 1, -1) {
 			if bChan != nil {
@@ -179,8 +185,8 @@ func (s *Subscriber) loop(
 			log.Errore(err)
 			continue
 		}
-		txt.Reset()
-		io.Copy(&txt, zrd)
+		txt := bytes.NewBuffer(bufPool.Get().([]byte))
+		io.Copy(txt, zrd)
 		zrd.Close()
 		line := txt.Bytes()
 		scm := pickSchema(line)
@@ -191,50 +197,26 @@ func (s *Subscriber) loop(
 		switch {
 		case bytes.Index(scm, blackmarketTag) >= 0:
 			if bChan != nil {
-				msg := new(schema.Blackmarket)
-				if err = json.Unmarshal(line, msg); err != nil {
-					log.Errore(err)
-				} else {
-					bChan <- msg
-				}
+				bChan <- line
 			}
 		case bytes.Index(scm, commodityTag) >= 0:
 			if cChan != nil {
-				msg := new(schema.Commodity)
-				if err = json.Unmarshal(line, msg); err != nil {
-					log.Errore(err)
-				} else {
-					cChan <- msg
-				}
+				cChan <- line
 			}
 		case bytes.Index(scm, journalTag) >= 0:
 			if jChan != nil {
-				msg := new(schema.Journal)
-				if err = json.Unmarshal(line, &msg); err != nil {
-					log.Errore(err)
-				} else {
-					jChan <- msg
-				}
+				jChan <- line
 			}
 		case bytes.Index(scm, outfittingTag) >= 0:
 			if oChan != nil {
-				msg := new(schema.Outfitting)
-				if err = json.Unmarshal(line, msg); err != nil {
-					log.Errore(err)
-				} else {
-					oChan <- msg
-				}
+				oChan <- line
 			}
 		case bytes.Index(scm, shipyardTag) >= 0:
 			if sChan != nil {
-				msg := new(schema.Shipyard)
-				if err = json.Unmarshal(line, msg); err != nil {
-					log.Errore(err)
-				} else {
-					sChan <- msg
-				}
+				sChan <- line
 			}
 		default:
+			bufPool.Put(line)
 			log.Errora("unknown `schema`", string(scm))
 		}
 	}

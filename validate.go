@@ -9,7 +9,6 @@ import (
 	jscm "github.com/xeipuuv/gojsonschema"
 )
 
-//go:generate ./genschemas.sh
 //go:generate stringer -type ScmId
 
 func init() {

@@ -3,10 +3,10 @@ package eddn
 import (
 	"git.fractalqb.de/fractalqb/c4hgol"
 	"git.fractalqb.de/fractalqb/qbsllm"
-	"github.com/CmdrVasquess/goEDDNc/down"
+	"github.com/CmdrVasquess/goEDDNc/subscriber"
 )
 
 var (
 	log    = qbsllm.New(qbsllm.Lnormal, "eddn", nil, nil)
-	LogCfg = c4hgol.Config(qbsllm.NewConfig(log), down.LogCfg)
+	LogCfg = c4hgol.Config(qbsllm.NewConfig(log), subscriber.LogCfg)
 )

@@ -4,6 +4,17 @@ package eddn
 
 import "strconv"
 
+func _() {
+	// An "invalid array index" compiler error signifies that the constant values have changed.
+	// Re-run the stringer command to generate them again.
+	var x [1]struct{}
+	_ = x[Sblackmarket-0]
+	_ = x[Scommodity-1]
+	_ = x[Sjournal-2]
+	_ = x[Soutfitting-3]
+	_ = x[Sshipyard-4]
+}
+
 const _ScmId_name = "SblackmarketScommoditySjournalSoutfittingSshipyard"
 
 var _ScmId_index = [...]uint8{0, 12, 22, 30, 41, 50}

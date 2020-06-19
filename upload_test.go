@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-var testSwVersion = fmt.Sprintf("%d.%d.%d", Major, Minor, Bugfix)
+var testSwVersion = fmt.Sprintf("%d.%d.%d", Major, Minor, Patch)
 
 func TestValidate(t *testing.T) {
 	u := Upload{Vaildate: true, TestUrl: true, DryRun: !testing.Verbose()}

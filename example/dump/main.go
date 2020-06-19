@@ -1,70 +1,65 @@
 package main
 
 import (
-	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"os/signal"
 	"time"
 
-	"github.com/CmdrVasquess/goEDDNc/down"
+	"github.com/CmdrVasquess/goEDDNc/subscriber"
 )
 
-func eventLoop(subs *down.Subscriber) {
-	enc := json.NewEncoder(os.Stdout)
+func eventLoop(subs *subscriber.S) {
+	wr := os.Stdout
 	openChans := subs.UsedChannels()
 	for openChans > 0 {
 		select {
 		case b, ok := <-subs.Blackmarket:
 			if ok {
-				enc.Encode(b)
+				wr.Write(b)
+				subs.Return(b)
 			} else {
 				openChans--
 			}
 		case c, ok := <-subs.Commodity:
 			if ok {
-				enc.Encode(c)
+				wr.Write(c)
+				subs.Return(c)
 			} else {
 				openChans--
 			}
 		case j, ok := <-subs.Journal:
 			if ok {
-				enc.Encode(j)
+				wr.Write(j)
+				subs.Return(j)
 			} else {
 				openChans--
 			}
 		case o, ok := <-subs.Outfitting:
 			if ok {
-				enc.Encode(o)
+				wr.Write(o)
+				subs.Return(o)
 			} else {
 				openChans--
 			}
 		case s, ok := <-subs.Shipyard:
 			if ok {
-				enc.Encode(s)
+				wr.Write(s)
+				subs.Return(s)
 			} else {
 				openChans--
 			}
 		}
+		fmt.Fprintln(wr)
 	}
 	log.Println("exit event loop")
 }
 
-// func writeMemStats() {
-// 	wr, _ := os.Create("eddn-dump.memstats")
-// 	defer wr.Close()
-// 	ticks := time.NewTicker(10 * time.Second)
-// 	var mstat runtime.MemStats
-// 	for {
-// 		<-ticks.C
-// 		runtime.ReadMemStats(&mstat)
-// 		fmt.Fprintf(wr, "%+v\n", &mstat)
-// 	}
-// }
-
 func main() {
-	subs := down.New(down.Config{Timeout: down.GoodTimeout})
-	// go writeMemStats()
+	subs := subscriber.New(subscriber.Config{
+		Timeout: subscriber.GoodTimeout,
+	})
 	go eventLoop(subs)
 	// Be polite and clean up…
 	sigs := make(chan os.Signal)
