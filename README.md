@@ -1,7 +1,3 @@
-# goEDDNc – Go EDDN Client
+# eddnc – Go EDDN Connector
 
-Go interface to EDDN (if you don't know what EDDN is you won't probably need this) 
-
-## Static schemas
-Uses
-[atombender/go-jsonschema](https://github.com/atombender/go-jsonschema)
+Go package to connect to [EDDN](https://eddn.edcd.io/)

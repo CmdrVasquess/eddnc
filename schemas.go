@@ -1,5 +1,5 @@
 // generated with genschemas.sh
-package eddn
+package eddnc
 
 const (
 	Sblackmarket ScmId = iota

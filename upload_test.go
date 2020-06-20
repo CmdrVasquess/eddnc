@@ -1,4 +1,4 @@
-package eddn
+package eddnc
 
 import (
 	"encoding/json"
@@ -7,13 +7,15 @@ import (
 	"time"
 )
 
+const testSW = "go-eddnc-test"
+
 var testSwVersion = fmt.Sprintf("%d.%d.%d", Major, Minor, Patch)
 
 func TestValidate(t *testing.T) {
 	u := Upload{Vaildate: true, TestUrl: true, DryRun: !testing.Verbose()}
 	u.Http.Timeout = 6 * time.Second
 	u.Header.Uploader = "_test_"
-	u.Header.SwName = "goEDDNc"
+	u.Header.SwName = testSW
 	u.Header.SwVersion = testSwVersion
 	msg := make(map[string]interface{})
 	err := json.Unmarshal([]byte(`{
@@ -47,7 +49,7 @@ func TestCommodityJ(t *testing.T) {
 	initUpload(&u, t)
 	u.Http.Timeout = 6 * time.Second
 	u.Header.Uploader = "_test_"
-	u.Header.SwName = "goEDDNc"
+	u.Header.SwName = testSW
 	u.Header.SwVersion = testSwVersion
 	msg := NewMessage(Ts(time.Now()))
 	market := make(map[string]interface{})
@@ -99,7 +101,7 @@ func TestOutfittingJ(t *testing.T) {
 	initUpload(&u, t)
 	u.Http.Timeout = 6 * time.Second
 	u.Header.Uploader = "_test_"
-	u.Header.SwName = "goEDDNc"
+	u.Header.SwName = testSW
 	u.Header.SwVersion = testSwVersion
 	msg := NewMessage(Ts(time.Now()))
 	market := make(map[string]interface{})
@@ -137,7 +139,7 @@ func TestShipyardJ(t *testing.T) {
 	initUpload(&u, t)
 	u.Http.Timeout = 6 * time.Second
 	u.Header.Uploader = "_test_"
-	u.Header.SwName = "goEDDNc"
+	u.Header.SwName = testSW
 	u.Header.SwVersion = testSwVersion
 	msg := NewMessage(Ts(time.Now()))
 	shipyard := make(map[string]interface{})

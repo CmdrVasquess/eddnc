@@ -1,4 +1,4 @@
-package eddn
+package eddnc
 
 import (
 	"bytes"

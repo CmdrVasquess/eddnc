@@ -1,9 +1,9 @@
-package eddn
+package eddnc
 
 import (
 	"git.fractalqb.de/fractalqb/c4hgol"
 	"git.fractalqb.de/fractalqb/qbsllm"
-	"github.com/CmdrVasquess/goEDDNc/subscriber"
+	"github.com/CmdrVasquess/eddnc/subscriber"
 )
 
 var (

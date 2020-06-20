@@ -10,7 +10,7 @@ for scm in $SCMSRCS; do
 done
 
 echo "// generated with genschemas.sh" > $GO
-echo "package eddn" >> $GO
+echo "package eddnc" >> $GO
 echo "const (" >> $GO
 sep=" ScmId = iota"
 for scm in $scnm; do

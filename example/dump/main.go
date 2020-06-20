@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/CmdrVasquess/goEDDNc/subscriber"
+	"github.com/CmdrVasquess/eddnc/subscriber"
 )
 
 func eventLoop(subs *subscriber.S) {

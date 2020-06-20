@@ -1,4 +1,4 @@
-package eddn
+package eddnc
 
 import (
 	"encoding/json"
@@ -7,6 +7,8 @@ import (
 
 	"git.fractalqb.de/fractalqb/ggja"
 )
+
+//go:generate versioner -bno build_no -pkg eddnc ./VERSION ./version.go
 
 type Header struct {
 	UploaderID       string

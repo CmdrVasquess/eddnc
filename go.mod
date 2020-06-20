@@ -1,4 +1,4 @@
-module github.com/CmdrVasquess/goEDDNc
+module github.com/CmdrVasquess/eddnc
 
 go 1.14
 

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	eddnc "github.com/CmdrVasquess/goEDDNc"
+	"github.com/CmdrVasquess/eddnc"
 )
 
 var eddn = eddnc.Upload{

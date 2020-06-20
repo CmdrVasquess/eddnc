@@ -1,4 +1,4 @@
-package eddn
+package eddnc
 
 const (
 	Major   = 0
