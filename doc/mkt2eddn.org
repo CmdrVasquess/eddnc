@@ -1,6 +1,10 @@
-* from discord
-Need to strip off the $ at the start and the _name at the end of the commodity names.
+#+TITLE: Notes on how to process the data
 
+* From discord (long time ago)
+Need to strip off the =$= at the start and the =_name= at the end of
+the commodity names.
+
+#+BEGIN_SRC javascript
 msg = {
  'timestamp': je['timestamp'],
  'systemName': je['StarSystem'],
@@ -18,3 +22,11 @@ msg = {
    'statusFlags': c['StatusFlags'] if 'StatusFlags' in c else []
   } for c in je['Items'] if 'nonmarketable' not in c['Category'].lower()]
 }
+#+END_SRC
+
+** Hint from kind contributor [2020-06-27 Sa]
+bgol gave me the hint that:
+#+BEGIN_QUOTE
+You'll need to include the semicolon from the strip at the end:
+=_name;=
+#+END_QUOTE

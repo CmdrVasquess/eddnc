@@ -34,8 +34,8 @@ func cmdtConvert(jMkt ggja.GenObj) (res ggja.GenObj, err error) {
 	if strings.HasSuffix(name, ";") {
 		name = name[:len(name)-1]
 	}
-	if strings.HasSuffix(name, "_name") {
-		name = name[:len(name)-5]
+	if strings.HasSuffix(name, "_name;") {
+		name = name[:len(name)-6]
 	}
 	res["name"] = name
 	for edcNm, mktNm := range cmdtFromJMarket {
