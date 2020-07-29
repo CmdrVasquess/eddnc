@@ -18,7 +18,7 @@ var cmdtFromJMarket = map[string]string{
 	"demandBracket": "DemandBracket",
 }
 
-func cmdtConvert(jMkt ggja.GenObj) (res ggja.GenObj, err error) {
+func cmdtConvert(jMkt ggja.BareObj) (res ggja.BareObj, err error) {
 	defer func() {
 		if x := recover(); x != nil {
 			res = nil
@@ -27,7 +27,7 @@ func cmdtConvert(jMkt ggja.GenObj) (res ggja.GenObj, err error) {
 		}
 	}()
 	name := (&ggja.Obj{Bare: jMkt}).MStr("Name") // heavy just for error handling?
-	res = make(ggja.GenObj)
+	res = make(ggja.BareObj)
 	if strings.HasPrefix(name, "$") {
 		name = name[1:]
 	}

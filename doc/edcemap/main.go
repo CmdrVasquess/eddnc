@@ -30,7 +30,7 @@ func rdJson(filename string) *ggja.Obj {
 
 func edcHasCommodity(edcCds *ggja.Arr, cdt string) string {
 	for _, i := range edcCds.Bare {
-		edc := ggja.Obj{Bare: i.(ggja.GenObj), OnError: edcCds.OnError}
+		edc := ggja.Obj{Bare: i.(ggja.BareObj), OnError: edcCds.OnError}
 		inm := edc.Str("locName", "")
 		if inm == cdt {
 			return edc.MStr("name")
@@ -43,7 +43,7 @@ func makeMaps(catMap, cmtMap map[string]string, edce, jsmk *ggja.Obj) {
 	edccds := edce.MObj("market").MArr("commodities")
 	mkitms := jsmk.MArr("Items")
 	for _, tm := range mkitms.Bare {
-		mitm := ggja.Obj{Bare: tm.(ggja.GenObj), OnError: jsmk.OnError}
+		mitm := ggja.Obj{Bare: tm.(ggja.BareObj), OnError: jsmk.OnError}
 		mNmLoc := mitm.MStr("Name_Localised")
 		edc := edcHasCommodity(edccds, mNmLoc)
 		if len(edc) == 0 {

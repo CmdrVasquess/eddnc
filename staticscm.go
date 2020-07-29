@@ -61,7 +61,7 @@ type Event struct {
 }
 
 func (e *Event) Parse(txt []byte) error {
-	gen := make(ggja.GenObj)
+	gen := make(ggja.BareObj)
 	if err := json.Unmarshal(txt, &gen); err != nil {
 		return err
 	}
@@ -137,7 +137,7 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 		cm.Commodities = make([]Commodity, l)
 	}
 	for i, e := range cmdts.Bare {
-		src := ggja.Obj{Bare: e.(ggja.GenObj), OnError: msg.OnError}
+		src := ggja.Obj{Bare: e.(ggja.BareObj), OnError: msg.OnError}
 		dst := &cm.Commodities[i]
 		dst.Name = src.MStr("name")
 		dst.MeanPrice = src.MInt("meanPrice")
