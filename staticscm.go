@@ -146,6 +146,6 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 		dst.StockBracket = src.MInt("stockBracket")
 		dst.SellPrice = src.MInt("sellPrice")
 		dst.Demand = src.MInt("demand")
-		dst.Demand = src.MInt("demandBracket")
+		dst.DemandBracket = src.MInt("demandBracket")
 	}
 }
