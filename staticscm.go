@@ -125,6 +125,7 @@ type Commodity struct {
 	SellPrice     int
 	Demand        int
 	DemandBracket int
+	StatusFlags   []string
 }
 
 func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
@@ -147,5 +148,13 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 		dst.SellPrice = src.MInt("sellPrice")
 		dst.Demand = src.MInt("demand")
 		dst.DemandBracket = src.MInt("demandBracket")
+		if arr := src.Arr("statusFlags"); arr == nil {
+			dst.StatusFlags = nil
+		} else {
+			dst.StatusFlags = make([]string, arr.Len())
+			for i, v := range arr.Bare {
+				dst.StatusFlags[i] = v.(string)
+			}
+		}
 	}
 }
