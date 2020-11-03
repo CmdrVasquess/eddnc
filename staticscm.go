@@ -2,7 +2,9 @@ package eddnc
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
+	"strconv"
 	"time"
 
 	"git.fractalqb.de/fractalqb/ggja"
@@ -137,6 +139,35 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 	} else {
 		cm.Commodities = make([]Commodity, l)
 	}
+	fromIntOrStr := func(obj ggja.Obj, att string) (res int) {
+		bak := obj.OnError
+		defer func() { obj.OnError = bak }()
+		intercepted := false
+		obj.OnError = func(err error) {
+			var nce ggja.NoConversionError
+			if errors.As(err, &nce) {
+				if str, ok := nce.Value.(string); ok {
+					if str == "" {
+						log.Debugf("set empty %s string to 0", att)
+						res = 0
+						intercepted = true
+						return
+					}
+					if res, err = strconv.Atoi(str); err == nil {
+						log.Debugf("%s converted from string '%s'", att, str)
+						intercepted = true
+						return
+					}
+				}
+			}
+			bak(err)
+		}
+		if i := obj.MInt(att); intercepted {
+			return res
+		} else {
+			return i
+		}
+	}
 	for i, e := range cmdts.Bare {
 		src := ggja.Obj{Bare: e.(ggja.BareObj), OnError: msg.OnError}
 		dst := &cm.Commodities[i]
@@ -144,10 +175,10 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 		dst.MeanPrice = src.MInt("meanPrice")
 		dst.BuyPrice = src.MInt("buyPrice")
 		dst.Stock = src.MInt("stock")
-		dst.StockBracket = src.MInt("stockBracket")
+		dst.StockBracket = fromIntOrStr(src, "stockBracket")
 		dst.SellPrice = src.MInt("sellPrice")
 		dst.Demand = src.MInt("demand")
-		dst.DemandBracket = src.MInt("demandBracket")
+		dst.DemandBracket = fromIntOrStr(src, "demandBracket")
 		if arr := src.Arr("statusFlags"); arr == nil {
 			dst.StatusFlags = nil
 		} else {
