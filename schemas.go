@@ -144,7 +144,6 @@ var ScmDefs = []string{
                 },
                 "commodities": {
                     "type"      : "array",
-                    "minItems"  : 1,
                     "description" : "Commodities returned by the Companion API, with illegal commodities omitted",
                     "items"     : {
                         "type"                  : "object",
@@ -444,23 +443,27 @@ var ScmDefs = []string{
             "required"              : [ "systemName", "stationName", "marketId", "timestamp", "ships" ],
             "properties"            : {
                 "systemName": {
-                    "type"      : "string",
-                    "minLength" : 1
+                    "type"          : "string",
+                    "minLength"     : 1
                 },
                 "stationName": {
-                    "type"      : "string",
-                    "minLength" : 1
+                    "type"          : "string",
+                    "minLength"     : 1
                 },                
                 "marketId": {
                     "type"          : "integer"
                 },
                 "horizons": {
-                    "type"      : "boolean",
-                    "description" : "Whether the sending Cmdr has a Horizons pass."
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "allowCobraMkIV": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr can purchase the Cobra MkIV or not."
                 },
                 "timestamp": {
-                    "type"      : "string",
-                    "format"    : "date-time"
+                    "type"          : "string",
+                    "format"        : "date-time"
                 },
                 "ships": {
                     "type"          : "array",
