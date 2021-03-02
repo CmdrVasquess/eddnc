@@ -18,6 +18,20 @@ var (
 	LogCfg = c4hgol.Config(qbsllm.NewConfig(log))
 )
 
+type EnqueueFunc func(c chan<- []byte, data []byte, queue string)
+
+func Blocking(c chan<- []byte, data []byte, _ string) {
+	c <- data
+}
+
+func Dropping(c chan<- []byte, data []byte, queue string) {
+	select {
+	case c <- data:
+	default:
+		log.Warna("dropping message from `queue`", queue)
+	}
+}
+
 type S struct {
 	Blackmarket <-chan []byte
 	Commodity   <-chan []byte
@@ -29,6 +43,7 @@ type S struct {
 	relay   string
 	timeout time.Duration
 	closing int32
+	enqueue EnqueueFunc
 }
 
 const (
@@ -44,9 +59,10 @@ type Config struct {
 	QCapJournal     int
 	QCapOutfitting  int
 	QCapShipyard    int
+	Enqueue         EnqueueFunc
 }
 
-func New(cfg Config) *S {
+func New(cfg *Config) *S {
 	var (
 		bChan chan []byte
 		cChan chan []byte
@@ -84,9 +100,13 @@ func New(cfg Config) *S {
 		chanNo:      chanNo,
 		relay:       cfg.Relay,
 		timeout:     cfg.Timeout,
+		enqueue:     cfg.Enqueue,
 	}
 	if res.relay == "" {
 		res.relay = DefaultRelay
+	}
+	if res.enqueue == nil {
+		res.enqueue = Blocking
 	}
 	go res.loop(bChan, cChan, jChan, oChan, sChan)
 	return res
@@ -197,23 +217,23 @@ func (s *S) loop(
 		switch {
 		case bytes.Index(scm, blackmarketTag) >= 0:
 			if bChan != nil {
-				bChan <- line
+				s.enqueue(bChan, line, "blackmarket")
 			}
 		case bytes.Index(scm, commodityTag) >= 0:
 			if cChan != nil {
-				cChan <- line
+				s.enqueue(cChan, line, "commodity")
 			}
 		case bytes.Index(scm, journalTag) >= 0:
 			if jChan != nil {
-				jChan <- line
+				s.enqueue(jChan, line, "journal")
 			}
 		case bytes.Index(scm, outfittingTag) >= 0:
 			if oChan != nil {
-				oChan <- line
+				s.enqueue(oChan, line, "outfitting")
 			}
 		case bytes.Index(scm, shipyardTag) >= 0:
 			if sChan != nil {
-				sChan <- line
+				s.enqueue(sChan, line, "shipyard")
 			}
 		default:
 			bufPool.Put(line)
