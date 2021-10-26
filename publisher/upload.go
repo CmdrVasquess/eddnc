@@ -38,7 +38,7 @@ type eddnMsg struct {
 	Message interface{} `json:"message"`
 }
 
-func (u *Upload) Send(scm ScmId, msg interface{}) error {
+func (u *Upload) Send(scm ScmID, msg interface{}) error {
 	emsg := eddnMsg{
 		Schema:  ScmURLs[scm],
 		Header:  &u.Header,

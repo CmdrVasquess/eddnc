@@ -1,21 +1,48 @@
 // generated with genschemas.sh
 package eddnc
 
+const ScmNo = 10
+
+//go:generate stringer -type ScmID
 const (
-	Sblackmarket ScmId = iota
+	Sblackmarket ScmID = iota
+	Scodexentry
 	Scommodity
+	Sfssdiscoveryscan
 	Sjournal
+	Snavbeaconscan
+	Snavroute
 	Soutfitting
+	Sscanbarycentre
 	Sshipyard
 )
 
 var ScmURLs = []string{
 	"https://eddn.edcd.io/schemas/blackmarket/1",
+	"https://eddn.edcd.io/schemas/codexentry/1",
 	"https://eddn.edcd.io/schemas/commodity/3",
+	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1",
 	"https://eddn.edcd.io/schemas/journal/1",
+	"https://eddn.edcd.io/schemas/navbeaconscan/1",
+	"https://eddn.edcd.io/schemas/navroute/1",
 	"https://eddn.edcd.io/schemas/outfitting/2",
+	"https://eddn.edcd.io/schemas/scanbarycentre/1",
 	"https://eddn.edcd.io/schemas/shipyard/2",
 }
+
+var ScmMap = map[string]ScmID{
+	"https://eddn.edcd.io/schemas/blackmarket/1":      0,
+	"https://eddn.edcd.io/schemas/codexentry/1":       1,
+	"https://eddn.edcd.io/schemas/commodity/3":        2,
+	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1": 3,
+	"https://eddn.edcd.io/schemas/journal/1":          4,
+	"https://eddn.edcd.io/schemas/navbeaconscan/1":    5,
+	"https://eddn.edcd.io/schemas/navroute/1":         6,
+	"https://eddn.edcd.io/schemas/outfitting/2":       7,
+	"https://eddn.edcd.io/schemas/scanbarycentre/1":   8,
+	"https://eddn.edcd.io/schemas/shipyard/2":         9,
+}
+
 var ScmDefs = []string{
 	`{
     "$schema"               : "http://json-schema.org/draft-04/schema#",
@@ -89,6 +116,138 @@ var ScmDefs = []string{
 `,
 	`{
     "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/codexentry/1#",
+    "description"           : "EDDN schema for CodexEntry Journal events.  Full documentation at https://github.com/EDCD/EDDN/tree/master/schemas/codexentry-README.md",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "System", "StarPos", "SystemAddress", "EntryID" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event": {
+                    "enum"          : [ "CodexEntry" ]
+                },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
+                "System": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "StarPos": {
+                    "type"          : "array",
+                    "items"         : { "type": "number" },
+                    "minItems"      : 3,
+                    "maxItems"      : 3,
+                    "description"   : "Must be added by the sender if not present in the journal event"
+                },
+                "SystemAddress": {
+                    "type"          : "integer",
+                    "description"   : "Should be added by the sender if not present in the journal event"
+                },
+                "Name": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "Region": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "EntryID": {
+                    "type"          : "integer"
+                },
+                "Category": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "Latitude": {
+                    "type"          : "number"
+                },
+                "Longitude": {
+                    "type"          : "number"
+                },
+                "SubCategory": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "NearestDestination": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "VoucherAmount": {
+                    "type"          : "integer"
+                },
+                "Traits": {
+                    "type"          : "array",
+                    "items"         : {
+                        "type"          : "string",
+                        "minLength"     : 1
+                    }
+                },
+                "BodyID": {
+                    "type"          : "integer"
+                },
+                "BodyName": {
+                    "type"          : "string"
+                },
+                "IsNewEntry": {
+                    "$ref"          : "#/definitions/disallowed",
+                    "description"   : "Contains personal data"
+                },
+                "NewTraitsDiscovered": {
+                    "$ref"          : "#/definitions/disallowed",
+                    "description"   : "Contains personal data"
+                }
+            },
+            "patternProperties": {
+                "_Localised$"       : { "$ref" : "#/definitions/disallowed" }
+            }
+        }
+    },
+    "definitions": {
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+    }
+}
+`,
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
     "id"                    : "https://eddn.edcd.io/schemas/commodity/3#",
     "type"                  : "object",
     "additionalProperties"  : false,
@@ -138,6 +297,10 @@ var ScmDefs = []string{
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                
                 "timestamp": {
                     "type"      : "string",
                     "format"    : "date-time"
@@ -229,6 +392,91 @@ var ScmDefs = []string{
 `,
 	`{
     "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/fssdiscoveryscan/1#",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "SystemName", "StarPos", "SystemAddress", "BodyCount", "NonBodyCount" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event" : {
+                    "enum"          : [ "FSSDiscoveryScan" ]
+                },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
+                "SystemName": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "StarPos": {
+                    "type"          : "array",
+                    "items"         : { "type": "number" },
+                    "minItems"      : 3,
+                    "maxItems"      : 3,
+                    "description"   : "Must be added by the sender if not present in the journal event"
+                },
+                "SystemAddress": {
+                    "type"          : "integer",
+                    "description"   : "Should be added by the sender if not present in the journal event"
+                },
+                "Progress"            : {
+                    "$ref" : "#/definitions/disallowed",
+                    "description": "Contains personal data"
+                },
+                "BodyCount"           : {
+                    "type"          : "integer"
+                },
+                "NonBodyCount"           : {
+                    "type"          : "integer"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+    }
+}
+`,
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
     "id"                    : "https://eddn.edcd.io/schemas/journal/1#",
     "type"                  : "object",
     "additionalProperties"  : false,
@@ -269,8 +517,16 @@ var ScmDefs = []string{
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "Docked", "FSDJump", "Scan", "Location", "SAASignalsFound", "CarrierJump" ]
+                    "enum"          : [ "Docked", "FSDJump", "Scan", "Location", "SAASignalsFound", "CarrierJump", "CodexEntry" ]
                 },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                 
                 "StarSystem": {
                     "type"          : "string",
                     "minLength"     : 1,
@@ -305,15 +561,19 @@ var ScmDefs = []string{
                     }
                 },
                 
-                "ActiveFine"        : { "$ref" : "#/definitions/disallowed" },
-                "CockpitBreach"     : { "$ref" : "#/definitions/disallowed" },
-                "BoostUsed"         : { "$ref" : "#/definitions/disallowed" },
-                "FuelLevel"         : { "$ref" : "#/definitions/disallowed" },
-                "FuelUsed"          : { "$ref" : "#/definitions/disallowed" },
-                "JumpDist"          : { "$ref" : "#/definitions/disallowed" },
-                "Latitude"          : { "$ref" : "#/definitions/disallowed" },
-                "Longitude"         : { "$ref" : "#/definitions/disallowed" },
-                "Wanted"            : { "$ref" : "#/definitions/disallowed" }
+                "ActiveFine"          : { "$ref" : "#/definitions/disallowed" },
+                "CockpitBreach"       : { "$ref" : "#/definitions/disallowed" },
+                "BoostUsed"           : { "$ref" : "#/definitions/disallowed" },
+                "FuelLevel"           : { "$ref" : "#/definitions/disallowed" },
+                "FuelUsed"            : { "$ref" : "#/definitions/disallowed" },
+                "JumpDist"            : { "$ref" : "#/definitions/disallowed" },
+                "Latitude"            : { "$ref" : "#/definitions/disallowed" },
+                "Longitude"           : { "$ref" : "#/definitions/disallowed" },
+                "Wanted"              : { "$ref" : "#/definitions/disallowed" },
+                "IsNewEntry"          : { "$ref" : "#/definitions/disallowed" },
+                "NewTraitsDiscovered" : { "$ref" : "#/definitions/disallowed" },
+                "Traits"              : { "$ref" : "#/definitions/disallowed" },
+                "VoucherAmount"       : { "$ref" : "#/definitions/disallowed" }
             },
             "patternProperties"     : {
                 "_Localised$"       : { "$ref" : "#/definitions/disallowed" },
@@ -332,6 +592,160 @@ var ScmDefs = []string{
     },
     "definitions": {
         "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+    }
+}
+`,
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/navbeaconscan/1#",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "NumBodies" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event" : {
+                    "enum"          : [ "NavBeaconScan" ]
+                },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
+                "StarSystem": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "StarPos": {
+                    "type"          : "array",
+                    "items"         : { "type": "number" },
+                    "minItems"      : 3,
+                    "maxItems"      : 3,
+                    "description"   : "Must be added by the sender if not present in the journal event"
+                },
+                "SystemAddress": {
+                    "type"          : "integer",
+                    "description"   : "Should be added by the sender if not present in the journal event"
+                },
+                "NumBodies"         : {
+                    "type"          : "integer"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+    }
+}
+`,
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/navroute/1#",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "Route" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event": {
+                    "enum"      : [ "NavRoute" ]
+                },                
+                "Route": {
+                    "type"      : "array",
+                    "description" : "Route generated by in game plotter",
+                    "items"     : {
+                        "type"                  : "object",
+                        "additionalProperties"  : false,
+                        "required"              : [ "StarSystem", "SystemAddress", "StarPos", "StarClass" ],
+                        "properties"            : {
+                            "StarSystem": {
+                                "type"          : "string",
+                                "minLength"     : 1
+                            },
+                            "StarPos": {
+                                "type"          : "array",
+                                "items"         : { "type": "number" },
+                                "minItems"      : 3,
+                                "maxItems"      : 3
+                            },
+                            "SystemAddress": {
+                                "type"          : "integer"
+                            },
+                            "StarClass": {
+                                "type"          : "string",
+                                "minLength"     : 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 `,
@@ -386,6 +800,10 @@ var ScmDefs = []string{
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                 
                 "timestamp": {
                     "type"      : "string",
                     "format"    : "date-time"
@@ -400,6 +818,102 @@ var ScmDefs = []string{
                         "pattern"       : "(^Hpt_|^hpt_|^Int_|^int_|_Armour_|_armour_)",
                         "description"   : "Module symbolic name. e.g. Hpt_ChaffLauncher_Tiny, Int_Engine_Size3_Class5_Fast, Independant_Trader_Armour_Grade1, etc. Modules that depend on the Cmdr's purchases (e.g. bobbleheads, paintjobs) or rank (e.g. decals and PowerPlay faction-specific modules) should be omitted."
                     }
+                }
+            }
+        }
+    }
+}
+`,
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/scanbarycentre/1#",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "BodyID" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event" : {
+                    "enum"          : [ "ScanBaryCentre" ]
+                },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
+                "StarSystem": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "StarPos": {
+                    "type"          : "array",
+                    "items"         : { "type": "number" },
+                    "minItems"      : 3,
+                    "maxItems"      : 3,
+                    "description"   : "Must be added by the sender if not present in the journal event"
+                },
+                "SystemAddress": {
+                    "type"          : "integer",
+                    "description"   : "Should be added by the sender if not present in the journal event"
+                },
+                "BodyID": {
+                    "type"          : "integer"
+                },
+                "SemiMajorAxis": {
+                    "type"          : "number"
+                },
+                "Eccentricity": {
+                    "type"          : "number"
+                },
+                "OrbitalInclination": {
+                    "type"          : "number"
+                },
+                "Periapsis": {
+                    "type"          : "number"
+                },
+                "OrbitalPeriod": {
+                    "type"          : "number"
+                },
+                "AscendingNode": {
+                    "type"          : "number"
+                },
+                "MeanAnomaly": {
+                    "type"          : "number"
                 }
             }
         }
@@ -457,6 +971,10 @@ var ScmDefs = []string{
                     "type"          : "boolean",
                     "description"   : "Whether the sending Cmdr has a Horizons pass."
                 },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                 
                 "allowCobraMkIV": {
                     "type"          : "boolean",
                     "description"   : "Whether the sending Cmdr can purchase the Cobra MkIV or not."

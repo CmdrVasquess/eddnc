@@ -9,8 +9,6 @@ import (
 	jscm "github.com/xeipuuv/gojsonschema"
 )
 
-//go:generate stringer -type ScmId
-
 func init() {
 	for i := range ScmDefs {
 		ld := jscm.NewStringLoader(ScmDefs[i])
@@ -24,9 +22,9 @@ func init() {
 
 var scmLs []*jscm.Schema
 
-type ScmId int
+type ScmID int
 
-func scmValidate(scmId ScmId, json []byte) error {
+func scmValidate(scmId ScmID, json []byte) error {
 	scm := scmLs[scmId]
 	ld := jscm.NewBytesLoader(json)
 	res, err := scm.Validate(ld)

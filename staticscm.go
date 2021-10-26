@@ -75,7 +75,8 @@ func (e *Event) Wrap(evt ggja.Obj) (err error) {
 	e.SchemaRef = evt.MStr("$schemaRef")
 	e.Header.Wrap(*evt.MObj("header"))
 	switch e.SchemaRef {
-	case ScmURLs[Sjournal]:
+	case ScmURLs[Sjournal], ScmURLs[Sfssdiscoveryscan],
+		ScmURLs[Snavbeaconscan], ScmURLs[Sscanbarycentre]:
 		jm := new(JournalMsg)
 		jm.Wrap(*evt.MObj("message"))
 		e.Message = jm
@@ -84,7 +85,9 @@ func (e *Event) Wrap(evt ggja.Obj) (err error) {
 		cm.Wrap(*evt.MObj("message"))
 		e.Message = cm
 	default:
-		return fmt.Errorf("unknown schema: '%s'", e.SchemaRef)
+		if _, ok := ScmMap[e.SchemaRef]; !ok {
+			return fmt.Errorf("unknown schema: '%s'", e.SchemaRef)
+		}
 	}
 	return err
 }
@@ -115,7 +118,7 @@ func (je *JournalMsg) Wrap(msg ggja.Obj) {
 type CommodityMsg struct {
 	atStation
 	MarketID    int64
-	Commodities []Commodity
+	Commodities []*Commodity
 }
 
 type Commodity struct {
@@ -137,7 +140,7 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 	if l := len(cmdts.Bare); cap(cm.Commodities) >= l {
 		cm.Commodities = cm.Commodities[:l]
 	} else {
-		cm.Commodities = make([]Commodity, l)
+		cm.Commodities = make([]*Commodity, l)
 	}
 	fromIntOrStr := func(obj ggja.Obj, att string) (res int) {
 		bak := obj.OnError
@@ -170,7 +173,11 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 	}
 	for i, e := range cmdts.Bare {
 		src := ggja.Obj{Bare: e.(ggja.BareObj), OnError: msg.OnError}
-		dst := &cm.Commodities[i]
+		dst := cm.Commodities[i]
+		if dst == nil {
+			dst = new(Commodity)
+			cm.Commodities[i] = dst
+		}
 		dst.Name = src.MStr("name")
 		dst.MeanPrice = src.MInt("meanPrice")
 		dst.BuyPrice = src.MInt("buyPrice")

@@ -2,8 +2,8 @@ package eddnc
 
 const (
 	Major   = 0
-	Minor   = 2
+	Minor   = 3
 	Patch   = 0
 	Quality = `a`
-	BuildNo = 8
+	BuildNo = 12
 )

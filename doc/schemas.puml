@@ -1,0 +1,164 @@
+@startuml
+hide empty attributes
+hide empty methods
+
+abstract class "message" as msg {
+.. header ..
+  uploaderID:\t\tstring
+  softwareName:\t\tstring
+  softwareVersion:\tstring
+  gatewayTimestamp:\tstring[0..1] {format: date-time}
+.. message ..
+  timestamp:\tstring {format: date-time}
+}
+
+abstract class "gameversion" as gvs {
+.. message ..
+  horizons:\t\t\tboolean[0..1]
+  odyssey:\t\t\tboolean[0..1]
+}
+
+abstract class "message with market" as mkt {
+.. message ..
+  systemName:\tstring {len≥1}
+  stationName:\tstring {len≥1}
+  marketId:\t\tinteger[0..1]
+}
+msg <|-- mkt
+
+abstract class "message with game version" as mwgv {
+.. message ..
+  StarPos:\t\tnumber[3]
+  SystemAddress:\tinteger
+}
+msg <|-- mwgv
+gvs <|-- mwgv
+
+class "blackmarket" as bm {
+.. header [+] ..
+.. message [+] ..
+  name:\t\tstring {len≥1}
+  sellPrice:\t\tinteger
+  prohibited:\t\tboolean
+}
+mkt <|-- bm
+
+class "codexentry" as cdx {
+.. header [.] ..
+.. message [.] ..
+  event\t\t\t\t="CodexEntry"
+  System:\t\t\tstring {len≥1}
+  Name:\t\t\tstring[0..1] {len≥1}
+  Region:\t\t\tstring[0..1] {len≥1}
+  EntryID:\t\t\tinteger
+  Category:\t\t\tstring[0..1] {len≥1}
+  Latitude:\t\t\tnumber[0..1]
+  Longitude:\t\t\tnumber[0..1]
+  SubCategory:\t\tstring[0..1] {len≥1}
+  NearestDestination:\tstring[0..1] {len≥1}
+  VoucherAmount:\t\tinteger[0..1]
+  Traits:\t\t\tObject[0..1]
+  BodyID:\t\t\tinteger[0..1]
+  BodyName:\t\tstring[0..1]
+}
+mwgv <|-- cdx
+
+class "commodity" as cmdty {
+.. header [+] ..
+.. message [.] ..
+  commodities:\tArray
+  economies:\tArray
+  prohibited:\t\tArray
+}
+mkt <|-- cmdty
+gvs <|-- cmdty
+
+class "fssdiscoveryscan" as fss {
+.. header [+] ..
+.. message [.] ..
+  event\t\t\t="FSSDiscoveryScan"
+  SystemName:\tstring {len≥1}
+  BodyCount:\tinteger
+  NonBodyCount:\tinteger
+}
+mwgv <|-- fss
+
+class "journal" as jn {
+.. header [+] ..
+.. message [+] ..
+  event:\t\tenum
+  StarSystem:\tstring {len≥1}
+  Factions:\t\tArray[0..1]
+.. events ..
+  CarrierJump
+  CodexEntry
+  Docked
+  FSDJump
+  Location
+  SAASignalsFound
+  Scan
+.. disallow ..
+  ActiveFine
+  BoostUsed
+  CockpitBreach
+  FuelLevel
+  FuleUsed
+  IsNewEntry
+  JumpDist
+  Latitude
+  Longitude
+  NewTraitsDiscovered
+  Traits
+  VoucherAmount
+  Wanted
+}
+mwgv <|-- jn
+
+class "navbeaconscan" as nbs {
+.. header [+] ..
+.. message [.] ..
+  event\t\t\t="NavBeaconScan"
+  StarSystem:\tstring {len≥1}
+  NumBodies:\tinteger
+}
+mwgv <|-- nbs
+
+class "navroute" as route {
+.. header [+] ..
+.. message [.] ..
+  event\t\t="NavRoute"
+  Route:\tArray
+}
+msg <|-- route
+
+class "outfitting" as fit {
+.. header [+] ..
+.. message [.] ..
+  modules: Array
+}
+mkt <|-- fit
+
+class "scanbarycentre" as sbc {
+.. header [+] ..
+.. message [.] ..
+  event\t\t\t\t="ScanBaryCentre"
+  StarSystem:\t\tstring {len≥1}
+  BodyID:\t\t\tinteger
+  SemiMajorAxis:\t\tnumber[0..1]
+  Eccentricity:\t\tnumber[0..1]
+  OrbitalInclination:\tnumber[0..1]
+  Periapsis:\t\t\tnumber[0..1]
+  OrbitalPeriod:\t\tnumber[0..1]
+  AscendingNode:\t\tnumber[0..1]
+  MeanAnomaly:\t\tnumber[0..1]
+}
+mwgv <|-- sbc
+
+class "shipyard" as ships {
+.. header [+] ..
+.. message [.] ..
+  ships: Array
+}
+mkt <|-- ships
+
+@enduml
