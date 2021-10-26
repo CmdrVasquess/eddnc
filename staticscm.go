@@ -114,7 +114,7 @@ func (je *JournalMsg) Wrap(msg ggja.Obj) {
 
 type CommodityMsg struct {
 	atStation
-	MarketID    int
+	MarketID    int64
 	Commodities []Commodity
 }
 
@@ -132,7 +132,7 @@ type Commodity struct {
 
 func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 	cm.atStation.Wrap(msg)
-	cm.MarketID = msg.MInt("marketId")
+	cm.MarketID = msg.MInt64("marketId")
 	cmdts := msg.MArr("commodities")
 	if l := len(cmdts.Bare); cap(cm.Commodities) >= l {
 		cm.Commodities = cm.Commodities[:l]

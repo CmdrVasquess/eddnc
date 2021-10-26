@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	log    = qbsllm.New(qbsllm.Lnormal, "down", nil, nil)
+	log    = qbsllm.New(qbsllm.Lnormal, "fromeddn", nil, nil)
 	LogCfg = c4hgol.Config(qbsllm.NewConfig(log))
 )
 
@@ -32,6 +32,30 @@ func Dropping(c chan<- []byte, data []byte, queue string) {
 	}
 }
 
+type DropStats struct{ Total, Dropped uint64 }
+
+type DropWithStats map[string]*DropStats
+
+func NewDropWithStats() DropWithStats { return make(DropWithStats) }
+
+func (dws DropWithStats) Enqueue(c chan<- []byte, data []byte, queue string) {
+	stats := dws[queue]
+	if stats == nil {
+		stats = new(DropStats)
+		dws[queue] = stats
+	}
+	stats.Total++
+	select {
+	case c <- data:
+	default:
+		stats.Dropped++
+		log.Warna("`drop` message of `total` from `queue`",
+			stats.Dropped,
+			stats.Total,
+			queue)
+	}
+}
+
 type S struct {
 	Blackmarket <-chan []byte
 	Commodity   <-chan []byte
@@ -39,6 +63,7 @@ type S struct {
 	Outfitting  <-chan []byte
 	Shipyard    <-chan []byte
 
+	rtuxm   int64
 	chanNo  int
 	relay   string
 	timeout time.Duration
@@ -118,6 +143,8 @@ func (s *S) Return(rawEvent []byte) {
 
 func (s *S) UsedChannels() int { return s.chanNo }
 
+func (s *S) TRecvUnixMilli() int64 { return atomic.LoadInt64(&s.rtuxm) }
+
 func (s *S) Close() bool {
 	return atomic.CompareAndSwapInt32(&s.closing, 0, 1)
 }
@@ -196,6 +223,7 @@ func (s *S) loop(
 			return
 		}
 		msg, err := subs.RecvBytes(0)
+		atomic.StoreInt64(&s.rtuxm, time.Now().UnixMilli())
 		if err != nil {
 			log.Errore(err)
 			continue

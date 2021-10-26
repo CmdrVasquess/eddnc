@@ -57,7 +57,7 @@ func eventLoop(subs *subscriber.S) {
 }
 
 func main() {
-	subs := subscriber.New(subscriber.Config{
+	subs := subscriber.New(&subscriber.Config{
 		Timeout: subscriber.GoodTimeout,
 	})
 	go eventLoop(subs)
