@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 
 	"git.fractalqb.de/fractalqb/ggja"
@@ -31,6 +32,22 @@ func (h *Header) Wrap(hdr ggja.Obj) {
 type Message interface {
 	Timestamp() time.Time
 	SystemName() string
+}
+
+func trim(s string) string {
+	if s == "" {
+		return ""
+	}
+	if s[0] == '$' {
+		s = s[1:]
+		if s == "" {
+			return ""
+		}
+	}
+	if l := len(s); s[l-1] == ';' {
+		s = s[:l-1]
+	}
+	return s
 }
 
 type msg struct {
@@ -75,15 +92,31 @@ func (e *Event) Wrap(evt ggja.Obj) (err error) {
 	e.SchemaRef = evt.MStr("$schemaRef")
 	e.Header.Wrap(*evt.MObj("header"))
 	switch e.SchemaRef {
-	case ScmURLs[Sjournal], ScmURLs[Sfssdiscoveryscan],
-		ScmURLs[Snavbeaconscan], ScmURLs[Sscanbarycentre]:
+	case ScmURLs[Sjournal], ScmURLs[Snavbeaconscan], ScmURLs[Sscanbarycentre]:
+		// TODO put non-journal schemas into specific messages
 		jm := new(JournalMsg)
-		jm.Wrap(*evt.MObj("message"))
+		if err = jm.Wrap(*evt.MObj("message")); err != nil {
+			return err
+		}
 		e.Message = jm
 	case ScmURLs[Scommodity]:
 		cm := new(CommodityMsg)
-		cm.Wrap(*evt.MObj("message"))
+		if err = cm.Wrap(*evt.MObj("message")); err != nil {
+			return err
+		}
 		e.Message = cm
+	case ScmURLs[Sfssdiscoveryscan]:
+		fds := new(FSSDiscoScanMsg)
+		if err = fds.Wrap(*evt.MObj("message")); err != nil {
+			return err
+		}
+		e.Message = fds
+	case ScmURLs[Scodexentry]:
+		cdx := new(CodexMsg)
+		if err = cdx.Wrap(*evt.MObj("message")); err != nil {
+			return err
+		}
+		e.Message = cdx
 	default:
 		if _, ok := ScmMap[e.SchemaRef]; !ok {
 			return fmt.Errorf("unknown schema: '%s'", e.SchemaRef)
@@ -105,7 +138,7 @@ type JournalMsg struct {
 	ggja.Obj
 }
 
-func (je *JournalMsg) Wrap(msg ggja.Obj) {
+func (je *JournalMsg) Wrap(msg ggja.Obj) error {
 	je.msg.Wrap(msg)
 	je.System = msg.MStr("StarSystem")
 	je.SystemAddr = msg.MInt64("SystemAddress")
@@ -113,6 +146,7 @@ func (je *JournalMsg) Wrap(msg ggja.Obj) {
 	spos := msg.MArr("StarPos")
 	je.StarPos = [3]float64{spos.MF64(0), spos.MF64(1), spos.MF64(2)}
 	je.Obj = msg
+	return nil
 }
 
 type CommodityMsg struct {
@@ -133,7 +167,7 @@ type Commodity struct {
 	StatusFlags   []string
 }
 
-func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
+func (cm *CommodityMsg) Wrap(msg ggja.Obj) error {
 	cm.atStation.Wrap(msg)
 	cm.MarketID = msg.MInt64("marketId")
 	cmdts := msg.MArr("commodities")
@@ -195,4 +229,72 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) {
 			}
 		}
 	}
+	return nil
+}
+
+type CodexMsg struct {
+	msg
+	EntryID       int64
+	SystemAddress int64
+	StarPos       [3]float32
+	Region        int16
+	Name          string
+	Category      string
+	SubCategory   string
+	BodyID        int16
+	BodyName      string
+	Latitude      float32
+	Longitude     float32
+}
+
+func (cdx *CodexMsg) Wrap(msg ggja.Obj) error {
+	cdx.msg.Wrap(msg)
+	cdx.System = msg.MStr("System")
+	cdx.EntryID = msg.MInt64("EntryID")
+	cdx.SystemAddress = msg.MInt64("SystemAddress")
+	coos := msg.MArr("StarPos")
+	cdx.StarPos[0] = coos.MF32(0)
+	cdx.StarPos[1] = coos.MF32(1)
+	cdx.StarPos[2] = coos.MF32(2)
+	if reg := trim(msg.MStr("Region")); !strings.HasPrefix(reg, "Codex_RegionName_") {
+		return fmt.Errorf("illegal region name format: '%s'", reg)
+	} else {
+		reg = reg[17:]
+		rid, err := strconv.Atoi(reg)
+		if err != nil {
+			return err
+		}
+		cdx.Region = int16(rid)
+	}
+	cdx.Name = trim(msg.MStr("Name"))
+	cdx.Category = trim(msg.MStr("Category"))
+	cdx.SubCategory = trim(msg.MStr("SubCategory"))
+	cdx.BodyID = msg.Int16("BodyID", -1)
+	if cdx.BodyID >= 0 {
+		cdx.BodyName = msg.MStr("BodyName")
+		cdx.Latitude = msg.MF32("Latitude")
+		cdx.Longitude = msg.MF32("Longitude")
+	}
+	return nil
+}
+
+type FSSDiscoScanMsg struct {
+	msg
+	SystemAddress int64
+	StarPos       [3]float32
+	BodyCount     int16
+	NonBodyCount  int16
+}
+
+func (fds *FSSDiscoScanMsg) Wrap(msg ggja.Obj) error {
+	fds.msg.Wrap(msg)
+	fds.System = msg.MStr("SystemName")
+	fds.SystemAddress = msg.MInt64("SystemAddress")
+	coos := msg.MArr("StarPos")
+	fds.StarPos[0] = coos.MF32(0)
+	fds.StarPos[1] = coos.MF32(1)
+	fds.StarPos[2] = coos.MF32(2)
+	fds.BodyCount = msg.MInt16("BodyCount")
+	fds.NonBodyCount = msg.MInt16("NonBodyCount")
+	return nil
 }

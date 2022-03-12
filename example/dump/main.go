@@ -53,7 +53,8 @@ func eventLoop(subs *subscriber.S) {
 
 func main() {
 	subs := subscriber.New(&subscriber.Config{
-		Timeout: subscriber.GoodTimeout,
+		ConnTimeout: subscriber.GoodTimeout,
+		RecvTimeout: 30 * time.Second,
 	})
 	go eventLoop(subs)
 	// Be polite and clean up…

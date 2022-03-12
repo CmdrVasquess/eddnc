@@ -61,12 +61,13 @@ func (dws DropWithStats) Enqueue(c chan<- []byte, data []byte, queue eddnc.ScmID
 type S struct {
 	Chan [eddnc.ScmNo]<-chan []byte
 
-	rtuxm   int64
-	chanNo  int
-	relay   string
-	timeout time.Duration
-	closing int32
-	enqueue EnqueueFunc
+	rtuxm       int64
+	chanNo      int
+	relay       string
+	connTimeout time.Duration
+	recvTimeout time.Duration
+	closing     int32
+	enqueue     EnqueueFunc
 }
 
 const (
@@ -75,16 +76,17 @@ const (
 )
 
 type Config struct {
-	Relay   string
-	Timeout time.Duration
-	QCaps   [eddnc.ScmNo]int
-	Enqueue EnqueueFunc
+	Relay       string
+	ConnTimeout time.Duration
+	RecvTimeout time.Duration
+	QCaps       [eddnc.ScmNo]int
+	Enqueue     EnqueueFunc
 }
 
 // NoQ disables all channels, i.e. set the QCaps to -1.
-func (cfg *Config) NoQ() *Config {
+func (cfg *Config) AllQCaps(cap int) *Config {
 	for i := eddnc.ScmID(0); i < eddnc.ScmNo; i++ {
-		cfg.QCaps[i] = -1
+		cfg.QCaps[i] = cap
 	}
 	return cfg
 }
@@ -97,9 +99,13 @@ func (cfg *Config) QCap(q eddnc.ScmID, cap int) *Config {
 
 func New(cfg *Config) *S {
 	res := &S{
-		relay:   cfg.Relay,
-		timeout: cfg.Timeout,
-		enqueue: cfg.Enqueue,
+		relay:       cfg.Relay,
+		connTimeout: cfg.ConnTimeout,
+		recvTimeout: cfg.RecvTimeout,
+		enqueue:     cfg.Enqueue,
+	}
+	if res.recvTimeout == 0 {
+		res.recvTimeout = -1
 	}
 	var chans [eddnc.ScmNo]chan<- []byte
 	for i := eddnc.ScmID(0); i < eddnc.ScmNo; i++ {
@@ -150,53 +156,65 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 	if err != nil {
 		log.Panice(err)
 	}
-	subs, err := zctx.NewSocket(zmq.SUB)
-	if err != nil {
-		log.Panice(err)
-	}
-	defer subs.Close()
-	must(subs.SetSubscribe(""))
-	must(subs.SetConnectTimeout(s.timeout))
-	must(subs.Connect(s.relay))
+	var subs *zmq.Socket
+	defer func() {
+		if subs != nil {
+			subs.Close()
+		}
+	}()
 	for {
-		if atomic.CompareAndSwapInt32(&s.closing, 1, -1) {
-			for i, c := range chans {
-				if c != nil {
-					close(c)
-					chans[i] = nil
+		log.Debuga("0MQ connecting to `relay`", s.relay)
+		subs, err = zctx.NewSocket(zmq.SUB)
+		if err != nil {
+			log.Panice(err)
+		}
+		must(subs.SetSubscribe(""))
+		must(subs.SetConnectTimeout(s.connTimeout))
+		must(subs.SetRcvtimeo(s.recvTimeout))
+		must(subs.Connect(s.relay))
+		for {
+			if atomic.CompareAndSwapInt32(&s.closing, 1, -1) {
+				for i, c := range chans {
+					if c != nil {
+						close(c)
+						chans[i] = nil
+					}
 				}
+				return
 			}
-			return
-		}
-		msg, err := subs.RecvBytes(0)
-		atomic.StoreInt64(&s.rtuxm, time.Now().UnixMilli())
-		if err != nil {
-			log.Errore(err)
-			continue
-		}
-		zrd, err := zlib.NewReader(bytes.NewReader(msg))
-		if err != nil {
-			log.Errore(err)
-			continue
-		}
-		txt := bytes.NewBuffer(bufPool.Get().([]byte))
-		io.Copy(txt, zrd)
-		zrd.Close()
-		line := txt.Bytes()
-		var scm string
-		if m := scmMatch.FindSubmatch(line); m == nil {
-			log.Errora("no $schemaRef in `message`", string(line))
-			continue
-		} else {
-			scm = string(m[1])
-		}
-		if scmid, ok := eddnc.ScmMap[string(scm)]; ok {
-			if c := chans[scmid]; c != nil {
-				s.enqueue(c, line, scmid)
+			msg, err := subs.RecvBytes(0)
+			if err != nil { // TODO Only break on EAGAIN?
+				log.Errore(err)
+				break
 			}
-		} else {
-			bufPool.Put(line)
-			log.Errora("unknown `schema`", string(scm))
+			atomic.StoreInt64(&s.rtuxm, time.Now().UnixMilli())
+			zrd, err := zlib.NewReader(bytes.NewReader(msg))
+			if err != nil {
+				log.Errore(err)
+				continue
+			}
+			txt := bytes.NewBuffer(bufPool.Get().([]byte))
+			io.Copy(txt, zrd)
+			zrd.Close()
+			line := txt.Bytes()
+			var scm string
+			if m := scmMatch.FindSubmatch(line); m == nil {
+				log.Errora("no $schemaRef in `message`", string(line))
+				continue
+			} else {
+				scm = string(m[1])
+			}
+			if scmid, ok := eddnc.ScmMap[string(scm)]; ok {
+				if c := chans[scmid]; c != nil {
+					s.enqueue(c, line, scmid)
+				}
+			} else {
+				bufPool.Put(line)
+				log.Errora("unknown `schema`", string(scm))
+			}
 		}
+		log.Debuga("close 0MQ socket")
+		subs.Close()
+		subs = nil
 	}
 }

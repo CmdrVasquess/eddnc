@@ -8,21 +8,23 @@ func _() {
 	// An "invalid array index" compiler error signifies that the constant values have changed.
 	// Re-run the stringer command to generate them again.
 	var x [1]struct{}
-	_ = x[Sblackmarket-0]
-	_ = x[Scodexentry-1]
-	_ = x[Scommodity-2]
-	_ = x[Sfssdiscoveryscan-3]
-	_ = x[Sjournal-4]
-	_ = x[Snavbeaconscan-5]
-	_ = x[Snavroute-6]
-	_ = x[Soutfitting-7]
-	_ = x[Sscanbarycentre-8]
-	_ = x[Sshipyard-9]
+	_ = x[Sapproachsettlement-0]
+	_ = x[Sblackmarket-1]
+	_ = x[Scodexentry-2]
+	_ = x[Scommodity-3]
+	_ = x[Sfssallbodiesfound-4]
+	_ = x[Sfssdiscoveryscan-5]
+	_ = x[Sjournal-6]
+	_ = x[Snavbeaconscan-7]
+	_ = x[Snavroute-8]
+	_ = x[Soutfitting-9]
+	_ = x[Sscanbarycentre-10]
+	_ = x[Sshipyard-11]
 }
 
-const _ScmID_name = "SblackmarketScodexentryScommoditySfssdiscoveryscanSjournalSnavbeaconscanSnavrouteSoutfittingSscanbarycentreSshipyard"
+const _ScmID_name = "SapproachsettlementSblackmarketScodexentryScommoditySfssallbodiesfoundSfssdiscoveryscanSjournalSnavbeaconscanSnavrouteSoutfittingSscanbarycentreSshipyard"
 
-var _ScmID_index = [...]uint8{0, 12, 23, 33, 50, 58, 72, 81, 92, 107, 116}
+var _ScmID_index = [...]uint8{0, 19, 31, 42, 52, 70, 87, 95, 109, 118, 129, 144, 153}
 
 func (i ScmID) String() string {
 	if i < 0 || i >= ScmID(len(_ScmID_index)-1) {

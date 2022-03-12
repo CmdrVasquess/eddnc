@@ -1,13 +1,15 @@
 // generated with genschemas.sh
 package eddnc
 
-const ScmNo = 10
+const ScmNo = 12
 
 //go:generate stringer -type ScmID
 const (
-	Sblackmarket ScmID = iota
+	Sapproachsettlement ScmID = iota
+	Sblackmarket
 	Scodexentry
 	Scommodity
+	Sfssallbodiesfound
 	Sfssdiscoveryscan
 	Sjournal
 	Snavbeaconscan
@@ -18,9 +20,11 @@ const (
 )
 
 var ScmURLs = []string{
+	"https://eddn.edcd.io/schemas/approachsettlement/1",
 	"https://eddn.edcd.io/schemas/blackmarket/1",
 	"https://eddn.edcd.io/schemas/codexentry/1",
 	"https://eddn.edcd.io/schemas/commodity/3",
+	"https://eddn.edcd.io/schemas/fssallbodiesfound/1",
 	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1",
 	"https://eddn.edcd.io/schemas/journal/1",
 	"https://eddn.edcd.io/schemas/navbeaconscan/1",
@@ -31,19 +35,115 @@ var ScmURLs = []string{
 }
 
 var ScmMap = map[string]ScmID{
-	"https://eddn.edcd.io/schemas/blackmarket/1":      0,
-	"https://eddn.edcd.io/schemas/codexentry/1":       1,
-	"https://eddn.edcd.io/schemas/commodity/3":        2,
-	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1": 3,
-	"https://eddn.edcd.io/schemas/journal/1":          4,
-	"https://eddn.edcd.io/schemas/navbeaconscan/1":    5,
-	"https://eddn.edcd.io/schemas/navroute/1":         6,
-	"https://eddn.edcd.io/schemas/outfitting/2":       7,
-	"https://eddn.edcd.io/schemas/scanbarycentre/1":   8,
-	"https://eddn.edcd.io/schemas/shipyard/2":         9,
+	"https://eddn.edcd.io/schemas/approachsettlement/1": 0,
+	"https://eddn.edcd.io/schemas/blackmarket/1":        1,
+	"https://eddn.edcd.io/schemas/codexentry/1":         2,
+	"https://eddn.edcd.io/schemas/commodity/3":          3,
+	"https://eddn.edcd.io/schemas/fssallbodiesfound/1":  4,
+	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1":   5,
+	"https://eddn.edcd.io/schemas/journal/1":            6,
+	"https://eddn.edcd.io/schemas/navbeaconscan/1":      7,
+	"https://eddn.edcd.io/schemas/navroute/1":           8,
+	"https://eddn.edcd.io/schemas/outfitting/2":         9,
+	"https://eddn.edcd.io/schemas/scanbarycentre/1":     10,
+	"https://eddn.edcd.io/schemas/shipyard/2":           11,
 }
 
 var ScmDefs = []string{
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "MarketID", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event" : {
+                    "enum"          : [ "ApproachSettlement" ]
+                },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
+                "StarSystem": {
+                    "type"          : "string",
+                    "minLength"     : 1,
+                    "description"   : "Must be added by the sender"
+                },
+                "StarPos": {
+                    "type"          : "array",
+                    "items"         : { "type": "number" },
+                    "minItems"      : 3,
+                    "maxItems"      : 3,
+                    "description"   : "Must be added by the sender"
+                },
+                "SystemAddress": {
+                    "type"          : "integer"
+                },
+                "Name"             : {
+                    "type"          : "string",
+                    "description"   : "Name of settlement"
+                },
+                "MarketID": {
+                    "type"          : "integer"
+                },		
+                "BodyID": {
+                    "type"          : "integer"
+                },
+                "BodyName": {
+                    "type"          : "string"
+                },	
+                "Latitude": {
+                    "type"          : "number"
+                },
+                "Longitude": {
+                    "type"          : "number"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+    }
+}
+`,
 	`{
     "$schema"               : "http://json-schema.org/draft-04/schema#",
     "id"                    : "https://eddn.edcd.io/schemas/blackmarket/1#",
@@ -90,7 +190,8 @@ var ScmDefs = []string{
                     "minLength"     : 1
                 },                
                 "marketId": {
-                    "type"          : "integer"
+                    "type"          : "integer",
+                    "renamed"       : "MarketID"
                 },
                 "timestamp": {
                     "type"          : "string",
@@ -98,6 +199,7 @@ var ScmDefs = []string{
                 },
                 "name": {
                     "type"          : "string",
+                    "renamed"       : "Type",
                     "minLength"     : 1,
                     "description"   : "Commodity name as returned by the MarketSell entry in the Journal"
                 },
@@ -107,6 +209,7 @@ var ScmDefs = []string{
                 },
                 "prohibited": {
                     "type"          : "boolean",
+                    "renamed"       : "IllegalGoods",
                     "description"   : "Whether the commodity is prohibited at this station"
                 }
             }
@@ -208,8 +311,7 @@ var ScmDefs = []string{
                     "minLength"     : 1
                 },
                 "NearestDestination": {
-                    "type"          : "string",
-                    "minLength"     : 1
+                    "type"          : "string"
                 },
                 "VoucherAmount": {
                     "type"          : "integer"
@@ -288,10 +390,12 @@ var ScmDefs = []string{
                 },
                 "stationName": {
                     "type"      : "string",
+                    "renamed"   : "StarSystem",
                     "minLength" : 1
                 },                
                 "marketId": {
-                    "type"      : "integer"
+                    "type"      : "integer",
+                    "renamed"   : "MarketID"
                 },
                 "horizons": {
                     "type"      : "boolean",
@@ -315,31 +419,39 @@ var ScmDefs = []string{
                         "properties"            : {
                             "name": {
                                 "type"          : "string",
+                                "renamed"       : "Name",
                                 "minLength"     : 1,
                                 "description"   : "Symbolic name as returned by the Companion API"
                             },
                             "meanPrice": {
-                                "type"          : "integer"
+                                "type"          : "integer",
+                                "renamed"       : "MeanPrice"
                             },
                             "buyPrice": {
                                 "type"          : "integer",
+                                "renaamed"      : "BuyPrice",
                                 "description"   : "Price to buy from the market"
                             },
                             "stock": {
-                                "type"          : "integer"
+                                "type"          : "integer",
+                                "renamed"       : "Stock"
                             },
                             "stockBracket": {
-                                "$ref"          : "#/definitions/levelType"
+                                "$ref"          : "#/definitions/levelType",
+                                "renamed"       : "StockBracket"
                             },
                             "sellPrice": {
                                 "type"          : "integer",
+                                "renamed"       : "SellPrice",
                                 "description"   : "Price to sell to the market"
                             },
                             "demand": {
-                                "type"          : "integer"
+                                "type"          : "integer",
+                                "renamed"       : "Demand"
                             },
                             "demandBracket": {
-                                "$ref"          : "#/definitions/levelType"
+                                "$ref"          : "#/definitions/levelType",
+                                "renamed"       : "DemandBracket"
                             },
                             "statusFlags": {
                                 "type"          : "array",
@@ -349,6 +461,18 @@ var ScmDefs = []string{
                                     "type"          : "string",
                                     "minLength"     : 1
                                 }
+                            },
+                            "Producer": {
+                                "$ref"          : "#/definitions/disallowed",
+                                "description"   : "Not present in CAPI data, so removed from Journal-sourced data"
+                            },
+                            "Rare" : {
+                                "$ref"          : "#/definitions/disallowed",
+                                "description"   : "Not present in CAPI data, so removed from Journal-sourced data"
+                            },
+                            "id": {
+                                "$ref"          : "#/definitions/disallowed",
+                                "description"   : "Not wanted for historical reasons?"
                             }
                         }
                     }
@@ -378,15 +502,98 @@ var ScmDefs = []string{
                         "type"          : "string",
                         "minLength"     : 1
                     }
+                },
+                "StationType": {
+                    "$ref"          : "#/definitions/disallowed",
+                    "description"   : "Not present in CAPI data, so removed from Journal-sourced data"
                 }
             }
         }
     },
     "definitions": {
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } },
         "levelType": {
             "enum"          : [0, 1, 2, 3, ""],
             "description"   : "Note: A value of \"\" indicates that the commodity is not normally sold/purchased at this station, but is currently temporarily for sale/purchase"
         }
+    }
+}
+`,
+	`{
+    "$schema"               : "http://json-schema.org/draft-04/schema#",
+    "id"                    : "https://eddn.edcd.io/schemas/fssallbodiesfound/1#",
+    "type"                  : "object",
+    "additionalProperties"  : false,
+    "required": [ "$schemaRef", "header", "message" ],
+    "properties": {
+        "$schemaRef": {
+            "type"                  : "string"
+        },
+        "header": {
+            "type"                  : "object",
+            "additionalProperties"  : true,
+            "required"              : [ "uploaderID", "softwareName", "softwareVersion" ],
+            "properties"            : {
+                "uploaderID": {
+                    "type"          : "string"
+                },
+                "softwareName": {
+                    "type"          : "string"
+                },
+                "softwareVersion": {
+                    "type"          : "string"
+                },
+                "gatewayTimestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time",
+                    "description"   : "Timestamp upon receipt at the gateway. If present, this property will be overwritten by the gateway; submitters are not intended to populate this property."
+                }
+            }
+        },
+        "message": {
+            "type"                  : "object",
+            "description"           : "Contains all properties from the listed events in the client's journal, minus the Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : false,
+            "required"              : [ "timestamp", "event", "SystemName", "StarPos", "SystemAddress", "Count" ],
+            "properties"            : {
+                "timestamp": {
+                    "type"          : "string",
+                    "format"        : "date-time"
+                },
+                "event" : {
+                    "enum"          : [ "FSSAllBodiesFound" ]
+                },
+                "horizons": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
+                "SystemName": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "StarPos": {
+                    "type"          : "array",
+                    "items"         : { "type": "number" },
+                    "minItems"      : 3,
+                    "maxItems"      : 3,
+                    "description"   : "Must be added by the sender if not present in the journal event"
+                },
+                "SystemAddress": {
+                    "type"          : "integer"
+                },
+                "Count"             : {
+                    "type"          : "integer",
+                    "description"   : "Number of bodies in this system"
+                }
+            }
+        }
+    },
+    "definitions": {
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
     }
 }
 `,
@@ -454,8 +661,7 @@ var ScmDefs = []string{
                     "description"   : "Must be added by the sender if not present in the journal event"
                 },
                 "SystemAddress": {
-                    "type"          : "integer",
-                    "description"   : "Should be added by the sender if not present in the journal event"
+                    "type"          : "integer"
                 },
                 "Progress"            : {
                     "$ref" : "#/definitions/disallowed",
@@ -649,7 +855,8 @@ var ScmDefs = []string{
                 },
                 "StarSystem": {
                     "type"          : "string",
-                    "minLength"     : 1
+                    "minLength"     : 1,
+                    "description"   : "Should be added by the sender if not present in the journal event"
                 },
                 "StarPos": {
                     "type"          : "array",
@@ -659,8 +866,7 @@ var ScmDefs = []string{
                     "description"   : "Must be added by the sender if not present in the journal event"
                 },
                 "SystemAddress": {
-                    "type"          : "integer",
-                    "description"   : "Should be added by the sender if not present in the journal event"
+                    "type"          : "integer"
                 },
                 "NumBodies"         : {
                     "type"          : "integer"
@@ -715,7 +921,15 @@ var ScmDefs = []string{
                 },
                 "event": {
                     "enum"      : [ "NavRoute" ]
-                },                
+                },
+                "horizons": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has a Horizons pass."
+                },
+                "odyssey": {
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },
                 "Route": {
                     "type"      : "array",
                     "description" : "Route generated by in game plotter",
@@ -787,14 +1001,17 @@ var ScmDefs = []string{
             "properties"            : {
                 "systemName": {
                     "type"      : "string",
+                    "renamed"   : "StarSystem",
                     "minLength" : 1
                 },
                 "stationName": {
                     "type"      : "string",
+                    "renamed"   : "StationName",
                     "minLength" : 1
                 },                
                 "marketId": {
-                    "type"      : "integer"
+                    "type"      : "integer",
+                    "renamed"   : "MarketID"
                 },
                 "horizons": {
                     "type"      : "boolean",
@@ -810,6 +1027,7 @@ var ScmDefs = []string{
                 },
                 "modules": {
                     "type"          : "array",
+                    "renamed"       : "Items",
                     "minItems"      : 1,
                     "uniqueItems"   : true,
                     "items"         : {
@@ -888,8 +1106,7 @@ var ScmDefs = []string{
                     "description"   : "Must be added by the sender if not present in the journal event"
                 },
                 "SystemAddress": {
-                    "type"          : "integer",
-                    "description"   : "Should be added by the sender if not present in the journal event"
+                    "type"          : "integer"
                 },
                 "BodyID": {
                     "type"          : "integer"
@@ -958,14 +1175,17 @@ var ScmDefs = []string{
             "properties"            : {
                 "systemName": {
                     "type"          : "string",
+                    "renamed"       : "StarSystem",
                     "minLength"     : 1
                 },
                 "stationName": {
                     "type"          : "string",
+                    "renamed"       : "StationName",
                     "minLength"     : 1
                 },                
                 "marketId": {
-                    "type"          : "integer"
+                    "type"          : "integer",
+                    "renamed"       : "MarketID"
                 },
                 "horizons": {
                     "type"          : "boolean",
@@ -985,6 +1205,7 @@ var ScmDefs = []string{
                 },
                 "ships": {
                     "type"          : "array",
+                    "renamed"       : "PriceList",
                     "minItems"      : 1,
                     "uniqueItems"   : true,
                     "items"         : {
