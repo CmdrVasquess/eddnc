@@ -1,1 +1,0 @@
-./jtester jdir/Journal.*.log

@@ -10,14 +10,14 @@ import (
 	"time"
 
 	"git.fractalqb.de/fractalqb/c4hgol"
-	"git.fractalqb.de/fractalqb/qbsllm"
+	"git.fractalqb.de/fractalqb/qblog"
 	"github.com/CmdrVasquess/eddnc"
 	zmq "github.com/pebbe/zmq4"
 )
 
 var (
-	log    = qbsllm.New(qbsllm.Lnormal, "fromeddn", nil, nil)
-	LogCfg = c4hgol.Config(qbsllm.NewConfig(log))
+	log                     = qblog.New("fromeddn")
+	LogCfg c4hgol.LogConfig = log
 )
 
 type EnqueueFunc func(c chan<- []byte, data []byte, scm eddnc.ScmID)
@@ -30,7 +30,7 @@ func Dropping(c chan<- []byte, data []byte, queue string) {
 	select {
 	case c <- data:
 	default:
-		log.Warna("dropping message from `queue`", queue)
+		log.Warnv("dropping message from `queue`", queue)
 	}
 }
 
@@ -51,7 +51,7 @@ func (dws DropWithStats) Enqueue(c chan<- []byte, data []byte, queue eddnc.ScmID
 	case c <- data:
 	default:
 		stats.Dropped++
-		log.Warna("`drop` message of `total` from `queue` `len`",
+		log.Warnv("`drop` message of `total` from `queue` `len`",
 			stats.Dropped,
 			stats.Total,
 			queue)
@@ -163,7 +163,7 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 		}
 	}()
 	for {
-		log.Debuga("0MQ connecting to `relay`", s.relay)
+		log.Debugv("0MQ connecting to `relay`", s.relay)
 		subs, err = zctx.NewSocket(zmq.SUB)
 		if err != nil {
 			log.Panice(err)
@@ -199,7 +199,7 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 			line := txt.Bytes()
 			var scm string
 			if m := scmMatch.FindSubmatch(line); m == nil {
-				log.Errora("no $schemaRef in `message`", string(line))
+				log.Errorv("no $schemaRef in `message`", string(line))
 				continue
 			} else {
 				scm = string(m[1])
@@ -210,10 +210,10 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 				}
 			} else {
 				bufPool.Put(line)
-				log.Errora("unknown `schema`", string(scm))
+				log.Errorv("unknown `schema`", string(scm))
 			}
 		}
-		log.Debuga("close 0MQ socket")
+		log.Debugv("close 0MQ socket")
 		subs.Close()
 		subs = nil
 	}

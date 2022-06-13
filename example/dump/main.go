@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -10,6 +11,8 @@ import (
 	"github.com/CmdrVasquess/eddnc"
 	"github.com/CmdrVasquess/eddnc/subscriber"
 )
+
+var qLengths = 16
 
 func eventLoop(subs *subscriber.S) {
 	wr := os.Stdout
@@ -52,10 +55,12 @@ func eventLoop(subs *subscriber.S) {
 }
 
 func main() {
-	subs := subscriber.New(&subscriber.Config{
+	flag.IntVar(&qLengths, "q", qLengths, "Set length of internal event queues")
+	flag.Parse()
+	subs := subscriber.New((&subscriber.Config{
 		ConnTimeout: subscriber.GoodTimeout,
 		RecvTimeout: 30 * time.Second,
-	})
+	}).AllQCaps(qLengths))
 	go eventLoop(subs)
 	// Be polite and clean up…
 	sigs := make(chan os.Signal)
