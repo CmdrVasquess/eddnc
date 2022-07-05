@@ -1,16 +1,14 @@
 EDDNDIR:=./doc/EDDN
-JSCMS:=$(wildcard $(EDDNDIR)/schemas/*.json)
+EDDNSCMS:=$(wildcard $(EDDNDIR)/schemas/*.json)
+JSCMS:=$(patsubst %,./schemas/%,$(notdir $(EDDNSCMS)))
 
 all: schemas.go
+	echo $(JSCMS)
 
 schemas.go: $(JSCMS)
 	go run gen/main.go > $@
 	gofmt -w $@
 	go generate
 
-#JSCMGO:=$(patsubst %.json,schema/%.go,$(notdir $(JSCMS)))
-#
-#static-schemas: $(JSCMGO)
-#
-#schema/%.go: $(EDDNDIR)/schemas/%.json
-#	gojsonschema -p schema -o $@ $<
+schemas/%.json: $(EDDNDIR)/schemas/*.json
+	cp $< $@

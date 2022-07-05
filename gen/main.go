@@ -94,7 +94,7 @@ var (
 		}
 		fmt.Printf(`	//go:embed %s
 	%sSchema string
-`, filepath.Join(config.Schemas, schemaFiles[i]), n)
+`, filepath.Join("./schemas", schemaFiles[i]), n)
 	}
 	fmt.Println(")")
 }

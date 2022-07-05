@@ -15,17 +15,18 @@ func _() {
 	_ = x[Sfssallbodiesfound-4]
 	_ = x[Sfssbodysignals-5]
 	_ = x[Sfssdiscoveryscan-6]
-	_ = x[Sjournal-7]
-	_ = x[Snavbeaconscan-8]
-	_ = x[Snavroute-9]
-	_ = x[Soutfitting-10]
-	_ = x[Sscanbarycentre-11]
-	_ = x[Sshipyard-12]
+	_ = x[Sfsssignaldiscovered-7]
+	_ = x[Sjournal-8]
+	_ = x[Snavbeaconscan-9]
+	_ = x[Snavroute-10]
+	_ = x[Soutfitting-11]
+	_ = x[Sscanbarycentre-12]
+	_ = x[Sshipyard-13]
 }
 
-const _ScmID_name = "SapproachsettlementSblackmarketScodexentryScommoditySfssallbodiesfoundSfssbodysignalsSfssdiscoveryscanSjournalSnavbeaconscanSnavrouteSoutfittingSscanbarycentreSshipyard"
+const _ScmID_name = "SapproachsettlementSblackmarketScodexentryScommoditySfssallbodiesfoundSfssbodysignalsSfssdiscoveryscanSfsssignaldiscoveredSjournalSnavbeaconscanSnavrouteSoutfittingSscanbarycentreSshipyard"
 
-var _ScmID_index = [...]uint8{0, 19, 31, 42, 52, 70, 85, 102, 110, 124, 133, 144, 159, 168}
+var _ScmID_index = [...]uint8{0, 19, 31, 42, 52, 70, 85, 102, 122, 130, 144, 153, 164, 179, 188}
 
 func (i ScmID) String() string {
 	if i < 0 || i >= ScmID(len(_ScmID_index)-1) {
