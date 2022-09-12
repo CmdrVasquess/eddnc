@@ -3,7 +3,6 @@ EDDNSCMS:=$(wildcard $(EDDNDIR)/schemas/*.json)
 JSCMS:=$(patsubst %,./schemas/%,$(notdir $(EDDNSCMS)))
 
 all: schemas.go
-	echo $(JSCMS)
 
 schemas.go: $(JSCMS)
 	go run gen/main.go > $@

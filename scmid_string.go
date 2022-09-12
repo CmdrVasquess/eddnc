@@ -12,21 +12,23 @@ func _() {
 	_ = x[Sblackmarket-1]
 	_ = x[Scodexentry-2]
 	_ = x[Scommodity-3]
-	_ = x[Sfssallbodiesfound-4]
-	_ = x[Sfssbodysignals-5]
-	_ = x[Sfssdiscoveryscan-6]
-	_ = x[Sfsssignaldiscovered-7]
-	_ = x[Sjournal-8]
-	_ = x[Snavbeaconscan-9]
-	_ = x[Snavroute-10]
-	_ = x[Soutfitting-11]
-	_ = x[Sscanbarycentre-12]
-	_ = x[Sshipyard-13]
+	_ = x[Sfcmaterials_capi-4]
+	_ = x[Sfcmaterials_journal-5]
+	_ = x[Sfssallbodiesfound-6]
+	_ = x[Sfssbodysignals-7]
+	_ = x[Sfssdiscoveryscan-8]
+	_ = x[Sfsssignaldiscovered-9]
+	_ = x[Sjournal-10]
+	_ = x[Snavbeaconscan-11]
+	_ = x[Snavroute-12]
+	_ = x[Soutfitting-13]
+	_ = x[Sscanbarycentre-14]
+	_ = x[Sshipyard-15]
 }
 
-const _ScmID_name = "SapproachsettlementSblackmarketScodexentryScommoditySfssallbodiesfoundSfssbodysignalsSfssdiscoveryscanSfsssignaldiscoveredSjournalSnavbeaconscanSnavrouteSoutfittingSscanbarycentreSshipyard"
+const _ScmID_name = "SapproachsettlementSblackmarketScodexentryScommoditySfcmaterials_capiSfcmaterials_journalSfssallbodiesfoundSfssbodysignalsSfssdiscoveryscanSfsssignaldiscoveredSjournalSnavbeaconscanSnavrouteSoutfittingSscanbarycentreSshipyard"
 
-var _ScmID_index = [...]uint8{0, 19, 31, 42, 52, 70, 85, 102, 122, 130, 144, 153, 164, 179, 188}
+var _ScmID_index = [...]uint8{0, 19, 31, 42, 52, 69, 89, 107, 122, 139, 159, 167, 181, 190, 201, 216, 225}
 
 func (i ScmID) String() string {
 	if i < 0 || i >= ScmID(len(_ScmID_index)-1) {

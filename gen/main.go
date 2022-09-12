@@ -49,9 +49,9 @@ import _ "embed"
 
 const ScmNo = %d
 
-//go:generate stringer -type ScmID
+//go%s stringer -type ScmID
 const (
-`, len(schemaFiles))
+`, len(schemaFiles), ":generate")
 	for i := range schemaFiles {
 		fmt.Printf("\tS%s ScmID = %d\n", schemaName[i], i)
 	}

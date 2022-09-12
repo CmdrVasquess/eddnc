@@ -3,7 +3,7 @@ package eddnc
 
 import _ "embed"
 
-const ScmNo = 14
+const ScmNo = 16
 
 //go:generate stringer -type ScmID
 const (
@@ -11,16 +11,18 @@ const (
 	Sblackmarket         ScmID = 1
 	Scodexentry          ScmID = 2
 	Scommodity           ScmID = 3
-	Sfssallbodiesfound   ScmID = 4
-	Sfssbodysignals      ScmID = 5
-	Sfssdiscoveryscan    ScmID = 6
-	Sfsssignaldiscovered ScmID = 7
-	Sjournal             ScmID = 8
-	Snavbeaconscan       ScmID = 9
-	Snavroute            ScmID = 10
-	Soutfitting          ScmID = 11
-	Sscanbarycentre      ScmID = 12
-	Sshipyard            ScmID = 13
+	Sfcmaterials_capi    ScmID = 4
+	Sfcmaterials_journal ScmID = 5
+	Sfssallbodiesfound   ScmID = 6
+	Sfssbodysignals      ScmID = 7
+	Sfssdiscoveryscan    ScmID = 8
+	Sfsssignaldiscovered ScmID = 9
+	Sjournal             ScmID = 10
+	Snavbeaconscan       ScmID = 11
+	Snavroute            ScmID = 12
+	Soutfitting          ScmID = 13
+	Sscanbarycentre      ScmID = 14
+	Sshipyard            ScmID = 15
 )
 
 var ScmURLs = []string{
@@ -28,6 +30,8 @@ var ScmURLs = []string{
 	"https://eddn.edcd.io/schemas/blackmarket/1",
 	"https://eddn.edcd.io/schemas/codexentry/1",
 	"https://eddn.edcd.io/schemas/commodity/3",
+	"https://eddn.edcd.io/schemas/fcmaterials_capi/1",
+	"https://eddn.edcd.io/schemas/fcmaterials_journal/1",
 	"https://eddn.edcd.io/schemas/fssallbodiesfound/1",
 	"https://eddn.edcd.io/schemas/fssbodysignals/1",
 	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1",
@@ -45,6 +49,8 @@ var ScmMap = map[string]ScmID{
 	"https://eddn.edcd.io/schemas/blackmarket/1":         Sblackmarket,
 	"https://eddn.edcd.io/schemas/codexentry/1":          Scodexentry,
 	"https://eddn.edcd.io/schemas/commodity/3":           Scommodity,
+	"https://eddn.edcd.io/schemas/fcmaterials_capi/1":    Sfcmaterials_capi,
+	"https://eddn.edcd.io/schemas/fcmaterials_journal/1": Sfcmaterials_journal,
 	"https://eddn.edcd.io/schemas/fssallbodiesfound/1":   Sfssallbodiesfound,
 	"https://eddn.edcd.io/schemas/fssbodysignals/1":      Sfssbodysignals,
 	"https://eddn.edcd.io/schemas/fssdiscoveryscan/1":    Sfssdiscoveryscan,
@@ -62,6 +68,8 @@ var ScmDefs = []string{
 	blackmarketSchema,
 	codexentrySchema,
 	commoditySchema,
+	fcmaterials_capiSchema,
+	fcmaterials_journalSchema,
 	fssallbodiesfoundSchema,
 	fssbodysignalsSchema,
 	fssdiscoveryscanSchema,
@@ -86,6 +94,12 @@ var (
 
 	//go:embed schemas/commodity-v3.0.json
 	commoditySchema string
+
+	//go:embed schemas/fcmaterials_capi-v1.0.json
+	fcmaterials_capiSchema string
+
+	//go:embed schemas/fcmaterials_journal-v1.0.json
+	fcmaterials_journalSchema string
 
 	//go:embed schemas/fssallbodiesfound-v1.0.json
 	fssallbodiesfoundSchema string
