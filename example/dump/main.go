@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"time"
 
+	"git.fractalqb.de/fractalqb/c4hgol"
 	"github.com/CmdrVasquess/eddnc"
 	"github.com/CmdrVasquess/eddnc/subscriber"
 )
@@ -49,6 +50,18 @@ func eventLoop(subs *subscriber.S) {
 			dump(b, ok)
 		case b, ok := <-subs.Chan[eddnc.Sshipyard]:
 			dump(b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sapproachsettlement]:
+			dump(b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfcmaterials_capi]:
+			dump(b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfcmaterials_journal]:
+			dump(b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfssallbodiesfound]:
+			dump(b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfssbodysignals]:
+			dump(b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfsssignaldiscovered]:
+			dump(b, ok)
 		}
 	}
 	log.Println("exit event loop")
@@ -57,10 +70,15 @@ func eventLoop(subs *subscriber.S) {
 func main() {
 	flag.IntVar(&qLengths, "q", qLengths, "Set length of internal event queues")
 	flag.Parse()
+
+	c4hgol.Configure(subscriber.LogCfg, "t", true)
+
 	subs := subscriber.New((&subscriber.Config{
 		ConnTimeout: subscriber.GoodTimeout,
 		RecvTimeout: 30 * time.Second,
-	}).AllQCaps(qLengths))
+	}).AllQCaps(qLengths)) // => eventLoop() must read all channels to avoid blocking
+	// Blocking could also be avoided by setting a non-blocking Enqueue function with
+	// Config (see Blocking, Dropping).
 	go eventLoop(subs)
 	// Be polite and clean up…
 	sigs := make(chan os.Signal)
