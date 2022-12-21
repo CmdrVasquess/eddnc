@@ -194,7 +194,7 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 				continue
 			}
 			txt := bytes.NewBuffer(bufPool.Get().([]byte))
-			io.Copy(txt, zrd)
+			io.Copy(txt, &io.LimitedReader{R: zrd, N: 5 * 1024 * 1024}) // Avoid ZIP bombing
 			zrd.Close()
 			line := txt.Bytes()
 			var scm string
