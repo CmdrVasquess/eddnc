@@ -185,13 +185,18 @@ func (cm *CommodityMsg) Wrap(msg ggja.Obj) error {
 			if errors.As(err, &nce) {
 				if str, ok := nce.Value.(string); ok {
 					if str == "" {
-						log.Debugf("set empty %s string to 0", att)
+						log.Debug("set empty string `property` to 0",
+							`property`, att,
+						)
 						res = 0
 						intercepted = true
 						return
 					}
 					if res, err = strconv.Atoi(str); err == nil {
-						log.Debugf("%s converted from string '%s'", att, str)
+						log.Debug("`property` converted from `string`",
+							`property`, att,
+							`string`, str,
+						)
 						intercepted = true
 						return
 					}

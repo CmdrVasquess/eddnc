@@ -5,20 +5,19 @@ import (
 	"compress/zlib"
 	"io"
 	"regexp"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
 
-	"git.fractalqb.de/fractalqb/c4hgol"
-	"git.fractalqb.de/fractalqb/qblog"
 	"github.com/CmdrVasquess/eddnc"
 	zmq "github.com/pebbe/zmq4"
+	"golang.org/x/exp/slog"
 )
 
-var (
-	log                     = qblog.New("fromeddn")
-	LogCfg c4hgol.LogConfig = log
-)
+var log = slog.Default()
+
+func SetLog(l *slog.Logger) { log = l }
 
 type EnqueueFunc func(c chan<- []byte, data []byte, scm eddnc.ScmID)
 
@@ -30,7 +29,7 @@ func Dropping(c chan<- []byte, data []byte, queue string) {
 	select {
 	case c <- data:
 	default:
-		log.Warnv("dropping message from `queue`", queue)
+		log.Warn("dropping message from `queue`", "queue", queue)
 	}
 }
 
@@ -51,10 +50,11 @@ func (dws DropWithStats) Enqueue(c chan<- []byte, data []byte, queue eddnc.ScmID
 	case c <- data:
 	default:
 		stats.Dropped++
-		log.Warnv("`drop` message of `total` from `queue` `len`",
-			stats.Dropped,
-			stats.Total,
-			queue)
+		log.Warn("`drop` message of `total` from `queue`",
+			"drop", stats.Dropped,
+			"total", stats.Total,
+			"queue", queue,
+		)
 	}
 }
 
@@ -140,7 +140,8 @@ func (s *S) Close() bool {
 
 func must(err error) {
 	if err != nil {
-		log.Panice(err)
+		log.Error(err.Error())
+		panic(err)
 	}
 }
 
@@ -153,9 +154,7 @@ var (
 
 func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 	zctx, err := zmq.NewContext()
-	if err != nil {
-		log.Panice(err)
-	}
+	must(err)
 	var subs *zmq.Socket
 	defer func() {
 		if subs != nil {
@@ -163,11 +162,9 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 		}
 	}()
 	for {
-		log.Debugv("0MQ connecting to `relay`", s.relay)
+		log.Debug("0MQ connecting to `relay`", "relay", s.relay)
 		subs, err = zctx.NewSocket(zmq.SUB)
-		if err != nil {
-			log.Panice(err)
-		}
+		must(err)
 		must(subs.SetSubscribe(""))
 		must(subs.SetConnectTimeout(s.connTimeout))
 		must(subs.SetRcvtimeo(s.recvTimeout))
@@ -184,13 +181,13 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 			}
 			msg, err := subs.RecvBytes(0)
 			if err != nil { // TODO Only break on EAGAIN?
-				log.Errore(err)
+				log.Error(err.Error())
 				break
 			}
 			atomic.StoreInt64(&s.rtuxm, time.Now().UnixMilli())
 			zrd, err := zlib.NewReader(bytes.NewReader(msg))
 			if err != nil {
-				log.Errore(err)
+				log.Error(err.Error())
 				continue
 			}
 			txt := bytes.NewBuffer(bufPool.Get().([]byte))
@@ -199,21 +196,23 @@ func (s *S) loop(chans [eddnc.ScmNo]chan<- []byte) {
 			line := txt.Bytes()
 			var scm string
 			if m := scmMatch.FindSubmatch(line); m == nil {
-				log.Errorv("no $schemaRef in `message`", string(line))
+				log.Error("no $schemaRef in `message`", "message", string(line))
 				continue
 			} else {
 				scm = string(m[1])
 			}
-			if scmid, ok := eddnc.ScmMap[string(scm)]; ok {
+			if scmid, ok := eddnc.ScmMap[scm]; ok {
 				if c := chans[scmid]; c != nil {
 					s.enqueue(c, line, scmid)
 				}
 			} else {
 				bufPool.Put(line)
-				log.Errorv("unknown `schema`", string(scm))
+				if !strings.HasSuffix(scm, "/test") {
+					log.Error("unknown `schema`", "schema", scm)
+				}
 			}
 		}
-		log.Debugv("close 0MQ socket")
+		log.Debug("close 0MQ socket")
 		subs.Close()
 		subs = nil
 	}

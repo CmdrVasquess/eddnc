@@ -1,11 +1,9 @@
 package eddnc
 
 import (
-	"git.fractalqb.de/fractalqb/c4hgol"
-	"git.fractalqb.de/fractalqb/qblog"
+	"golang.org/x/exp/slog"
 )
 
-var (
-	log                     = qblog.New("eddnc")
-	LogCfg c4hgol.LogConfig = log
-)
+var log = slog.Default()
+
+func SetLog(logger *slog.Logger) { log = logger }
