@@ -1,7 +1,7 @@
 package eddnc
 
 import (
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 var log = slog.Default()

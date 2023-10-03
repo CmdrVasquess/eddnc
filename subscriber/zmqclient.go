@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"compress/zlib"
 	"io"
+	"log/slog"
 	"regexp"
 	"strings"
 	"sync"
@@ -12,7 +13,6 @@ import (
 
 	"github.com/CmdrVasquess/eddnc"
 	zmq "github.com/pebbe/zmq4"
-	"golang.org/x/exp/slog"
 )
 
 var log = slog.Default()
