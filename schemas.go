@@ -3,7 +3,7 @@ package eddnc
 
 import _ "embed"
 
-const ScmNo = 16
+const ScmNo = 18
 
 //go:generate stringer -type ScmID
 const (
@@ -11,18 +11,20 @@ const (
 	Sblackmarket         ScmID = 1
 	Scodexentry          ScmID = 2
 	Scommodity           ScmID = 3
-	Sfcmaterials_capi    ScmID = 4
-	Sfcmaterials_journal ScmID = 5
-	Sfssallbodiesfound   ScmID = 6
-	Sfssbodysignals      ScmID = 7
-	Sfssdiscoveryscan    ScmID = 8
-	Sfsssignaldiscovered ScmID = 9
-	Sjournal             ScmID = 10
-	Snavbeaconscan       ScmID = 11
-	Snavroute            ScmID = 12
-	Soutfitting          ScmID = 13
-	Sscanbarycentre      ScmID = 14
-	Sshipyard            ScmID = 15
+	Sdockingdenied       ScmID = 4
+	Sdockinggranted      ScmID = 5
+	Sfcmaterials_capi    ScmID = 6
+	Sfcmaterials_journal ScmID = 7
+	Sfssallbodiesfound   ScmID = 8
+	Sfssbodysignals      ScmID = 9
+	Sfssdiscoveryscan    ScmID = 10
+	Sfsssignaldiscovered ScmID = 11
+	Sjournal             ScmID = 12
+	Snavbeaconscan       ScmID = 13
+	Snavroute            ScmID = 14
+	Soutfitting          ScmID = 15
+	Sscanbarycentre      ScmID = 16
+	Sshipyard            ScmID = 17
 )
 
 var ScmURLs = []string{
@@ -30,6 +32,8 @@ var ScmURLs = []string{
 	"https://eddn.edcd.io/schemas/blackmarket/1",
 	"https://eddn.edcd.io/schemas/codexentry/1",
 	"https://eddn.edcd.io/schemas/commodity/3",
+	"https://eddn.edcd.io/schemas/dockingdenied/1",
+	"https://eddn.edcd.io/schemas/dockinggranted/1",
 	"https://eddn.edcd.io/schemas/fcmaterials_capi/1",
 	"https://eddn.edcd.io/schemas/fcmaterials_journal/1",
 	"https://eddn.edcd.io/schemas/fssallbodiesfound/1",
@@ -49,6 +53,8 @@ var ScmMap = map[string]ScmID{
 	"https://eddn.edcd.io/schemas/blackmarket/1":         Sblackmarket,
 	"https://eddn.edcd.io/schemas/codexentry/1":          Scodexentry,
 	"https://eddn.edcd.io/schemas/commodity/3":           Scommodity,
+	"https://eddn.edcd.io/schemas/dockingdenied/1":       Sdockingdenied,
+	"https://eddn.edcd.io/schemas/dockinggranted/1":      Sdockinggranted,
 	"https://eddn.edcd.io/schemas/fcmaterials_capi/1":    Sfcmaterials_capi,
 	"https://eddn.edcd.io/schemas/fcmaterials_journal/1": Sfcmaterials_journal,
 	"https://eddn.edcd.io/schemas/fssallbodiesfound/1":   Sfssallbodiesfound,
@@ -68,6 +74,8 @@ var ScmDefs = []string{
 	blackmarketSchema,
 	codexentrySchema,
 	commoditySchema,
+	dockingdeniedSchema,
+	dockinggrantedSchema,
 	fcmaterials_capiSchema,
 	fcmaterials_journalSchema,
 	fssallbodiesfoundSchema,
@@ -94,6 +102,12 @@ var (
 
 	//go:embed schemas/commodity-v3.0.json
 	commoditySchema string
+
+	//go:embed schemas/dockingdenied-v1.0.json
+	dockingdeniedSchema string
+
+	//go:embed schemas/dockinggranted-v1.0.json
+	dockinggrantedSchema string
 
 	//go:embed schemas/fcmaterials_capi-v1.0.json
 	fcmaterials_capiSchema string

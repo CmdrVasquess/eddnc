@@ -1,6 +1,6 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/scanbarycentre/1#",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -39,16 +39,16 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "BodyID" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                    "enum"          : [ "ScanBaryCentre" ]
                 },
                 "horizons": {
                     "type"          : "boolean",
@@ -60,42 +60,43 @@
                 },
                 "StarSystem": {
                     "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
+                    "minLength"     : 1
                 },
                 "StarPos": {
                     "type"          : "array",
                     "items"         : { "type": "number" },
                     "minItems"      : 3,
                     "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
+                    "description"   : "Must be added by the sender if not present in the journal event"
                 },
                 "SystemAddress": {
                     "type"          : "integer"
                 },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
-                "MarketID": {
-                    "type"          : "integer"
-                },		
                 "BodyID": {
                     "type"          : "integer"
                 },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
+                "SemiMajorAxis": {
                     "type"          : "number"
                 },
-                "Longitude": {
+                "Eccentricity": {
+                    "type"          : "number"
+                },
+                "OrbitalInclination": {
+                    "type"          : "number"
+                },
+                "Periapsis": {
+                    "type"          : "number"
+                },
+                "OrbitalPeriod": {
+                    "type"          : "number"
+                },
+                "AscendingNode": {
+                    "type"          : "number"
+                },
+                "MeanAnomaly": {
                     "type"          : "number"
                 }
             }
         }
-    },
-    "definitions": {
-        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
     }
 }

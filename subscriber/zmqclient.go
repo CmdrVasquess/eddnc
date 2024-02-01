@@ -146,9 +146,7 @@ func must(err error) {
 }
 
 var (
-	bufPool = sync.Pool{
-		New: func() interface{} { return []byte{} }, // TODO good default size
-	}
+	bufPool  = sync.Pool{New: func() interface{} { return []byte{} }}
 	scmMatch = regexp.MustCompile(`"\$schemaRef"[^:]*:\s*"([^"]+)"`)
 )
 

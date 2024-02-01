@@ -1,6 +1,6 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/fcmaterials_capi/1",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -18,11 +18,11 @@
                 },
                 "gameversion": {
                     "type"          : "string",
-                    "description"   : "From Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Value of 'CAPI-market' if possible, else empty string."
                 },
                 "gamebuild": {
                     "type"          : "string",
-                    "description"   : "The `build` value from a Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Value of 'CAPI-market' if possible, else empty string."
                 },
                 "softwareName": {
                     "type"          : "string"
@@ -41,61 +41,112 @@
             "type"                  : "object",
             "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "timestamp", "event", "MarketID", "CarrierID", "Items" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                    "enum"          : [ "FCMaterials" ]
                 },
                 "horizons": {
                     "type"          : "boolean",
-                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                    "description"   : "Boolean value copied from the Journal LoadGame event, when it is present there."
                 },
                 "odyssey": {
-                    "type"      : "boolean",
-                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                    "type"          : "boolean",
+                    "description"   : "Boolean value copied from the Journal LoadGame event, when it is present there."
                 },
-                "StarSystem": {
-                    "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
-                },
-                "StarPos": {
-                    "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
-                },
-                "SystemAddress": {
-                    "type"          : "integer"
-                },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
+
                 "MarketID": {
                     "type"          : "integer"
-                },		
-                "BodyID": {
-                    "type"          : "integer"
                 },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
-                    "type"          : "number"
+
+                "CarrierID": {
+                    "type"          : "string",
+                    "minLength"     : 1
                 },
-                "Longitude": {
-                    "type"          : "number"
+
+                "Items": {
+                    "properties": {
+                        "purchases": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [ "name", "price", "outstanding", "total" ],
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "locName": {
+                                        "$ref": "#/definitions/disallowed"
+                                    },
+                                    "outstanding": {
+                                        "type": "integer"
+                                    },
+                                    "price": {
+                                        "type": "integer"
+                                    },
+                                    "total": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "sales": {
+                            "anyOf": [
+                                {
+                                    "type": "array",
+                                    "$comment": "If there are no items then sales is an empty array",
+                                    "minItems": 0,
+                                    "maxItems": 0
+                                },
+                                {
+                                    "type": "object",
+                                    "$comment": "If there ARE items then sales is an object, *NOT* an array",
+                                    "patternProperties": {
+                                        "^[0-9]+$": {
+                                            "type"      : "object",
+                                            "required"  : [ "id", "name", "price", "stock" ],
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "id"    : {
+                                                    "type"  : "integer"
+                                                },
+                                                "name"  : {
+                                                    "type"  : "string",
+                                                    "minLength": 1
+                                                },
+                                                "locName"   : {
+                                                    "$ref": "#/definitions/disallowed"
+                                                },
+                                                "price" : {
+                                                    "type": "integer"
+                                                },
+                                                "stock": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
                 }
             }
         }
     },
     "definitions": {
-        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+        "disallowed": {
+            "not" : {
+                "type": [
+                    "array", "boolean", "integer", "number", "null", "object", "string"
+                ]
+            }
+        }
     }
 }

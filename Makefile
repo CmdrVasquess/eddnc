@@ -9,5 +9,5 @@ schemas.go: $(JSCMS)
 	gofmt -w $@
 	go generate
 
-schemas/%.json: $(EDDNDIR)/schemas/*.json
+schemas/%.json: $(EDDNDIR)/schemas/%.json
 	cp $< $@

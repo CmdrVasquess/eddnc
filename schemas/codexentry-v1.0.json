@@ -1,6 +1,7 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/codexentry/1#",
+    "description"           : "EDDN schema for CodexEntry Journal events.  Full documentation at https://github.com/EDCD/EDDN/tree/master/schemas/codexentry-README.md",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -39,16 +40,16 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "timestamp", "event", "System", "StarPos", "SystemAddress", "EntryID" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
-                "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                "event": {
+                    "enum"          : [ "CodexEntry" ]
                 },
                 "horizons": {
                     "type"          : "boolean",
@@ -58,40 +59,76 @@
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has an Odyssey expansion."
                 },
-                "StarSystem": {
+                "System": {
                     "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
+                    "minLength"     : 1
                 },
                 "StarPos": {
                     "type"          : "array",
                     "items"         : { "type": "number" },
                     "minItems"      : 3,
                     "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
+                    "description"   : "Must be added by the sender if not present in the journal event"
                 },
                 "SystemAddress": {
-                    "type"          : "integer"
+                    "type"          : "integer",
+                    "description"   : "Should be added by the sender if not present in the journal event"
                 },
-                "Name"             : {
+                "Name": {
                     "type"          : "string",
-                    "description"   : "Name of settlement"
+                    "minLength"     : 1
                 },
-                "MarketID": {
-                    "type"          : "integer"
-                },		
-                "BodyID": {
+                "Region": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "EntryID": {
                     "type"          : "integer"
                 },
-                "BodyName": {
-                    "type"          : "string"
-                },	
+                "Category": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
                 "Latitude": {
                     "type"          : "number"
                 },
                 "Longitude": {
                     "type"          : "number"
+                },
+                "SubCategory": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "NearestDestination": {
+                    "type"          : "string"
+                },
+                "VoucherAmount": {
+                    "type"          : "integer"
+                },
+                "Traits": {
+                    "type"          : "array",
+                    "items"         : {
+                        "type"          : "string",
+                        "minLength"     : 1
+                    }
+                },
+                "BodyID": {
+                    "type"          : "integer"
+                },
+                "BodyName": {
+                    "type"          : "string"
+                },
+                "IsNewEntry": {
+                    "$ref"          : "#/definitions/disallowed",
+                    "description"   : "Contains personal data"
+                },
+                "NewTraitsDiscovered": {
+                    "$ref"          : "#/definitions/disallowed",
+                    "description"   : "Contains personal data"
                 }
+            },
+            "patternProperties": {
+                "_Localised$"       : { "$ref" : "#/definitions/disallowed" }
             }
         }
     },

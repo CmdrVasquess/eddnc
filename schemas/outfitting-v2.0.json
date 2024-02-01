@@ -1,10 +1,10 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/outfitting/2#",
     "type"                  : "object",
     "additionalProperties"  : false,
-    "required": [ "$schemaRef", "header", "message" ],
-    "properties": {
+    "required"              : [ "$schemaRef", "header", "message" ],
+    "properties"            : {
         "$schemaRef": {
             "type"                  : "string"
         },
@@ -18,11 +18,11 @@
                 },
                 "gameversion": {
                     "type"          : "string",
-                    "description"   : "From Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Fileheader->gameversion, else LoadGame->gameversion, else 'CAPI-shipyard', else ''."
                 },
                 "gamebuild": {
                     "type"          : "string",
-                    "description"   : "The `build` value from a Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Fileheader->build, else LoadGame->build, else 'CAPI-shipyard', else ''."
                 },
                 "softwareName": {
                     "type"          : "string"
@@ -39,63 +39,48 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "systemName", "stationName", "marketId", "timestamp", "modules" ],
             "properties"            : {
-                "timestamp": {
-                    "type"          : "string",
-                    "format"        : "date-time"
+                "systemName": {
+                    "type"      : "string",
+                    "renamed"   : "StarSystem",
+                    "minLength" : 1
                 },
-                "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                "stationName": {
+                    "type"      : "string",
+                    "renamed"   : "StationName",
+                    "minLength" : 1
+                },                
+                "marketId": {
+                    "type"      : "integer",
+                    "renamed"   : "MarketID"
                 },
                 "horizons": {
-                    "type"          : "boolean",
-                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
                 "odyssey": {
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                 
+                "timestamp": {
+                    "type"      : "string",
+                    "format"    : "date-time"
                 },
-                "StarSystem": {
-                    "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
-                },
-                "StarPos": {
+                "modules": {
                     "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
-                },
-                "SystemAddress": {
-                    "type"          : "integer"
-                },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
-                "MarketID": {
-                    "type"          : "integer"
-                },		
-                "BodyID": {
-                    "type"          : "integer"
-                },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
-                    "type"          : "number"
-                },
-                "Longitude": {
-                    "type"          : "number"
+                    "renamed"       : "Items",
+                    "minItems"      : 1,
+                    "uniqueItems"   : true,
+                    "items"         : {
+                        "type"          : "string",
+                        "minLength"     : 1,
+                        "pattern"       : "(^Hpt_|^hpt_|^Int_|^int_|_Armour_|_armour_)",
+                        "description"   : "Module symbolic name. e.g. Hpt_ChaffLauncher_Tiny, Int_Engine_Size3_Class5_Fast, Independant_Trader_Armour_Grade1, etc. Modules that depend on the Cmdr's purchases (e.g. bobbleheads, paintjobs) or rank (e.g. decals and PowerPlay faction-specific modules) should be omitted."
+                    }
                 }
             }
         }
-    },
-    "definitions": {
-        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
     }
 }

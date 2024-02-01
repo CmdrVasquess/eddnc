@@ -1,6 +1,6 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/fcmaterials_journal/1",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -41,56 +41,65 @@
             "type"                  : "object",
             "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "timestamp", "event", "MarketID", "CarrierName", "CarrierID", "Items" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                    "enum"          : [ "FCMaterials" ]
                 },
                 "horizons": {
                     "type"          : "boolean",
-                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                    "description"   : "Boolean value copied from the Journal LoadGame event, when it is present there."
                 },
                 "odyssey": {
-                    "type"      : "boolean",
-                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                    "type"          : "boolean",
+                    "description"   : "Boolean value copied from the Journal LoadGame event, when it is present there."
                 },
-                "StarSystem": {
-                    "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
-                },
-                "StarPos": {
-                    "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
-                },
-                "SystemAddress": {
-                    "type"          : "integer"
-                },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
+
                 "MarketID": {
                     "type"          : "integer"
-                },		
-                "BodyID": {
-                    "type"          : "integer"
                 },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
-                    "type"          : "number"
+
+                "CarrierName": {
+                    "type"          : "string",
+                    "minLength"     : 1
                 },
-                "Longitude": {
-                    "type"          : "number"
+
+                "CarrierID": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+
+                "Items": {
+                    "type"          : "array",
+                    "items": {
+                        "type"          : "object",
+                        "required"      : [ "id", "Name", "Price", "Stock", "Demand" ],
+                        "properties"    : {
+                            "id" : {
+                                "type"  : "integer"
+                            },
+                            "Name": {
+                                "type"      : "string",
+                                "minLength" : 1
+                            },
+                            "Price": {
+                                "type"      : "integer"
+                            },
+                            "Stock": {
+                                "type"      : "integer"
+                            },
+                            "Demand": {
+                                "type"      : "integer"
+                            }
+                        },
+                        "patternProperties": {
+                            "_Localised$"       : { "$ref" : "#/definitions/disallowed" }
+                        }
+                    }
                 }
             }
         }

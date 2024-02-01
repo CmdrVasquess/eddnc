@@ -1,6 +1,6 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/blackmarket/1#",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -15,14 +15,6 @@
             "properties"            : {
                 "uploaderID": {
                     "type"          : "string"
-                },
-                "gameversion": {
-                    "type"          : "string",
-                    "description"   : "From Fileheader event if available, else LoadGame if available there."
-                },
-                "gamebuild": {
-                    "type"          : "string",
-                    "description"   : "The `build` value from a Fileheader event if available, else LoadGame if available there."
                 },
                 "softwareName": {
                     "type"          : "string"
@@ -39,63 +31,42 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
-            "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "description"           : "Contains all properties from the listed events in the client's journal minus Localised strings and the properties marked below as 'disallowed'",
+            "additionalProperties"  : true,
+            "required"              : [ "systemName", "stationName", "timestamp", "name", "sellPrice", "prohibited" ],
             "properties"            : {
+                "systemName": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },
+                "stationName": {
+                    "type"          : "string",
+                    "minLength"     : 1
+                },                
+                "marketId": {
+                    "type"          : "integer",
+                    "renamed"       : "MarketID"
+                },
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
-                "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
-                },
-                "horizons": {
-                    "type"          : "boolean",
-                    "description"   : "Whether the sending Cmdr has a Horizons pass."
-                },
-                "odyssey": {
-                    "type"      : "boolean",
-                    "description" : "Whether the sending Cmdr has an Odyssey expansion."
-                },
-                "StarSystem": {
+                "name": {
                     "type"          : "string",
+                    "renamed"       : "Type",
                     "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
+                    "description"   : "Commodity name as returned by the MarketSell entry in the Journal"
                 },
-                "StarPos": {
-                    "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
+                "sellPrice": {
+                    "type"          : "integer",
+                    "description"   : "Price to sell to the market"
                 },
-                "SystemAddress": {
-                    "type"          : "integer"
-                },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
-                "MarketID": {
-                    "type"          : "integer"
-                },		
-                "BodyID": {
-                    "type"          : "integer"
-                },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
-                    "type"          : "number"
-                },
-                "Longitude": {
-                    "type"          : "number"
+                "prohibited": {
+                    "type"          : "boolean",
+                    "renamed"       : "IllegalGoods",
+                    "description"   : "Whether the commodity is prohibited at this station"
                 }
             }
         }
-    },
-    "definitions": {
-        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
     }
 }
