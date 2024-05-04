@@ -1,7 +1,13 @@
 git.fractalqb.de/fractalqb/catch v0.3.0 h1:Gq2b4k3O4+8joTlXLx8thcwYU0FkRGnZgDAoalAs4dM=
 git.fractalqb.de/fractalqb/catch v0.3.0/go.mod h1:zXovejd5jSkpUrfb5N5wuGqfhoP419f7IjdK+JKIbeE=
-git.fractalqb.de/fractalqb/ggja v0.11.2 h1:YmQ1qJ76BWfXRP7vzj+jRQ2nJQR1F80DtdCzIsvVxFQ=
-git.fractalqb.de/fractalqb/ggja v0.11.2/go.mod h1:AIZ5hSqD4EkkA7UhzCeGfD7dS6rjs164qh1hx1B7LE8=
+git.fractalqb.de/fractalqb/daq v0.9.1 h1:Vp3m07jWZxYmp+G60hdDQLIA8kOcTwVonq/oUjb07oA=
+git.fractalqb.de/fractalqb/daq v0.9.1/go.mod h1:YHGP0ypN2h5PPO8TkrUR2KN58qS6zKG7zbVOJu3UM20=
+git.fractalqb.de/fractalqb/daq v0.10.0 h1:fB9Zo2DQ+s9MExTerg4jrfAalXyoF0N5WN86s4avStM=
+git.fractalqb.de/fractalqb/daq v0.10.0/go.mod h1:8v0reDw36Lgn5q1hPcMnEJ5A1voYyPdg/Jg1fZ7y8sU=
+git.fractalqb.de/fractalqb/eloc v0.1.2 h1:1WeqwB/oOc+EJ9P6nT6tp/ykaYV340h5hSmXm8ulQPA=
+git.fractalqb.de/fractalqb/eloc v0.1.2/go.mod h1:bYWIoe0VSIhnJLgrgh1TNOF0n72MpwobmOJS8oZah1I=
+git.fractalqb.de/fractalqb/testerr v0.0.0-20240105201820-c28b44db6de1 h1:ybeUzPjmKbBvVEH8Lab5OU26UPeAybN7JbvVDvQt8kQ=
+git.fractalqb.de/fractalqb/testerr v0.0.0-20240105201820-c28b44db6de1/go.mod h1:9QIePAgsw5T/fD2CZmMUFs9xdBxryombyGoA812O288=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -13,8 +19,8 @@ github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd h1:TRLaZ9cD/w
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
 github.com/modern-go/reflect2 v1.0.2 h1:xBagoLtFs94CBntxluKeaWgTMpvLxC4ur3nMaC9Gz0M=
 github.com/modern-go/reflect2 v1.0.2/go.mod h1:yWuevngMOJpCy52FWWMvUC8ws7m/LJsjYzDa0/r8luk=
-github.com/pebbe/zmq4 v1.2.10 h1:wQkqRZ3CZeABIeidr3e8uQZMMH5YAykA/WN0L5zkd1c=
-github.com/pebbe/zmq4 v1.2.10/go.mod h1:nqnPueOapVhE2wItZ0uOErngczsJdLOGkebMxaO8r48=
+github.com/pebbe/zmq4 v1.2.11 h1:Ua5mgIaZeabUGnH7tqswkUcjkL7JYGai5e8v4hpEU9Q=
+github.com/pebbe/zmq4 v1.2.11/go.mod h1:nqnPueOapVhE2wItZ0uOErngczsJdLOGkebMxaO8r48=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
@@ -32,6 +38,8 @@ github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 h1:EzJWgHo
 github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415/go.mod h1:GwrjFmJcFw6At/Gs6z4yjiIwzuJ1/+UwLxMQDVQXShQ=
 github.com/xeipuuv/gojsonschema v1.2.0 h1:LhYJRs+L4fBtjZUfuSZIKGeVu0QRy8e5Xi7D17UxZ74=
 github.com/xeipuuv/gojsonschema v1.2.0/go.mod h1:anYRn/JVcOK2ZgGU+IjEV4nwlhoK5sQluxsYJ78Id3Y=
+golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc h1:ao2WRsKSzW6KuUY9IWPwWahcHCgR0s52IfwutMfEbdM=
+golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc/go.mod h1:iRJReGqOEeBhDZGkGbynYwcHlctCvnjTYIamk7uXpHI=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
