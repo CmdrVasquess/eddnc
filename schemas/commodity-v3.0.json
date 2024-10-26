@@ -1,6 +1,6 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/commodity/3#",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -18,11 +18,11 @@
                 },
                 "gameversion": {
                     "type"          : "string",
-                    "description"   : "From Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Fileheader->gameversion, else LoadGame->gameversion, else 'CAPI-market', else ''."
                 },
                 "gamebuild": {
                     "type"          : "string",
-                    "description"   : "The `build` value from a Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Fileheader->build, else LoadGame->build, else 'CAPI-market', else ''."
                 },
                 "softwareName": {
                     "type"          : "string"
@@ -39,63 +39,145 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "systemName", "stationName", "marketId", "timestamp", "commodities" ],
             "properties"            : {
-                "timestamp": {
-                    "type"          : "string",
-                    "format"        : "date-time"
+                "systemName": {
+                    "type"      : "string",
+                    "renamed"   : "StarSystem",
+                    "minLength" : 1
                 },
-                "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                "stationName": {
+                    "type"      : "string",
+                    "renamed"   : "StationName",
+                    "minLength" : 1
+                },                
+                "stationType": {
+                    "type"      : "string",
+                    "renamed"   : "StationType"
+                },
+                "carrierDockingAccess": {
+                    "type"      : "string",
+                    "renamed"   : "CarrierDockingAccess"
+                },                
+                "marketId": {
+                    "type"      : "integer",
+                    "renamed"   : "MarketID"
                 },
                 "horizons": {
-                    "type"          : "boolean",
-                    "description"   : "Whether the sending Cmdr has a Horizons pass."
+                    "type"      : "boolean",
+                    "description" : "Whether the sending Cmdr has a Horizons pass."
                 },
                 "odyssey": {
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                
+                "timestamp": {
+                    "type"      : "string",
+                    "format"    : "date-time"
                 },
-                "StarSystem": {
-                    "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
+                "commodities": {
+                    "type"      : "array",
+                    "description" : "Commodities returned by the Companion API, with illegal commodities omitted",
+                    "items"     : {
+                        "type"                  : "object",
+                        "additionalProperties"  : false,
+                        "required"              : [ "name", "meanPrice", "buyPrice", "stock", "stockBracket", "sellPrice", "demand", "demandBracket" ],
+                        "properties"            : {
+                            "name": {
+                                "type"          : "string",
+                                "renamed"       : "Name",
+                                "minLength"     : 1,
+                                "description"   : "Symbolic name as returned by the Companion API"
+                            },
+                            "meanPrice": {
+                                "type"          : "integer",
+                                "renamed"       : "MeanPrice"
+                            },
+                            "buyPrice": {
+                                "type"          : "integer",
+                                "renamed"       : "BuyPrice",
+                                "description"   : "Price to buy from the market"
+                            },
+                            "stock": {
+                                "type"          : "integer",
+                                "renamed"       : "Stock"
+                            },
+                            "stockBracket": {
+                                "$ref"          : "#/definitions/levelType",
+                                "renamed"       : "StockBracket"
+                            },
+                            "sellPrice": {
+                                "type"          : "integer",
+                                "renamed"       : "SellPrice",
+                                "description"   : "Price to sell to the market"
+                            },
+                            "demand": {
+                                "type"          : "integer",
+                                "renamed"       : "Demand"
+                            },
+                            "demandBracket": {
+                                "$ref"          : "#/definitions/levelType",
+                                "renamed"       : "DemandBracket"
+                            },
+                            "statusFlags": {
+                                "type"          : "array",
+                                "minItems"      : 1,
+                                "uniqueItems"   : true,
+                                "items"         : {
+                                    "type"          : "string",
+                                    "minLength"     : 1
+                                }
+                            },
+                            "Producer": {
+                                "$ref"          : "#/definitions/disallowed",
+                                "description"   : "Not present in CAPI data, so removed from Journal-sourced data"
+                            },
+                            "Rare" : {
+                                "$ref"          : "#/definitions/disallowed",
+                                "description"   : "Not present in CAPI data, so removed from Journal-sourced data"
+                            },
+                            "id": {
+                                "$ref"          : "#/definitions/disallowed",
+                                "description"   : "Not wanted for historical reasons?"
+                            }
+                        }
+                    }
                 },
-                "StarPos": {
+                "economies": {
+                    "type"      : "array",
+                    "items"     : {
+                        "type"                  : "object",
+                        "additionalProperties"  : false,
+                        "required"              : [ "name", "proportion" ],
+                        "properties"            : {
+                            "name": {
+                                "type"          : "string",
+                                "minLength"     : 1,
+                                "description"   : "Economy type as returned by the Companion API"
+                            },
+                            "proportion": {
+                                "type"          : "number"
+                            }
+                        }
+                    }
+                },
+                "prohibited": {
                     "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
-                },
-                "SystemAddress": {
-                    "type"          : "integer"
-                },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
-                "MarketID": {
-                    "type"          : "integer"
-                },		
-                "BodyID": {
-                    "type"          : "integer"
-                },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
-                    "type"          : "number"
-                },
-                "Longitude": {
-                    "type"          : "number"
+                    "uniqueItems"   : true,
+                    "items"         : {
+                        "type"          : "string",
+                        "minLength"     : 1
+                    }
                 }
             }
         }
     },
     "definitions": {
-        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
+        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } },
+        "levelType": {
+            "enum"          : [0, 1, 2, 3, ""],
+            "description"   : "Note: A value of \"\" indicates that the commodity is not normally sold/purchased at this station, but is currently temporarily for sale/purchase"
+        }
     }
 }

@@ -2,13 +2,13 @@ package eddnc
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"strconv"
 	"strings"
 	"time"
 
-	"git.fractalqb.de/fractalqb/ggja"
+	"git.fractalqb.de/fractalqb/daq"
+	"git.fractalqb.de/fractalqb/eloc/must"
 )
 
 //go:generate versioner -bno build_no -pkg eddnc ./VERSION ./version.go
@@ -18,15 +18,15 @@ type Header struct {
 	SoftwareName     string
 	SoftwareVersion  string
 	GatewayTimestamp time.Time `json:",omitempty"`
-	ggja.Obj
+	daq.DictAny
 }
 
-func (h *Header) Wrap(hdr ggja.Obj) {
-	h.UploaderID = hdr.MStr("uploaderID")
-	h.SoftwareName = hdr.MStr("softwareName")
-	h.SoftwareVersion = hdr.MStr("softwareVersion")
-	h.GatewayTimestamp = hdr.Time("gatewayTimestamp", time.Time{})
-	h.Obj = hdr
+func (h *Header) Wrap(hdr daq.DictAny) {
+	h.UploaderID = daq.Must(hdr.AsString("uploaderID"))
+	h.SoftwareName = daq.Must(hdr.AsString("softwareName"))
+	h.SoftwareVersion = daq.Must(hdr.AsString("softwareVersion"))
+	h.GatewayTimestamp = hdr.TimeOr("gatewayTimestamp", time.Time{})
+	h.DictAny = hdr
 }
 
 type Message interface {
@@ -58,8 +58,8 @@ type msg struct {
 func (m *msg) Timestamp() time.Time { return m.T }
 func (m *msg) SystemName() string   { return m.System }
 
-func (m *msg) Wrap(msg ggja.Obj) {
-	m.T = msg.MTime("timestamp")
+func (m *msg) Wrap(msg daq.DictAny) {
+	m.T = daq.Must(msg.AsTime("timestamp"))
 }
 
 type atStation struct {
@@ -67,10 +67,10 @@ type atStation struct {
 	StationName string
 }
 
-func (m *atStation) Wrap(msg ggja.Obj) {
+func (m *atStation) Wrap(msg daq.DictAny) {
 	m.msg.Wrap(msg)
-	m.System = msg.MStr("systemName")
-	m.StationName = msg.MStr("stationName")
+	m.System = daq.Must(msg.AsString("systemName"))
+	m.StationName = daq.Must(msg.AsString("stationName"))
 }
 
 type Event struct {
@@ -80,40 +80,40 @@ type Event struct {
 }
 
 func (e *Event) Parse(txt []byte) error {
-	gen := make(ggja.BareObj)
+	var gen daq.DictAny
 	if err := json.Unmarshal(txt, &gen); err != nil {
 		return err
 	}
-	return e.Wrap(ggja.Obj{Bare: gen})
+	return e.Wrap(gen)
 }
 
-func (e *Event) Wrap(evt ggja.Obj) (err error) {
-	evt.OnError = func(e error) { err = e }
-	e.SchemaRef = evt.MStr("$schemaRef")
-	e.Header.Wrap(*evt.MObj("header"))
+func (e *Event) Wrap(evt daq.DictAny) (err error) {
+	defer must.RecoverAs(&err)
+	e.SchemaRef = daq.Must(evt.AsString("$schemaRef"))
+	e.Header.Wrap(daq.Must(evt.AsDictAny("header")))
 	switch e.SchemaRef {
 	case ScmURLs[Sjournal], ScmURLs[Snavbeaconscan], ScmURLs[Sscanbarycentre]:
 		// TODO put non-journal schemas into specific messages
 		jm := new(JournalMsg)
-		if err = jm.Wrap(*evt.MObj("message")); err != nil {
+		if err = jm.Wrap(daq.Must(evt.AsDictAny("message"))); err != nil {
 			return err
 		}
 		e.Message = jm
 	case ScmURLs[Scommodity]:
 		cm := new(CommodityMsg)
-		if err = cm.Wrap(*evt.MObj("message")); err != nil {
+		if err = cm.Wrap(daq.Must(evt.AsDictAny("message"))); err != nil {
 			return err
 		}
 		e.Message = cm
 	case ScmURLs[Sfssdiscoveryscan]:
 		fds := new(FSSDiscoScanMsg)
-		if err = fds.Wrap(*evt.MObj("message")); err != nil {
+		if err = fds.Wrap(daq.Must(evt.AsDictAny("message"))); err != nil {
 			return err
 		}
 		e.Message = fds
 	case ScmURLs[Scodexentry]:
 		cdx := new(CodexMsg)
-		if err = cdx.Wrap(*evt.MObj("message")); err != nil {
+		if err = cdx.Wrap(daq.Must(evt.AsDictAny("message"))); err != nil {
 			return err
 		}
 		e.Message = cdx
@@ -135,17 +135,21 @@ type JournalMsg struct {
 	SystemAddr int64
 	StarPos    [3]float64
 	Event      string
-	ggja.Obj
+	daq.DictAny
 }
 
-func (je *JournalMsg) Wrap(msg ggja.Obj) error {
+func (je *JournalMsg) Wrap(msg daq.DictAny) error {
 	je.msg.Wrap(msg)
-	je.System = msg.MStr("StarSystem")
-	je.SystemAddr = msg.MInt64("SystemAddress")
-	je.Event = msg.MStr("event")
-	spos := msg.MArr("StarPos")
-	je.StarPos = [3]float64{spos.MF64(0), spos.MF64(1), spos.MF64(2)}
-	je.Obj = msg
+	je.System = daq.Must(msg.AsString("StarSystem"))
+	je.SystemAddr = daq.Must(msg.AsInt64("SystemAddress"))
+	je.Event = daq.Must(msg.AsString("event"))
+	spos := daq.Must(msg.AsSliceAny("StarPos"))
+	je.StarPos = [3]float64{
+		daq.Must(spos.AsFloat64(0)),
+		daq.Must(spos.AsFloat64(1)),
+		daq.Must(spos.AsFloat64(2)),
+	}
+	je.DictAny = msg
 	return nil
 }
 
@@ -167,70 +171,46 @@ type Commodity struct {
 	StatusFlags   []string
 }
 
-func (cm *CommodityMsg) Wrap(msg ggja.Obj) error {
+func (cm *CommodityMsg) Wrap(msg daq.DictAny) error {
 	cm.atStation.Wrap(msg)
-	cm.MarketID = msg.MInt64("marketId")
-	cmdts := msg.MArr("commodities")
-	if l := len(cmdts.Bare); cap(cm.Commodities) >= l {
+	cm.MarketID = daq.Must(msg.AsInt64("marketId"))
+	cmdts := daq.Must(msg.AsSliceAny("commodities"))
+	if l := len(cmdts); cap(cm.Commodities) >= l {
 		cm.Commodities = cm.Commodities[:l]
 	} else {
 		cm.Commodities = make([]*Commodity, l)
 	}
-	fromIntOrStr := func(obj ggja.Obj, att string) (res int) {
-		bak := obj.OnError
-		defer func() { obj.OnError = bak }()
-		intercepted := false
-		obj.OnError = func(err error) {
-			var nce ggja.NoConversionError
-			if errors.As(err, &nce) {
-				if str, ok := nce.Value.(string); ok {
-					if str == "" {
-						log.Debug("set empty string `property` to 0",
-							`property`, att,
-						)
-						res = 0
-						intercepted = true
-						return
-					}
-					if res, err = strconv.Atoi(str); err == nil {
-						log.Debug("`property` converted from `string`",
-							`property`, att,
-							`string`, str,
-						)
-						intercepted = true
-						return
-					}
-				}
-			}
-			bak(err)
-		}
-		if i := obj.MInt(att); intercepted {
+	fromIntOrStr := func(obj daq.DictAny, att string) (res int) {
+		val := obj[att]
+		if res, err := daq.ToInt(val); err == nil {
 			return res
-		} else {
-			return i
 		}
+		if txt, err := daq.ToString(val); err != nil {
+			res, _ = strconv.Atoi(txt)
+		}
+		return
 	}
-	for i, e := range cmdts.Bare {
-		src := ggja.Obj{Bare: e.(ggja.BareObj), OnError: msg.OnError}
+	for i, e := range cmdts {
+		var src daq.DictAny = e.(map[string]any)
 		dst := cm.Commodities[i]
 		if dst == nil {
 			dst = new(Commodity)
 			cm.Commodities[i] = dst
 		}
-		dst.Name = src.MStr("name")
-		dst.MeanPrice = src.MInt("meanPrice")
-		dst.BuyPrice = src.MInt("buyPrice")
-		dst.Stock = src.MInt("stock")
+		dst.Name = daq.Must(src.AsString("name"))
+		dst.MeanPrice = daq.Must(src.AsInt("meanPrice"))
+		dst.BuyPrice = daq.Must(src.AsInt("buyPrice"))
+		dst.Stock = daq.Must(src.AsInt("stock"))
 		dst.StockBracket = fromIntOrStr(src, "stockBracket")
-		dst.SellPrice = src.MInt("sellPrice")
-		dst.Demand = src.MInt("demand")
+		dst.SellPrice = daq.Must(src.AsInt("sellPrice"))
+		dst.Demand = daq.Must(src.AsInt("demand"))
 		dst.DemandBracket = fromIntOrStr(src, "demandBracket")
-		if arr := src.Arr("statusFlags"); arr == nil {
+		if arr, _ := src.AsSliceAny("statusFlags"); arr == nil {
 			dst.StatusFlags = nil
 		} else {
-			dst.StatusFlags = make([]string, arr.Len())
-			for i, v := range arr.Bare {
-				dst.StatusFlags[i] = v.(string)
+			dst.StatusFlags = make([]string, len(arr))
+			for i, v := range arr {
+				dst.StatusFlags[i] = daq.Must(daq.ToString(v))
 			}
 		}
 	}
@@ -252,16 +232,16 @@ type CodexMsg struct {
 	Longitude     float32
 }
 
-func (cdx *CodexMsg) Wrap(msg ggja.Obj) error {
+func (cdx *CodexMsg) Wrap(msg daq.DictAny) error {
 	cdx.msg.Wrap(msg)
-	cdx.System = msg.MStr("System")
-	cdx.EntryID = msg.MInt64("EntryID")
-	cdx.SystemAddress = msg.MInt64("SystemAddress")
-	coos := msg.MArr("StarPos")
-	cdx.StarPos[0] = coos.MF32(0)
-	cdx.StarPos[1] = coos.MF32(1)
-	cdx.StarPos[2] = coos.MF32(2)
-	if reg := trim(msg.MStr("Region")); !strings.HasPrefix(reg, "Codex_RegionName_") {
+	cdx.System = daq.Must(msg.AsString("System"))
+	cdx.EntryID = daq.Must(msg.AsInt64("EntryID"))
+	cdx.SystemAddress = daq.Must(msg.AsInt64("SystemAddress"))
+	coos := daq.Must(msg.AsSliceAny("StarPos"))
+	cdx.StarPos[0] = daq.Must(coos.AsFloat32(0))
+	cdx.StarPos[1] = daq.Must(coos.AsFloat32(1))
+	cdx.StarPos[2] = daq.Must(coos.AsFloat32(2))
+	if reg := trim(daq.Must(msg.AsString("Region"))); !strings.HasPrefix(reg, "Codex_RegionName_") {
 		return fmt.Errorf("illegal region name format: '%s'", reg)
 	} else {
 		reg = reg[17:]
@@ -271,14 +251,14 @@ func (cdx *CodexMsg) Wrap(msg ggja.Obj) error {
 		}
 		cdx.Region = int16(rid)
 	}
-	cdx.Name = trim(msg.MStr("Name"))
-	cdx.Category = trim(msg.MStr("Category"))
-	cdx.SubCategory = trim(msg.MStr("SubCategory"))
-	cdx.BodyID = msg.Int16("BodyID", -1)
+	cdx.Name = trim(daq.Must(msg.AsString("Name")))
+	cdx.Category = trim(daq.Must(msg.AsString("Category")))
+	cdx.SubCategory = trim(daq.Must(msg.AsString("SubCategory")))
+	cdx.BodyID = msg.Int16Or("BodyID", -1)
 	if cdx.BodyID >= 0 {
-		cdx.BodyName = msg.MStr("BodyName")
-		cdx.Latitude = msg.MF32("Latitude")
-		cdx.Longitude = msg.MF32("Longitude")
+		cdx.BodyName = daq.Must(msg.AsString("BodyName"))
+		cdx.Latitude = daq.Must(msg.AsFloat32("Latitude"))
+		cdx.Longitude = daq.Must(msg.AsFloat32("Longitude"))
 	}
 	return nil
 }
@@ -291,15 +271,15 @@ type FSSDiscoScanMsg struct {
 	NonBodyCount  int16
 }
 
-func (fds *FSSDiscoScanMsg) Wrap(msg ggja.Obj) error {
+func (fds *FSSDiscoScanMsg) Wrap(msg daq.DictAny) error {
 	fds.msg.Wrap(msg)
-	fds.System = msg.MStr("SystemName")
-	fds.SystemAddress = msg.MInt64("SystemAddress")
-	coos := msg.MArr("StarPos")
-	fds.StarPos[0] = coos.MF32(0)
-	fds.StarPos[1] = coos.MF32(1)
-	fds.StarPos[2] = coos.MF32(2)
-	fds.BodyCount = msg.MInt16("BodyCount")
-	fds.NonBodyCount = msg.MInt16("NonBodyCount")
+	fds.System = daq.Must(msg.AsString("SystemName"))
+	fds.SystemAddress = daq.Must(msg.AsInt64("SystemAddress"))
+	coos := daq.Must(msg.AsSliceAny("StarPos"))
+	fds.StarPos[0] = daq.Must(coos.AsFloat32(0))
+	fds.StarPos[1] = daq.Must(coos.AsFloat32(1))
+	fds.StarPos[2] = daq.Must(coos.AsFloat32(2))
+	fds.BodyCount = daq.Must(msg.AsInt16("BodyCount"))
+	fds.NonBodyCount = daq.Must(msg.AsInt16("NonBodyCount"))
 	return nil
 }

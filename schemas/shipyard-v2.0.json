@@ -1,10 +1,10 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/approachsettlement/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/shipyard/2#",
     "type"                  : "object",
     "additionalProperties"  : false,
-    "required": [ "$schemaRef", "header", "message" ],
-    "properties": {
+    "required"              : [ "$schemaRef", "header", "message" ],
+    "properties"            : {
         "$schemaRef": {
             "type"                  : "string"
         },
@@ -18,11 +18,11 @@
                 },
                 "gameversion": {
                     "type"          : "string",
-                    "description"   : "From Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Fileheader->gameversion, else LoadGame->gameversion, else 'CAPI-shipyard', else ''."
                 },
                 "gamebuild": {
                     "type"          : "string",
-                    "description"   : "The `build` value from a Fileheader event if available, else LoadGame if available there."
+                    "description"   : "Fileheader->build, else LoadGame->build, else 'CAPI-shipyard', else ''."
                 },
                 "softwareName": {
                     "type"          : "string"
@@ -39,16 +39,22 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "Name", "BodyID", "BodyName", "Latitude", "Longitude" ],
+            "required"              : [ "systemName", "stationName", "marketId", "timestamp", "ships" ],
             "properties"            : {
-                "timestamp": {
+                "systemName": {
                     "type"          : "string",
-                    "format"        : "date-time"
+                    "renamed"       : "StarSystem",
+                    "minLength"     : 1
                 },
-                "event" : {
-                    "enum"          : [ "ApproachSettlement" ]
+                "stationName": {
+                    "type"          : "string",
+                    "renamed"       : "StationName",
+                    "minLength"     : 1
+                },                
+                "marketId": {
+                    "type"          : "integer",
+                    "renamed"       : "MarketID"
                 },
                 "horizons": {
                     "type"          : "boolean",
@@ -57,45 +63,27 @@
                 "odyssey": {
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has an Odyssey expansion."
+                },                 
+                "allowCobraMkIV": {
+                    "type"          : "boolean",
+                    "description"   : "Whether the sending Cmdr can purchase the Cobra MkIV or not."
                 },
-                "StarSystem": {
+                "timestamp": {
                     "type"          : "string",
-                    "minLength"     : 1,
-                    "description"   : "Must be added by the sender"
+                    "format"        : "date-time"
                 },
-                "StarPos": {
+                "ships": {
                     "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender"
-                },
-                "SystemAddress": {
-                    "type"          : "integer"
-                },
-                "Name"             : {
-                    "type"          : "string",
-                    "description"   : "Name of settlement"
-                },
-                "MarketID": {
-                    "type"          : "integer"
-                },		
-                "BodyID": {
-                    "type"          : "integer"
-                },
-                "BodyName": {
-                    "type"          : "string"
-                },	
-                "Latitude": {
-                    "type"          : "number"
-                },
-                "Longitude": {
-                    "type"          : "number"
+                    "renamed"       : "PriceList",
+                    "minItems"      : 1,
+                    "uniqueItems"   : true,
+                    "items"         : {
+                        "type"          : "string",
+                        "minLength"     : 1,
+                        "description"   : "Ship symbolic name. i.e. one of: SideWinder, Adder, Anaconda, Asp, Asp_Scout CobraMkIII, CobraMkIV, Cutter, DiamondBack, DiamondBackXL, Eagle, Empire_Courier, Empire_Eagle, Empire_Trader, Federation_Corvette, Federation_Dropship, Federation_Dropship_MkII, Federation_Gunship, FerDeLance, Hauler, Independant_Trader, Orca, Python, Type6, Type7, Type9, Viper, Viper_MkIV, Vulture"
+                    }
                 }
             }
         }
-    },
-    "definitions": {
-        "disallowed" : { "not" : { "type": [ "array", "boolean", "integer", "number", "null", "object", "string" ] } }
     }
 }

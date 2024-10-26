@@ -1,12 +1,15 @@
 module github.com/CmdrVasquess/eddnc
 
-go 1.21
+go 1.22.0
+
+toolchain go1.23.2
 
 require (
 	git.fractalqb.de/fractalqb/catch v0.3.0
-	git.fractalqb.de/fractalqb/ggja v0.11.2
+	git.fractalqb.de/fractalqb/daq v0.11.0
+	git.fractalqb.de/fractalqb/eloc v0.3.0
 	github.com/json-iterator/go v1.1.12
-	github.com/pebbe/zmq4 v1.2.10
+	github.com/pebbe/zmq4 v1.2.11
 	github.com/xeipuuv/gojsonschema v1.2.0
 )
 

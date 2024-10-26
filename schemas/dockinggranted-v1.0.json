@@ -1,6 +1,6 @@
 {
     "$schema"               : "http://json-schema.org/draft-04/schema#",
-    "id"                    : "https://eddn.edcd.io/schemas/fssbodysignals/1#",
+    "id"                    : "https://eddn.edcd.io/schemas/dockinggranted/1#",
     "type"                  : "object",
     "additionalProperties"  : false,
     "required": [ "$schemaRef", "header", "message" ],
@@ -39,16 +39,16 @@
         },
         "message": {
             "type"                  : "object",
-            "description"           : "Contains all properties from the listed events in the client's journal, minus the Localised strings and the properties marked below as 'disallowed'",
+            "description"           : "Contains all properties from the listed events in the client's journal minus the Localised strings and the properties marked below as 'disallowed'",
             "additionalProperties"  : false,
-            "required"              : [ "timestamp", "event", "StarSystem", "StarPos", "SystemAddress", "BodyID", "Signals" ],
+            "required"              : [ "timestamp", "event", "MarketID", "StationName" ],
             "properties"            : {
                 "timestamp": {
                     "type"          : "string",
                     "format"        : "date-time"
                 },
                 "event" : {
-                    "enum"          : [ "FSSBodySignals" ]
+                    "enum"          : [ "DockingGranted" ]
                 },
                 "horizons": {
                     "type"          : "boolean",
@@ -58,42 +58,20 @@
                     "type"      : "boolean",
                     "description" : "Whether the sending Cmdr has an Odyssey expansion."
                 },
-                "StarSystem": {
-                    "type"          : "string",
-                    "minLength"     : 1
-                },
-                "StarPos": {
-                    "type"          : "array",
-                    "items"         : { "type": "number" },
-                    "minItems"      : 3,
-                    "maxItems"      : 3,
-                    "description"   : "Must be added by the sender if not present in the journal event"
-                },
-                "SystemAddress": {
+                "MarketID": {
                     "type"          : "integer"
-                },
-                "BodyID"             : {
-                    "type"          : "integer"
-                },
-                "BodyName": {
+                },		
+                "StationName": {
                     "type"          : "string",
-                    "minLength"     : 1
+                    "description"   : "Name of station"
                 },
-                "Signals": {
-                    "type"          : "array",
-                    "items"         : {
-                        "type"          : "object",
-                        "additionalProperties"  : false,
-                        "required"              : [ "Type", "Count" ],
-                        "properties"            : {
-                            "Type"             : {
-                                "type"          : "string"
-                            },
-                            "Count"             : {
-                                "type"          : "integer"
-                            }
-                        }
-                    }
+                "StationType": {
+                    "type"          : "string",
+                    "description"   : "Type of station"
+                },
+                "LandingPad": {
+                    "type"          : "integer",
+                    "description"   : "Pad number Cmdr was granted landing to"
                 }
             }
         }
