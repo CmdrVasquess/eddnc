@@ -25,7 +25,7 @@ func Blocking(c chan<- []byte, data []byte, _ eddnc.ScmID) {
 	c <- data
 }
 
-func Dropping(c chan<- []byte, data []byte, queue string) {
+func Dropping(c chan<- []byte, data []byte, queue eddnc.ScmID) {
 	select {
 	case c <- data:
 	default:

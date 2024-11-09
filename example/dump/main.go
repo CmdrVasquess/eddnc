@@ -31,6 +31,7 @@ func main() {
 	subs := subscriber.New((&subscriber.Config{
 		ConnTimeout: subscriber.GoodTimeout,
 		RecvTimeout: 30 * time.Second,
+		Enqueue:     subscriber.Dropping,
 	}).AllQCaps(qLengths)) // => eventLoop() must read all channels to avoid blocking
 	// Blocking could also be avoided by setting a non-blocking Enqueue function with
 	// Config (see Blocking, Dropping).
@@ -67,14 +68,30 @@ func eventLoop(subs *subscriber.S) {
 	}
 	for openChans > 0 {
 		select {
+		case b, ok := <-subs.Chan[eddnc.Sapproachsettlement]:
+			dump(eddnc.Sapproachsettlement, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Sblackmarket]:
 			dump(eddnc.Sblackmarket, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Scodexentry]:
 			dump(eddnc.Scodexentry, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Scommodity]:
 			dump(eddnc.Scommodity, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sdockingdenied]:
+			dump(eddnc.Sdockingdenied, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sdockinggranted]:
+			dump(eddnc.Sdockinggranted, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfcmaterials_capi]:
+			dump(eddnc.Sfcmaterials_capi, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfcmaterials_journal]:
+			dump(eddnc.Sfcmaterials_journal, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfssallbodiesfound]:
+			dump(eddnc.Sfssallbodiesfound, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfssbodysignals]:
+			dump(eddnc.Sfssbodysignals, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Sfssdiscoveryscan]:
 			dump(eddnc.Sfssdiscoveryscan, b, ok)
+		case b, ok := <-subs.Chan[eddnc.Sfsssignaldiscovered]:
+			dump(eddnc.Sfsssignaldiscovered, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Sjournal]:
 			dump(eddnc.Sjournal, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Snavbeaconscan]:
@@ -87,18 +104,6 @@ func eventLoop(subs *subscriber.S) {
 			dump(eddnc.Sscanbarycentre, b, ok)
 		case b, ok := <-subs.Chan[eddnc.Sshipyard]:
 			dump(eddnc.Sshipyard, b, ok)
-		case b, ok := <-subs.Chan[eddnc.Sapproachsettlement]:
-			dump(eddnc.Sapproachsettlement, b, ok)
-		case b, ok := <-subs.Chan[eddnc.Sfcmaterials_capi]:
-			dump(eddnc.Sfcmaterials_capi, b, ok)
-		case b, ok := <-subs.Chan[eddnc.Sfcmaterials_journal]:
-			dump(eddnc.Sfcmaterials_journal, b, ok)
-		case b, ok := <-subs.Chan[eddnc.Sfssallbodiesfound]:
-			dump(eddnc.Sfssallbodiesfound, b, ok)
-		case b, ok := <-subs.Chan[eddnc.Sfssbodysignals]:
-			dump(eddnc.Sfssbodysignals, b, ok)
-		case b, ok := <-subs.Chan[eddnc.Sfsssignaldiscovered]:
-			dump(eddnc.Sfsssignaldiscovered, b, ok)
 		}
 	}
 	log.Println("exit event loop")
